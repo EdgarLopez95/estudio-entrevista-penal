@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FocusShell } from '@/app/AppShell';
 import {
@@ -30,6 +30,11 @@ export function SessionScreen() {
   const [confirmExit, setConfirmExit] = useState(false);
 
   const session = progress.activeSession;
+
+  useEffect(() => {
+    if (session?.status !== 'active') return;
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, [session?.currentIndex, session?.status]);
 
   if (!session) {
     return (
@@ -107,6 +112,7 @@ export function SessionScreen() {
           </Button>
           {session.currentIndex > 0 ? <Button onClick={() => store.goToItem(session.currentIndex - 1)}>← Anterior</Button> : null}
           <span className="caption">{session.currentIndex + 1} de {session.items.length}</span>
+          {presentationMode === 'study' ? <Button variant="primary" onClick={() => { store.markInterviewStudied(resource?.id ?? '', session.currentIndex); advance(); }}>Siguiente →</Button> : null}
         </div>
       ) : null}
 
@@ -172,6 +178,18 @@ export function SessionScreen() {
       ) : (
         <EmptyState title="Actividad no soportada" action={<Button onClick={advance}>Continuar</Button>} />
       )}
+
+      {session.scope.activeTrack === 'interview' && presentationMode === 'study' ? (
+        <nav className="session-nav" aria-label="Navegación de preguntas">
+          <Button onClick={() => store.goToItem(session.currentIndex - 1)} disabled={session.currentIndex === 0}>
+            ← Anterior
+          </Button>
+          <span className="caption">{session.currentIndex + 1} de {session.items.length}</span>
+          <Button variant="primary" onClick={() => { store.markInterviewStudied(resource?.id ?? '', session.currentIndex); advance(); }}>
+            {session.currentIndex === session.items.length - 1 ? 'Terminar bloque' : 'Siguiente →'}
+          </Button>
+        </nav>
+      ) : null}
     </FocusShell>
   );
 }

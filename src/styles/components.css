@@ -639,6 +639,18 @@
   font-family: var(--font-mono);
 }
 
+.session-nav {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) 0 calc(var(--space-3) + env(safe-area-inset-bottom));
+  background: var(--background);
+}
+
 .prompt {
   font-size: var(--text-h2);
   line-height: var(--leading-snug);

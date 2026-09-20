@@ -53,6 +53,22 @@ describe('P0-A: Home → Háblame de ti → práctica oral → guardar progreso'
     expect(screen.getAllByText('1 de 10').length).toBeGreaterThan(0);
   });
 
+  it('al avanzar en sesión vuelve al inicio y ofrece anterior arriba y abajo', async () => {
+    const user = userEvent.setup();
+    const scrollTo = window.scrollTo;
+    const calls: unknown[][] = [];
+    window.scrollTo = ((...args: unknown[]) => { calls.push(args); }) as typeof window.scrollTo;
+    const { store } = renderApp(['/entrevista']);
+    await user.click(screen.getByRole('button', { name: 'Estudiar / Prepararme' }));
+    calls.length = 0;
+    await user.click(screen.getAllByRole('button', { name: 'Siguiente →' })[0]);
+
+    expect(store.getState().activeSession?.currentIndex).toBe(1);
+    expect(calls.length).toBeGreaterThan(0);
+    expect(screen.getAllByRole('button', { name: '← Anterior' }).length).toBeGreaterThan(1);
+    window.scrollTo = scrollTo;
+  });
+
   it('el primer uso no muestra un dashboard vacío y ofrece comenzar por lo esencial', () => {
     renderApp();
     expect(screen.getByText('Tu preparación comienza por lo esencial')).toBeInTheDocument();
