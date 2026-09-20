@@ -2,7 +2,7 @@ import type {
   FlashcardRating,
   MockProfile,
   SelfRating,
-
+  SessionPresentationMode,
   TimeBudget,
 } from '@/domain/types';
 import type {
@@ -132,7 +132,7 @@ export class ProgressStore {
 
   startSession = (
     built: BuiltSession,
-    options: { mockProfile?: MockProfile; label?: string } = {},
+    options: { mockProfile?: MockProfile; label?: string; presentationMode?: SessionPresentationMode } = {},
   ): string => {
     const sessionId = newId('s');
     const at = nowIso();
@@ -170,6 +170,7 @@ export class ProgressStore {
           status: 'active',
           answers: {},
           label: options.label ?? built.label,
+          presentationMode: options.presentationMode ?? 'practice',
           ...(options.mockProfile ? { mockProfile: options.mockProfile } : {}),
         },
         lastActivity: {
@@ -183,6 +184,12 @@ export class ProgressStore {
       { immediate: true },
     );
     return sessionId;
+  };
+
+  setSessionPresentationMode = (presentationMode: SessionPresentationMode) => {
+    const session = this.state.activeSession;
+    if (!session) return;
+    this.commit({ ...this.state, activeSession: { ...session, presentationMode } }, { immediate: true });
   };
 
   goToItem = (index: number) => {
@@ -498,6 +505,28 @@ export class ProgressStore {
       },
     };
 
+    this.commit(next);
+  };
+
+  markInterviewStudied = (promptId: string, itemIndex?: number) => {
+    const resource = requireResource(promptId);
+    if (resource.type !== 'interview-prompt') return;
+    const at = nowIso();
+    let next = withObjective(this.state, resource.learningObjectiveId, (progress) => ({
+      ...progress,
+      lessonStudiedAt: at,
+      lastSeenAt: at,
+    }));
+    next = {
+      ...next,
+      lastActivity: {
+        at,
+        resourceId: promptId,
+        objectiveId: resource.learningObjectiveId,
+        mode: next.activeSession?.mode ?? null,
+        itemIndex: itemIndex ?? null,
+      },
+    };
     this.commit(next);
   };
 

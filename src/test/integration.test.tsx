@@ -33,6 +33,18 @@ beforeEach(() => {
 });
 
 describe('P0-A: Home → Háblame de ti → práctica oral → guardar progreso', () => {
+  it('elige una vez el modo de una sesión continua de entrevista', async () => {
+    const user = userEvent.setup();
+    const { store } = renderApp(['/entrevista']);
+
+    expect(screen.getByRole('button', { name: 'Estudiar / Prepararme' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Practicar / Ensayar' })).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Estudiar / Prepararme' }));
+
+    expect(store.getState().activeSession?.presentationMode).toBe('study');
+    expect(screen.getAllByText('1 de 10').length).toBeGreaterThan(0);
+  });
+
   it('el primer uso no muestra un dashboard vacío y ofrece comenzar por lo esencial', () => {
     renderApp();
     expect(screen.getByText('Tu preparación comienza por lo esencial')).toBeInTheDocument();
@@ -261,7 +273,7 @@ describe('Study-Practice Alignment en la interfaz', () => {
   it('la sesión de entrevista solo ofrece prompts de Nivel 1', async () => {
     const user = userEvent.setup();
     const { store } = renderApp(['/entrevista']);
-    await user.click(screen.getByRole('button', { name: /Practicar entrevista/ }));
+    await user.click(screen.getByRole('button', { name: 'Practicar / Ensayar' }));
     for (const item of store.getState().activeSession?.items ?? []) {
       expect(requireResource(item.resourceId).level).toBe(1);
     }

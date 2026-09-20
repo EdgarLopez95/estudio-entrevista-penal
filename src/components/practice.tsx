@@ -268,6 +268,8 @@ export function InterviewPromptView({
   prompt,
   onSave,
   saveLabel = 'Guardar y continuar',
+  presentationMode,
+  onStudy,
 }: {
   prompt: InterviewPrompt;
   onSave: (input: {
@@ -276,6 +278,8 @@ export function InterviewPromptView({
     usedModelAnswer: boolean;
   }) => void;
   saveLabel?: string;
+  presentationMode?: 'study' | 'practice';
+  onStudy?: () => void;
 }) {
   const [step, setStep] = useState<'choose' | 'prepare' | 'ask' | 'rate'>('choose');
   const [rating, setRating] = useState<SelfRating | null>(null);
@@ -283,11 +287,11 @@ export function InterviewPromptView({
   const [usedModel, setUsedModel] = useState(false);
 
   useEffect(() => {
-    setStep('choose');
+    setStep(presentationMode === 'study' ? 'prepare' : presentationMode === 'practice' ? 'ask' : 'choose');
     setRating(null);
     setCovered([]);
     setUsedModel(false);
-  }, [prompt.id]);
+  }, [prompt.id, presentationMode]);
 
   const stories = useMemo(
     () => prompt.relatedStarStoryIds.map((id) => starStory(id)).filter(Boolean) as StarStory[],
@@ -346,10 +350,11 @@ export function InterviewPromptView({
             onUseModel={() => setUsedModel(true)}
           />
           <div className="row">
-            <Button variant="primary" onClick={() => setStep('ask')}>
-              Practicar ahora
-            </Button>
-            <Button onClick={() => setStep('choose')}>Volver a elegir</Button>
+            {presentationMode === 'study' && onStudy ? (
+              <Button variant="primary" onClick={onStudy}>Siguiente →</Button>
+            ) : (
+              <><Button variant="primary" onClick={() => setStep('ask')}>Practicar ahora</Button><Button onClick={() => setStep('choose')}>Volver a elegir</Button></>
+            )}
           </div>
         </div>
       ) : null}

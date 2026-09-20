@@ -6,7 +6,6 @@ import {
   Card,
   EmptyState,
   LinkButton,
-  Minutes,
   Notice,
   SectionHeading,
 } from '@/components/primitives';
@@ -16,7 +15,8 @@ import { INTERVIEW_PROMPTS, STARS, getResource } from '@/content';
 import { HARD_PROMPT_IDS, TOP_10_PROMPT_IDS } from '@/content/collections';
 import { PROMPT_STATE_LABEL, promptState } from '@/domain/interviewPractice';
 import { hasActiveGap } from '@/domain/errors';
-import { buildSession } from '@/domain/sessionBuilder';
+import { buildInterviewBlock, buildSession } from '@/domain/sessionBuilder';
+import type { SessionPresentationMode } from '@/domain/types';
 import { top10Readiness } from '@/domain/readiness';
 import type { InterviewPrompt } from '@/domain/types';
 import type { ProgressState } from '@/domain/progress';
@@ -67,13 +67,11 @@ export function InterviewHubScreen() {
   const cross = INTERVIEW_PROMPTS.filter((p) => p.level === 1 && p.track === 'cross-track');
   const level2 = INTERVIEW_PROMPTS.filter((p) => p.level === 2);
 
-  function startPractice() {
-    const built = buildSession({
-      state: progress,
-      mode: 'interview-practice',
-      timeBudget: progress.preferences.lastTimeBudget,
-    });
-    store.startSession(built);
+  const activeInterviewSession = progress.activeSession?.status === 'active' && progress.activeSession.scope.activeTrack === 'interview';
+
+  function startBlock(presentationMode: SessionPresentationMode) {
+    const built = buildInterviewBlock(progress);
+    store.startSession(built, { presentationMode });
     navigate('/sesion');
   }
 
@@ -86,13 +84,11 @@ export function InterviewHubScreen() {
           La práctica es oral: la entrevistadora pregunta, respondes en voz alta y después revisas
           los puntos clave. La respuesta modelo es apoyo, nunca un guion obligatorio.
         </p>
-        <div className="row">
-          <Button variant="primary" onClick={startPractice}>
-            Practicar entrevista · <Minutes value={progress.preferences.lastTimeBudget === 'full' ? 20 : progress.preferences.lastTimeBudget} />
-          </Button>
-          <LinkButton to="/entrevista/top10">Top 10</LinkButton>
-          <LinkButton to="/entrevista/dificiles">Preguntas difíciles</LinkButton>
-        </div>
+        {activeInterviewSession ? (
+          <div className="row"><LinkButton to="/sesion" variant="primary">Continuar sesión</LinkButton><LinkButton to="/entrevista/top10">Top 10</LinkButton><LinkButton to="/entrevista/dificiles">Preguntas difíciles</LinkButton></div>
+        ) : (
+          <div className="stack-3"><p className="prompt__hint">¿Qué quieres hacer ahora?</p><div className="row"><Button variant="primary" onClick={() => startBlock('study')}>Estudiar / Prepararme</Button><Button onClick={() => startBlock('practice')}>Practicar / Ensayar</Button></div></div>
+        )}
       </header>
 
       <Card variant="quiet" className="stack-2">

@@ -545,6 +545,12 @@ export function buildSession(input: BuildSessionInput): BuiltSession {
   };
 }
 
+/** Bloque lineal de entrevista para el nivel permitido, preservando el orden del Top 10 en Nivel 1. */
+export function buildInterviewBlock(state: ProgressState): BuiltSession {
+  const base = buildSession({ state, mode: 'top10', timeBudget: 'full' });
+  return { ...base, label: 'Entrevista · bloque actual' };
+}
+
 /**
  * Comprueba que una sesión construida respeta su propio scope: ningún ítem supera `maxLevel`
  * y todo ítem pertenece a un objetivo. Se usa en pruebas y en el modo auditoría.

@@ -219,6 +219,8 @@ export type SessionMode =
   | 'errors'
   | 'case';
 
+export type SessionPresentationMode = 'study' | 'practice';
+
 export type SessionItemKind =
   | 'interview'
   | 'flashcard'

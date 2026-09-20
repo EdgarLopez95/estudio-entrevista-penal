@@ -96,6 +96,8 @@ export interface ErrorRecord {
 export interface ActiveSession {
   sessionId: string;
   mode: SessionMode;
+  /** Cómo se presenta un bloque de entrevista: estudiar primero o ensayar primero. */
+  presentationMode?: import('./types').SessionPresentationMode;
   scope: SessionScope;
   items: SessionItem[];
   currentIndex: number;

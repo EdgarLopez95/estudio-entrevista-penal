@@ -54,6 +54,7 @@ export function SessionScreen() {
   const resource = item ? getResource(item.resourceId) : undefined;
   const objective = item ? getObjective(item.objectiveId) : undefined;
   const answer = session.answers[session.currentIndex];
+  const presentationMode = session.presentationMode ?? 'practice';
 
   function exit() {
     if (answeredCount > 0 && !confirmExit) {
@@ -71,7 +72,7 @@ export function SessionScreen() {
   return (
     <FocusShell
       onExit={exit}
-      context={`${session.label} · ${objective?.title ?? ''}`}
+      context={`${session.label} · Modo ${presentationMode === 'study' ? 'estudio' : 'práctica'} · ${objective?.title ?? ''}`}
       progressLabel={`${session.currentIndex + 1} de ${session.items.length}`}
       progressNode={
         <div style={{ paddingBottom: 'var(--space-6)' }}>
@@ -96,6 +97,17 @@ export function SessionScreen() {
             <Button onClick={() => setConfirmExit(false)}>Seguir practicando</Button>
           </div>
         </Card>
+      ) : null}
+
+      {session.scope.activeTrack === 'interview' ? (
+        <div className="row" style={{ marginBottom: 'var(--space-4)' }}>
+          <Badge tone="quiet">Modo {presentationMode === 'study' ? 'estudio' : 'práctica'}</Badge>
+          <Button onClick={() => store.setSessionPresentationMode(presentationMode === 'study' ? 'practice' : 'study')}>
+            Cambiar a {presentationMode === 'study' ? 'práctica' : 'estudio'}
+          </Button>
+          {session.currentIndex > 0 ? <Button onClick={() => store.goToItem(session.currentIndex - 1)}>← Anterior</Button> : null}
+          <span className="caption">{session.currentIndex + 1} de {session.items.length}</span>
+        </div>
       ) : null}
 
       {!resource ? (
@@ -127,6 +139,8 @@ export function SessionScreen() {
       ) : resource.type === 'interview-prompt' ? (
         <InterviewPromptView
           prompt={resource}
+          presentationMode={presentationMode}
+          onStudy={() => { store.markInterviewStudied(resource.id, session.currentIndex); advance(); }}
           onSave={(input) => {
             store.recordInterviewAttempt(resource.id, input, session.currentIndex);
             advance();
