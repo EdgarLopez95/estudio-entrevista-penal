@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import { IconButton } from '@/components/primitives';
 import { useProgress, useStore } from '@/state/StoreProvider';
 import { interviewPhase, phaseLabel } from '@/domain/time';
+import { LogoMark } from '@/components/Logo';
 import { SearchDialog } from './SearchDialog';
 
 const PRIMARY_NAV = [
@@ -69,9 +70,12 @@ export function AppShell({ children }: { children: ReactNode }) {
 
       <nav className="sidebar" aria-label="Navegación principal">
         <div className="sidebar__sticky">
-        <div className="sidebar__brand">
-          <strong>Estudio</strong>
-          <span className="caption">Primera entrevista</span>
+        <div className="sidebar__brand" style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+          <LogoMark size={32} />
+          <div>
+            <strong style={{ display: 'block' }}>Estudio</strong>
+            <span className="caption">Primera entrevista</span>
+          </div>
         </div>
         <ul className="nav-list">
           {PRIMARY_NAV.map((item) => (

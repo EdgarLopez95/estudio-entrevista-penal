@@ -1,6 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useProgress } from '@/state/StoreProvider';
 import { interviewPhase } from '@/domain/time';
+import { LogoBadge } from '@/components/Logo';
+import { InstallPrompt } from '@/components/InstallPrompt';
 
 export function HomeScreen() {
   const progress = useProgress();
@@ -36,8 +38,12 @@ export function HomeScreen() {
         </p>
       ) : null}
 
-      <div className="stack-2" style={{ textAlign: 'center' }}>
-        <h1 style={{ fontSize: 'var(--text-h2)', letterSpacing: '-0.02em' }}>
+      <div className="stack-3" style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <LogoBadge size={84} />
+        <p className="eyebrow" style={{ color: 'var(--text-secondary)', letterSpacing: '0.06em', marginTop: 'var(--space-2)' }}>
+          Valentina · Abogada Junior en Derecho Penal
+        </p>
+        <h1 style={{ fontSize: 'var(--text-h2)', letterSpacing: '-0.02em', marginTop: 'var(--space-1)' }}>
           ¿Cómo quieres prepararte?
         </h1>
       </div>
@@ -96,6 +102,8 @@ export function HomeScreen() {
           </button>
         </div>
       ) : null}
+
+      <InstallPrompt />
     </div>
   );
 }

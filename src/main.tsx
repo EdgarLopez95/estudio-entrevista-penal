@@ -25,3 +25,11 @@ createRoot(container).render(
     </StoreProvider>
   </StrictMode>,
 );
+
+// Registro de Service Worker para capacidades PWA y funcionamiento offline
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
+
