@@ -33,6 +33,14 @@ beforeEach(() => {
 });
 
 describe('P0-A: Home → Háblame de ti → práctica oral → guardar progreso', () => {
+  it('Inicio permite escoger un bloque libre sin escoger tiempo', async () => {
+    const user = userEvent.setup();
+    renderApp();
+    await user.click(screen.getByRole('button', { name: 'Estudiar' }));
+    await user.click(screen.getByRole('button', { name: 'Entrevista' }));
+    expect(screen.getByRole('button', { name: 'Esenciales' })).toBeInTheDocument();
+  });
+
   it('elige una vez el modo de una sesión continua de entrevista', async () => {
     const user = userEvent.setup();
     const { store } = renderApp(['/entrevista']);

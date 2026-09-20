@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Badge,
@@ -21,11 +21,11 @@ import {
   shouldSuggestLevel2,
   top10Readiness,
 } from '@/domain/readiness';
-import { buildSession } from '@/domain/sessionBuilder';
+import { buildInterviewBlock, buildSession } from '@/domain/sessionBuilder';
 import { TIME_BUDGET_OPTIONS, interviewPhase, minutesSince } from '@/domain/time';
 import { getResource } from '@/content';
 import { getObjective } from '@/content/objectives';
-import type { ResourceType, TimeBudget } from '@/domain/types';
+import type { ResourceType, SessionPresentationMode, TimeBudget } from '@/domain/types';
 
 const ACTIVITY_LABEL: Record<ResourceType, string> = {
   lesson: 'Lección',
@@ -41,6 +41,8 @@ export function HomeScreen() {
   const progress = useProgress();
   const store = useStore();
   const navigate = useNavigate();
+  const [freeAction, setFreeAction] = useState<SessionPresentationMode | null>(null);
+  const [freeTrack, setFreeTrack] = useState<'interview' | 'penal' | null>(null);
 
   const phase = interviewPhase(progress.targetInterview);
   const recommendation = useMemo(() => recommend(progress), [progress]);
@@ -128,10 +130,31 @@ export function HomeScreen() {
     navigate('/sesion');
   }
 
+  function startInterviewBlock() {
+    if (!freeAction) return;
+    store.startSession(buildInterviewBlock(progress), { presentationMode: freeAction });
+    navigate('/sesion');
+  }
+
   const blockMinutes = activeSession ? minutesSince(activeSession.startedAt) : 0;
 
   return (
     <div className="stack-8">
+      <section className="enter stack-3" aria-labelledby="sesion-libre">
+        <SectionHeading eyebrow="Sesión libre" title="¿Qué quieres hacer ahora?" />
+        {!freeAction ? (
+          <div className="row">
+            <Button variant="primary" onClick={() => setFreeAction('study')}>Estudiar</Button>
+            <Button onClick={() => setFreeAction('practice')}>Practicar preguntas</Button>
+          </div>
+        ) : !freeTrack ? (
+          <div className="stack-3"><p className="prompt__hint">¿Qué quieres trabajar?</p><div className="row"><Button variant="primary" onClick={() => setFreeTrack('interview')}>Entrevista</Button><Button onClick={() => setFreeTrack('penal')}>Derecho Penal</Button><Button onClick={() => setFreeAction(null)}>Volver</Button></div></div>
+        ) : freeTrack === 'interview' ? (
+          <div className="stack-3"><p className="prompt__hint">Elige el bloque de entrevista.</p><div className="row"><Button variant="primary" onClick={startInterviewBlock}>Esenciales</Button><Button onClick={() => navigate('/entrevista/top10')}>Top 10</Button><Button onClick={() => navigate('/entrevista/dificiles')}>Preguntas difíciles</Button><Button onClick={() => navigate('/entrevista')}>Historias STAR</Button></div></div>
+        ) : (
+          <div className="stack-3"><p className="prompt__hint">Elige el bloque de Derecho Penal.</p><div className="row"><Button variant="primary" onClick={() => navigate('/ruta')}>Conceptos</Button><Button onClick={() => navigate('/practica')}>Quiz</Button><Button onClick={() => navigate('/flashcards')}>Flashcards</Button><Button onClick={() => navigate('/casos')}>Casos</Button><Button onClick={() => navigate('/penal')}>Penal esencial</Button></div></div>
+        )}
+      </section>
       {/* 1. Qué debes estudiar ahora — bloque dominante */}
       <section className="enter" aria-labelledby="recomendacion">
         <Card track={recommendationTrack} variant="emphasis" className="recommend">
