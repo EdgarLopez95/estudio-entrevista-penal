@@ -55,19 +55,26 @@ describe('P0-A: Home → Háblame de ti → práctica oral → guardar progreso'
     expect(screen.getByText('Penal', { selector: '.meter__name' })).toBeInTheDocument();
   });
 
-  it('la práctica oral exige intento antes de la guía y guarda el progreso', async () => {
+  it('permite prepararse antes de practicar una respuesta y guarda el progreso', async () => {
     const user = userEvent.setup();
     const { store } = renderApp();
 
     await user.click(screen.getByRole('button', { name: /Comenzar preparación/ }));
 
-    // Paso 1: la pregunta, sin guía todavía.
+    // Primero la persona decide si quiere estudiar o simular la respuesta.
     expect(screen.getByText('La entrevistadora pregunta')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Háblame de ti.' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Prepararme primero' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Practicar ahora' })).toBeInTheDocument();
     expect(screen.queryByText('¿Qué cubrí?')).toBeNull();
-    expect(screen.queryByText(/respuesta modelo/i)).toBeNull();
 
-    // Paso 2: tras "He respondido" aparece la autoevaluación y la guía.
+    // La guía se puede consultar antes del intento y da paso directo a la práctica.
+    await user.click(screen.getByRole('button', { name: 'Prepararme primero' }));
+    expect(screen.getByText('Idea que debe quedar')).toBeInTheDocument();
+    expect(screen.getByText(/Ver respuesta modelo/)).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Practicar ahora' }));
+
+    // Tras el intento aparece la autoevaluación y la guía para comparar.
     await user.click(screen.getByRole('button', { name: 'He respondido' }));
     expect(screen.getByText('¿Cómo te salió?')).toBeInTheDocument();
     expect(screen.getByText('¿Qué cubrí?')).toBeInTheDocument();
@@ -99,6 +106,7 @@ describe('P0-A: Home → Háblame de ti → práctica oral → guardar progreso'
     const { store } = renderApp();
 
     await user.click(screen.getByRole('button', { name: /Comenzar preparación/ }));
+    await user.click(screen.getByRole('button', { name: 'Practicar ahora' }));
     await user.click(screen.getByRole('button', { name: 'He respondido' }));
     await user.click(screen.getByRole('button', { name: 'Me quedé en blanco' }));
     await user.click(screen.getByRole('button', { name: 'Guardar intento' }));
@@ -294,7 +302,7 @@ describe('trazabilidad visible y avisos', () => {
   it('cada actividad muestra su fuente de estudio con sección y fragmento', async () => {
     const user = userEvent.setup();
     renderApp(['/entrevista/prompt/P-INT-003']);
-    await user.click(screen.getByRole('button', { name: 'He respondido' }));
+    await user.click(screen.getByRole('button', { name: 'Prepararme primero' }));
     const sources = screen.getAllByText(/Fuente de estudio: ENTREVISTA_MD/);
     expect(sources.length).toBeGreaterThan(0);
     const details = sources[0].closest('details');

@@ -16,7 +16,7 @@
 - Modify: `src/test/integration.test.tsx`
 - Test: `src/test/integration.test.tsx`
 
-- [ ] **Step 1: Escribir una prueba que falle**
+- [x] **Step 1: Escribir una prueba que falle**
 
 ```tsx
 it('permite elegir prepararse antes de practicar una respuesta de entrevista', async () => {
@@ -33,7 +33,7 @@ it('permite elegir prepararse antes de practicar una respuesta de entrevista', a
 });
 ```
 
-- [ ] **Step 2: Ejecutar la prueba para comprobar RED**
+- [x] **Step 2: Ejecutar la prueba para comprobar RED**
 
 Run: `npm run test -- src/test/integration.test.tsx`
 
@@ -45,7 +45,7 @@ Expected: FAIL porque todavía no existe el botón `Prepararme primero`.
 - Modify: `src/components/practice.tsx:177-340`
 - Test: `src/test/integration.test.tsx`
 
-- [ ] **Step 1: Añadir un estado de flujo**
+- [x] **Step 1: Añadir un estado de flujo**
 
 ```tsx
 const [step, setStep] = useState<'choose' | 'prepare' | 'ask' | 'rate'>('choose');
@@ -58,7 +58,7 @@ useEffect(() => {
 }, [prompt.id]);
 ```
 
-- [ ] **Step 2: Renderizar la elección inicial y la guía**
+- [x] **Step 2: Renderizar la elección inicial y la guía**
 
 ```tsx
 {step === 'choose' ? (
@@ -76,7 +76,7 @@ La rama `prepare` mostrará idea central, puntos clave, qué evitar y la respues
 apoyo, seguida del botón `Practicar ahora`. La rama `ask` conservará el texto y botón actuales;
 la rama `rate` conservará íntegramente el autoanálisis y `onSave`.
 
-- [ ] **Step 3: Ejecutar la prueba para comprobar GREEN**
+- [x] **Step 3: Ejecutar la prueba para comprobar GREEN**
 
 Run: `npm run test -- src/test/integration.test.tsx`
 
@@ -88,17 +88,17 @@ Expected: PASS, incluida la nueva prueba.
 - Modify: `docs/superpowers/specs/2026-09-20-eleccion-preparar-o-practicar.md`
 - Modify: `docs/superpowers/plans/2026-09-20-eleccion-preparar-o-practicar.md`
 
-- [ ] **Step 1: Ejecutar la validación completa**
+- [x] **Step 1: Ejecutar la validación completa**
 
 Run: `npm run verify:all && npm run e2e`
 
 Expected: contenido, contraste, offline, pruebas, build y recorridos móvil/escritorio en verde.
 
-- [ ] **Step 2: Confirmar el plan y la especificación como implementados**
+- [x] **Step 2: Confirmar el plan y la especificación como implementados**
 
 Cambiar las casillas de los pasos completados a `[x]`.
 
-- [ ] **Step 3: Versionar y publicar**
+- [x] **Step 3: Versionar y publicar**
 
 Run:
 

@@ -174,6 +174,96 @@ export function FlashcardView({
 
 /* ---------------------------------------------------------- Interview prompt */
 
+function InterviewGuidance({
+  prompt,
+  stories,
+  onUseModel,
+}: {
+  prompt: InterviewPrompt;
+  stories: StarStory[];
+  onUseModel: () => void;
+}) {
+  return (
+    <div className="stack-6">
+      <div className="stack-3">
+        <h3>Idea que debe quedar</h3>
+        <p>{prompt.ideaThatMustLand}</p>
+      </div>
+
+      <div className="stack-3">
+        <h3>Puntos que puedes incluir</h3>
+        <ul className="stack-2">
+          {prompt.keyPoints.map((point) => (
+            <li key={point.id}>
+              · {point.text}
+              {point.essential ? '' : ' (opcional)'}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {prompt.avoid.length > 0 ? (
+        <div className="stack-2">
+          <h3>Evita</h3>
+          <ul className="stack-2">
+            {prompt.avoid.map((item) => (
+              <li key={item} className="caption">
+                · {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
+      {stories.length > 0 ? (
+        <div className="stack-2">
+          <h3>Historias que te sirven</h3>
+          <ul className="item-list">
+            {stories.map((story) => (
+              <li key={story.id}>
+                <Link className="item-row" to={`/entrevista/star/${story.id}`}>
+                  <span>
+                    <span className="item-row__title">{story.title}</span>
+                    <span className="item-row__meta">{story.competencies.join(' · ')}</span>
+                  </span>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
+      <details className="disclosure" onToggle={onUseModel}>
+        <summary>Ver respuesta modelo (apoyo, no un guion)</summary>
+        <div className="stack-3 reading" style={{ marginTop: 'var(--space-3)' }}>
+          {prompt.recommendedAnswer.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+          <p className="caption">
+            Es modelo de contenido: aprende la idea central y dilo con tus palabras.
+          </p>
+        </div>
+      </details>
+
+      {prompt.followUps.length > 0 ? (
+        <div className="stack-2">
+          <h3>Posible follow-up</h3>
+          {prompt.followUps.map((followUp) => (
+            <Card key={followUp.id} variant="quiet" className="stack-2">
+              <p style={{ fontWeight: 'var(--weight-medium)' }}>{followUp.prompt}</p>
+              <p className="caption">{followUp.ideaThatMustLand}</p>
+              <SourceNote source={followUp.source} />
+            </Card>
+          ))}
+        </div>
+      ) : null}
+
+      <SourceNote source={prompt} />
+    </div>
+  );
+}
+
 export function InterviewPromptView({
   prompt,
   onSave,
@@ -187,13 +277,13 @@ export function InterviewPromptView({
   }) => void;
   saveLabel?: string;
 }) {
-  const [step, setStep] = useState<'ask' | 'rate'>('ask');
+  const [step, setStep] = useState<'choose' | 'prepare' | 'ask' | 'rate'>('choose');
   const [rating, setRating] = useState<SelfRating | null>(null);
   const [covered, setCovered] = useState<string[]>([]);
   const [usedModel, setUsedModel] = useState(false);
 
   useEffect(() => {
-    setStep('ask');
+    setStep('choose');
     setRating(null);
     setCovered([]);
     setUsedModel(false);
@@ -234,6 +324,36 @@ export function InterviewPromptView({
         ) : null}
       </div>
 
+      {step === 'choose' ? (
+        <div className="stack-4">
+          <p className="prompt__hint">
+            Elige si quieres estudiar primero la respuesta o ensayarla ahora.
+          </p>
+          <div className="row">
+            <Button variant="primary" onClick={() => setStep('prepare')}>
+              Prepararme primero
+            </Button>
+            <Button onClick={() => setStep('ask')}>Practicar ahora</Button>
+          </div>
+        </div>
+      ) : null}
+
+      {step === 'prepare' ? (
+        <div className="stack-6">
+          <InterviewGuidance
+            prompt={prompt}
+            stories={stories}
+            onUseModel={() => setUsedModel(true)}
+          />
+          <div className="row">
+            <Button variant="primary" onClick={() => setStep('ask')}>
+              Practicar ahora
+            </Button>
+            <Button onClick={() => setStep('choose')}>Volver a elegir</Button>
+          </div>
+        </div>
+      ) : null}
+
       {step === 'ask' ? (
         <div className="stack-4">
           <p className="prompt__hint">
@@ -244,7 +364,9 @@ export function InterviewPromptView({
             He respondido
           </Button>
         </div>
-      ) : (
+      ) : null}
+
+      {step === 'rate' ? (
         <div className="stack-6">
           <fieldset className="stack-3" style={{ border: 0, padding: 0, margin: 0 }}>
             <legend className="label">¿Cómo te salió?</legend>
@@ -266,11 +388,6 @@ export function InterviewPromptView({
               personalidad ni tu forma de hablar.
             </p>
           </fieldset>
-
-          <div className="stack-3">
-            <h3>Idea que debe quedar</h3>
-            <p>{prompt.ideaThatMustLand}</p>
-          </div>
 
           <div className="stack-3">
             <h3>¿Qué cubrí?</h3>
@@ -295,67 +412,11 @@ export function InterviewPromptView({
             </div>
           </div>
 
-          {prompt.avoid.length > 0 ? (
-            <div className="stack-2">
-              <h3>Evita</h3>
-              <ul className="stack-2">
-                {prompt.avoid.map((item) => (
-                  <li key={item} className="caption">
-                    · {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-
-          {stories.length > 0 ? (
-            <div className="stack-2">
-              <h3>Historias que te sirven</h3>
-              <ul className="item-list">
-                {stories.map((story) => (
-                  <li key={story.id}>
-                    <Link className="item-row" to={`/entrevista/star/${story.id}`}>
-                      <span>
-                        <span className="item-row__title">{story.title}</span>
-                        <span className="item-row__meta">{story.competencies.join(' · ')}</span>
-                      </span>
-                      <span aria-hidden="true">→</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : null}
-
-          <details
-            className="disclosure"
-            onToggle={(event) => setUsedModel((event.target as HTMLDetailsElement).open || usedModel)}
-          >
-            <summary>Ver respuesta modelo (apoyo, no un guion)</summary>
-            <div className="stack-3 reading" style={{ marginTop: 'var(--space-3)' }}>
-              {prompt.recommendedAnswer.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-              <p className="caption">
-                Es modelo de contenido: aprende la idea central y dilo con tus palabras.
-              </p>
-            </div>
-          </details>
-
-          {prompt.followUps.length > 0 ? (
-            <div className="stack-2">
-              <h3>Posible follow-up</h3>
-              {prompt.followUps.map((followUp) => (
-                <Card key={followUp.id} variant="quiet" className="stack-2">
-                  <p style={{ fontWeight: 'var(--weight-medium)' }}>{followUp.prompt}</p>
-                  <p className="caption">{followUp.ideaThatMustLand}</p>
-                  <SourceNote source={followUp.source} />
-                </Card>
-              ))}
-            </div>
-          ) : null}
-
-          <SourceNote source={prompt} />
+          <InterviewGuidance
+            prompt={prompt}
+            stories={stories}
+            onUseModel={() => setUsedModel(true)}
+          />
 
           <Button
             variant="primary"
@@ -368,7 +429,7 @@ export function InterviewPromptView({
             {saveLabel}
           </Button>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

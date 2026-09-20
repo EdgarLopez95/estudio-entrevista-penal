@@ -25,8 +25,11 @@ test('flujo vertical P0-A: práctica oral y progreso persistido tras recarga', a
   await page.getByRole('button', { name: /Comenzar preparación/ }).click();
   await expect(page.getByText('La entrevistadora pregunta')).toBeVisible();
 
-  // La guía no está disponible antes del intento.
+  // La persona puede estudiar la guía o saltar directo a la simulación.
+  await expect(page.getByRole('button', { name: 'Prepararme primero' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Practicar ahora' })).toBeVisible();
   await expect(page.getByText('¿Qué cubrí?')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Practicar ahora' }).click();
   await page.getByRole('button', { name: 'He respondido' }).click();
   await expect(page.getByText('¿Cómo te salió?')).toBeVisible();
 
