@@ -1071,3 +1071,90 @@ details.disclosure > summary::marker {
   text-transform: uppercase;
   color: var(--text-muted);
 }
+
+/* Lista "Evita": legible, no un pie de página. */
+.avoid-list {
+  font-size: var(--text-body-sm);
+  color: var(--text-secondary);
+  max-width: var(--reading-max);
+}
+
+.avoid-list > li > span {
+  color: var(--text-muted);
+  margin-right: var(--space-1);
+}
+
+/* -------------------------------------------------------- Choice Cards (Mobile-first) */
+
+.choice-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.choice-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+  padding: var(--space-5);
+  background: var(--surface-1);
+  border: 1px solid var(--outline-strong);
+  border-radius: var(--radius-card);
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-primary);
+  min-height: 4.5rem;
+  transition:
+    background-color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.choice-card:hover {
+  background: var(--surface-2);
+  border-color: var(--primary);
+}
+
+.choice-card:active {
+  background: var(--surface-3);
+  transform: scale(0.99);
+}
+
+.choice-card--primary {
+  border-color: var(--primary);
+}
+
+.choice-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: var(--space-1);
+}
+
+.choice-card__title {
+  font-size: var(--text-h3);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.choice-card__desc {
+  font-size: var(--text-body);
+  line-height: var(--leading-snug);
+  color: var(--text-secondary);
+}
+
+.choice-card__badge {
+  display: inline-block;
+  font-size: var(--text-caption);
+  font-weight: var(--weight-medium);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+

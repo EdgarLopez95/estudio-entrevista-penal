@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FocusShell } from '@/app/AppShell';
 import {
   Badge,
@@ -20,14 +20,12 @@ import {
 } from '@/components/practice';
 import { useProgress, useStore } from '@/state/StoreProvider';
 import { getResource } from '@/content';
-import { getObjective } from '@/content/objectives';
 import type { CaseResource, ChecklistResource } from '@/domain/types';
 
 export function SessionScreen() {
   const progress = useProgress();
   const store = useStore();
   const navigate = useNavigate();
-  const [confirmExit, setConfirmExit] = useState(false);
 
   const session = progress.activeSession;
 
@@ -48,7 +46,6 @@ export function SessionScreen() {
     );
   }
 
-  const answeredCount = Object.keys(session.answers).length;
   const isCompleted = session.status !== 'active' || session.currentIndex >= session.items.length;
 
   if (isCompleted) {
@@ -57,65 +54,37 @@ export function SessionScreen() {
 
   const item = session.items[session.currentIndex];
   const resource = item ? getResource(item.resourceId) : undefined;
-  const objective = item ? getObjective(item.objectiveId) : undefined;
   const answer = session.answers[session.currentIndex];
   const presentationMode = session.presentationMode ?? 'practice';
 
   function exit() {
-    if (answeredCount > 0 && !confirmExit) {
-      setConfirmExit(true);
-      return;
-    }
-    store.abandonSession();
-    navigate('/');
+    const returnPath = presentationMode === 'study' ? '/estudiar' : '/practicar';
+    navigate(returnPath);
   }
 
   function advance() {
     store.nextItem();
   }
 
+  const breadcrumbs = session.label || (
+    `${presentationMode === 'study' ? 'Estudiar' : 'Practicar'} › ${session.scope.activeTrack === 'interview' ? 'Entrevista' : 'Penal'} › ${session.scope.activeLevel === 1 ? 'Esencial' : session.scope.activeLevel === 2 ? 'Ampliación' : 'Profundización'}`
+  );
+
   return (
     <FocusShell
       onExit={exit}
-      context={`${session.label} · Modo ${presentationMode === 'study' ? 'estudio' : 'práctica'} · ${objective?.title ?? ''}`}
+      context={breadcrumbs}
       progressLabel={`${session.currentIndex + 1} de ${session.items.length}`}
       progressNode={
-        <div style={{ paddingBottom: 'var(--space-6)' }}>
+        <div style={{ paddingBottom: 'var(--space-4)' }}>
           <ProgressBar
             value={session.currentIndex}
             max={session.items.length}
-            label={`Progreso de la sesión: ${session.currentIndex + 1} de ${session.items.length}`}
+            label={`Progreso: ${session.currentIndex + 1} de ${session.items.length}`}
           />
         </div>
       }
     >
-      {confirmExit ? (
-        <Card variant="quiet" className="stack-3" style={{ marginBottom: 'var(--space-6)' }}>
-          <p>
-            Si sales ahora, la sesión queda marcada como interrumpida. Tu progreso en las respuestas
-            ya guardadas se conserva.
-          </p>
-          <div className="row">
-            <Button variant="primary" onClick={exit}>
-              Salir de todos modos
-            </Button>
-            <Button onClick={() => setConfirmExit(false)}>Seguir practicando</Button>
-          </div>
-        </Card>
-      ) : null}
-
-      {session.scope.activeTrack === 'interview' ? (
-        <div className="row" style={{ marginBottom: 'var(--space-4)' }}>
-          <Badge tone="quiet">Modo {presentationMode === 'study' ? 'estudio' : 'práctica'}</Badge>
-          <Button onClick={() => store.setSessionPresentationMode(presentationMode === 'study' ? 'practice' : 'study')}>
-            Cambiar a {presentationMode === 'study' ? 'práctica' : 'estudio'}
-          </Button>
-          {session.currentIndex > 0 ? <Button onClick={() => store.goToItem(session.currentIndex - 1)}>← Anterior</Button> : null}
-          <span className="caption">{session.currentIndex + 1} de {session.items.length}</span>
-          {presentationMode === 'study' ? <Button variant="primary" onClick={() => { store.markInterviewStudied(resource?.id ?? '', session.currentIndex); advance(); }}>Siguiente →</Button> : null}
-        </div>
-      ) : null}
-
       {!resource ? (
         <EmptyState
           title="Esta actividad no está disponible"
@@ -123,17 +92,30 @@ export function SessionScreen() {
           action={<Button onClick={advance}>Continuar</Button>}
         />
       ) : resource.type === 'question' ? (
-        <QuestionView
-          question={resource}
-          initialChosen={answer?.kind === 'question' ? answer.chosenOptionId : undefined}
-          onAnswer={(optionId) =>
-            store.answerQuestion(resource.id, optionId, session.currentIndex)
-          }
-          onContinue={advance}
-          continueLabel={
-            session.currentIndex === session.items.length - 1 ? 'Terminar sesión' : 'Siguiente'
-          }
-        />
+        <div className="stack-6">
+          <QuestionView
+            question={resource}
+            initialChosen={answer?.kind === 'question' ? answer.chosenOptionId : undefined}
+            onAnswer={(optionId) =>
+              store.answerQuestion(resource.id, optionId, session.currentIndex)
+            }
+            onContinue={advance}
+            continueLabel={
+              session.currentIndex === session.items.length - 1 ? 'Terminar bloque' : 'Siguiente →'
+            }
+          />
+          {session.currentIndex > 0 ? (
+            <div style={{ marginTop: 'var(--space-4)' }}>
+              <button
+                type="button"
+                className="btn btn--tertiary"
+                onClick={() => store.goToItem(session.currentIndex - 1)}
+              >
+                ← Anterior
+              </button>
+            </div>
+          ) : null}
+        </div>
       ) : resource.type === 'flashcard' ? (
         <FlashcardView
           card={resource}
@@ -143,28 +125,34 @@ export function SessionScreen() {
           }}
         />
       ) : resource.type === 'interview-prompt' ? (
-        <InterviewPromptView
-          prompt={resource}
-          presentationMode={presentationMode}
-          onSave={(input) => {
-            store.recordInterviewAttempt(resource.id, input, session.currentIndex);
-            advance();
-          }}
-          saveLabel={
-            session.currentIndex === session.items.length - 1
-              ? 'Guardar y terminar'
-              : 'Guardar y continuar'
-          }
-        />
+        <div className="stack-6">
+          <InterviewPromptView
+            prompt={resource}
+            presentationMode={presentationMode}
+            onSave={(input) => {
+              store.recordInterviewAttempt(resource.id, input, session.currentIndex);
+              advance();
+            }}
+            saveLabel={
+              session.currentIndex === session.items.length - 1
+                ? 'Terminar bloque'
+                : 'Siguiente pregunta →'
+            }
+          />
+          {session.currentIndex > 0 && presentationMode === 'practice' ? (
+            <div style={{ marginTop: 'var(--space-2)' }}>
+              <button
+                type="button"
+                className="btn btn--tertiary"
+                onClick={() => store.goToItem(session.currentIndex - 1)}
+              >
+                ← Anterior
+              </button>
+            </div>
+          ) : null}
+        </div>
       ) : resource.type === 'lesson' ? (
-        <LessonView
-          lesson={resource}
-          onStudied={() => {
-            store.markLessonStudied(resource.id, session.currentIndex);
-            advance();
-          }}
-          continueLabel="Marcar como estudiada y continuar"
-        />
+        <LessonView lesson={resource} />
       ) : resource.type === 'case' ? (
         <SessionCase caseResource={resource} itemIndex={session.currentIndex} onDone={advance} />
       ) : resource.type === 'checklist' ? (
@@ -178,13 +166,25 @@ export function SessionScreen() {
         <EmptyState title="Actividad no soportada" action={<Button onClick={advance}>Continuar</Button>} />
       )}
 
-      {session.scope.activeTrack === 'interview' && presentationMode === 'study' ? (
-        <nav className="session-nav" aria-label="Navegación de preguntas">
-          <Button onClick={() => store.goToItem(session.currentIndex - 1)} disabled={session.currentIndex === 0}>
+      {presentationMode === 'study' ? (
+        <nav className="session-nav" aria-label="Navegación del bloque">
+          <Button
+            onClick={() => store.goToItem(session.currentIndex - 1)}
+            disabled={session.currentIndex === 0}
+          >
             ← Anterior
           </Button>
-          <span className="caption">{session.currentIndex + 1} de {session.items.length}</span>
-          <Button variant="primary" onClick={() => { store.markInterviewStudied(resource?.id ?? '', session.currentIndex); advance(); }}>
+          <Button
+            variant="primary"
+            onClick={() => {
+              if (resource?.type === 'interview-prompt') {
+                store.markInterviewStudied(resource.id, session.currentIndex);
+              } else if (resource?.type === 'lesson') {
+                store.markLessonStudied(resource.id, session.currentIndex);
+              }
+              advance();
+            }}
+          >
             {session.currentIndex === session.items.length - 1 ? 'Terminar bloque' : 'Siguiente →'}
           </Button>
         </nav>
@@ -332,6 +332,53 @@ function SessionResult() {
         title="Sesión terminada"
         action={<LinkButton to="/" variant="primary">Volver a Inicio</LinkButton>}
       />
+    );
+  }
+
+  const isLinear = Boolean(session.label.includes('›'));
+
+  if (isLinear) {
+    return (
+      <div className="stack-6" style={{ maxWidth: '560px', margin: '0 auto', paddingTop: 'var(--space-6)' }}>
+        <div className="stack-2" style={{ textAlign: 'center' }}>
+          <p className="caption" style={{ color: 'var(--text-secondary)', fontWeight: 'var(--weight-medium)' }}>
+            {session.label}
+          </p>
+          <h1>¡Bloque completado!</h1>
+          <p style={{ color: 'var(--text-secondary)' }}>
+            Completaste los {session.items.length} contenidos de este bloque.
+          </p>
+        </div>
+
+        <div className="choice-cards">
+          <button
+            type="button"
+            className="choice-card choice-card--primary"
+            onClick={() => store.goToItem(0)}
+          >
+            <span className="choice-card__title">Repasar este bloque</span>
+            <span className="choice-card__desc">Volver al inicio de {session.label}.</span>
+          </button>
+
+          <button
+            type="button"
+            className="choice-card"
+            onClick={() => {
+              const nextPath = session.presentationMode === 'study' ? '/estudiar' : '/practicar';
+              navigate(nextPath);
+            }}
+          >
+            <span className="choice-card__title">Elegir qué preparar</span>
+            <span className="choice-card__desc">Cambiar de área o nivel.</span>
+          </button>
+        </div>
+
+        <div style={{ textAlign: 'center', marginTop: 'var(--space-2)' }}>
+          <Link to="/" className="btn btn--tertiary">
+            Volver a Inicio
+          </Link>
+        </div>
+      </div>
     );
   }
 

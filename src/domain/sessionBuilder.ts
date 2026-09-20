@@ -552,6 +552,90 @@ export function buildInterviewBlock(state: ProgressState): BuiltSession {
 }
 
 /**
+ * Constructor de sesión lineal pura: modo (estudiar/practicar), frente (entrevista/penal)
+ * y nivel (1: Esencial, 2: Ampliación, 3: Profundización).
+ */
+export function buildLinearSession({
+  mode,
+  track,
+  level,
+}: {
+  mode: 'study' | 'practice';
+  track: 'interview' | 'penal';
+  level: 1 | 2 | 3;
+}): BuiltSession {
+  let resources: StudyResource[] = [];
+
+  if (track === 'interview') {
+    const pool = INTERVIEW_PROMPTS.filter((p) => p.level === level);
+    if (pool.length === 0 && level === 3) {
+      resources = [...INTERVIEW_PROMPTS.filter((p) => p.level === 2)];
+    } else {
+      resources = [...pool];
+    }
+    resources.sort((a, b) => {
+      const ordA = getObjective(a.learningObjectiveId)?.order ?? 99;
+      const ordB = getObjective(b.learningObjectiveId)?.order ?? 99;
+      return ordA - ordB;
+    });
+  } else {
+    if (mode === 'study') {
+      const pool = LESSONS.filter((l) => l.level === level);
+      resources = [...pool];
+      resources.sort((a, b) => {
+        const ordA = getObjective(a.learningObjectiveId)?.order ?? 99;
+        const ordB = getObjective(b.learningObjectiveId)?.order ?? 99;
+        return ordA - ordB;
+      });
+    } else {
+      const pool = QUESTIONS.filter((q) => q.level === level);
+      if (pool.length > 0) {
+        resources = [...pool];
+        resources.sort((a, b) => {
+          const ordA = getObjective(a.learningObjectiveId)?.order ?? 99;
+          const ordB = getObjective(b.learningObjectiveId)?.order ?? 99;
+          return ordA - ordB;
+        });
+      } else {
+        const cards = FLASHCARDS.filter((f) => f.level === level);
+        resources = [...cards];
+        resources.sort((a, b) => {
+          const ordA = getObjective(a.learningObjectiveId)?.order ?? 99;
+          const ordB = getObjective(b.learningObjectiveId)?.order ?? 99;
+          return ordA - ordB;
+        });
+      }
+    }
+  }
+
+  const items = resources.map((r) => toItem(r, 'new'));
+  const modeLabel = mode === 'study' ? 'Estudiar' : 'Practicar';
+  const trackLabel = track === 'interview' ? 'Entrevista' : 'Penal';
+  const levelLabel = level === 1 ? 'Esencial' : level === 2 ? 'Ampliación' : 'Profundización';
+  const label = `${modeLabel} › ${trackLabel} › ${levelLabel}`;
+
+  const scope: SessionScope = {
+    activeTrack: track,
+    activeLevel: level,
+    maxLevel: level,
+    timeBudget: 'full',
+    mode: mode === 'study' ? 'just-studied' : 'current-level',
+    allowedObjectiveIds: Array.from(new Set(items.map((i) => i.objectiveId))),
+    recentErrors: [],
+    recentDoubts: [],
+    newQuestionBudget: items.length,
+    reviewQuestionBudget: 0,
+  };
+
+  return {
+    scope,
+    items,
+    label,
+    plannedMinutes: Math.round(weight(items)),
+  };
+}
+
+/**
  * Comprueba que una sesión construida respeta su propio scope: ningún ítem supera `maxLevel`
  * y todo ítem pertenece a un objetivo. Se usa en pruebas y en el modo auditoría.
  *

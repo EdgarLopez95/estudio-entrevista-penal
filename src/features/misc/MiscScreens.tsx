@@ -9,25 +9,15 @@ import {
   Minutes,
   Notice,
   SectionHeading,
-  SegmentedMeter,
 } from '@/components/primitives';
 import { CaseView, ChecklistView } from '@/components/practice';
 import { useProgress, useStore } from '@/state/StoreProvider';
-import { CASES, CHECKLIST_RESOURCES, getResource } from '@/content';
+import { CASES, CHECKLIST_RESOURCES, getResource, INTERVIEW_PROMPTS, LESSONS } from '@/content';
 import { CASE_PRIORITY_ORDER, LEGAL_NOTICE } from '@/content/penal/cases';
 import { getObjective } from '@/content/objectives';
 import { GAP_LABEL, activeErrors, orderErrors } from '@/domain/errors';
 import { buildSession } from '@/domain/sessionBuilder';
-import {
-  coreReadinessCrossTrack,
-  coreReadinessInterview,
-  coreReadinessPenal,
-  depthReadiness,
-  extendedReadiness,
-  penalEssentialReadiness,
-  preparationIndex,
-  top10Readiness,
-} from '@/domain/readiness';
+import { coreReadinessPenal } from '@/domain/readiness';
 import { MOCK_BLUEPRINTS } from '@/domain/blueprints';
 import { SOURCE_MANIFEST } from '@/content/sources/traceability';
 import { STORAGE_KEY } from '@/storage/repository';
@@ -134,118 +124,113 @@ export function ErrorsScreen() {
 
 export function ProgressScreen() {
   const progress = useProgress();
-  const interview = useMemo(() => coreReadinessInterview(progress), [progress]);
-  const penal = useMemo(() => coreReadinessPenal(progress), [progress]);
-  const cross = useMemo(() => coreReadinessCrossTrack(progress), [progress]);
-  const extended = useMemo(() => extendedReadiness(progress), [progress]);
-  const depth = useMemo(() => depthReadiness(progress), [progress]);
-  const index = useMemo(() => preparationIndex(progress), [progress]);
-  const top10 = useMemo(() => top10Readiness(progress), [progress]);
-  const penalEssential = useMemo(() => penalEssentialReadiness(progress), [progress]);
+
+  const interviewPromptsLevel1 = useMemo(
+    () => INTERVIEW_PROMPTS.filter((p) => p.level === 1),
+    [],
+  );
+  const interviewTotal = interviewPromptsLevel1.length;
+  const interviewPracticed = interviewPromptsLevel1.filter(
+    (p) => (progress.interview[p.id]?.length ?? 0) > 0,
+  ).length;
+  const interviewStudied = interviewPromptsLevel1.filter(
+    (p) =>
+      (progress.interview[p.id]?.length ?? 0) > 0 ||
+      Boolean(progress.objectives[p.learningObjectiveId]?.lessonStudiedAt),
+  ).length;
+  const interviewToReinforce = interviewPromptsLevel1.filter((p) => {
+    const attempts = progress.interview[p.id] ?? [];
+    if (attempts.length === 0) return false;
+    const last = attempts[attempts.length - 1];
+    return last.selfRating === 'blank' || last.selfRating === 'partial';
+  }).length;
+
+  const penalLessonsLevel1 = useMemo(
+    () => LESSONS.filter((l) => l.level === 1),
+    [],
+  );
+  const penalTotal = penalLessonsLevel1.length;
+  const penalStatuses = useMemo(
+    () => coreReadinessPenal(progress).statuses,
+    [progress],
+  );
+  const penalStudied = penalLessonsLevel1.filter((l) =>
+    Boolean(progress.objectives[l.learningObjectiveId]?.lessonStudiedAt),
+  ).length;
+  const penalMastered = penalStatuses.filter((s) => s.mastery === 'mastered').length;
+  const penalNeedsReview = penalStatuses.filter((s) => s.mastery === 'needs-review').length;
 
   return (
-    <div className="stack-8">
-      <header className="stack-3">
-        <p className="eyebrow">Evidencia, no visitas</p>
-        <h1>Progreso</h1>
-        <p className="reading">
-          Los indicadores principales son Core Readiness de Entrevista y de Penal, calculados solo
-          con Nivel 1. Nivel 3 y Referencia nunca los reducen.
+    <div className="stack-6" style={{ maxWidth: '600px', margin: '0 auto' }}>
+      <div className="stack-2">
+        <h1>Tu progreso</h1>
+        <p style={{ color: 'var(--color-text-secondary)' }}>
+          Avance real en los contenidos esenciales para tu entrevista.
         </p>
-      </header>
+      </div>
 
-      <Card className="stack-6">
-        <SegmentedMeter
-          name="Core Readiness — Entrevista"
-          track="interview"
-          statuses={interview.statuses}
-          counterLabel={`${interview.percent}% · ${interview.mastered} dominados de ${interview.total}`}
-        />
-        <SegmentedMeter
-          name="Core Readiness — Penal"
-          track="penal"
-          statuses={penal.statuses}
-          counterLabel={`${penal.percent}% · ${penal.mastered} dominados de ${penal.total}`}
-        />
-        <SegmentedMeter
-          name="Cross-track"
-          track="cross-track"
-          statuses={cross.statuses}
-          counterLabel={`${cross.percent}% · ${cross.mastered} dominados de ${cross.total}`}
-        />
-      </Card>
-
-      <section className="stack-3">
-        <SectionHeading eyebrow="Question Readiness" title="Cobertura por objetivo" />
-        <div className="result-grid">
-          <Card className="stack-2">
-            <p className="eyebrow">Top 10 — Primera entrevista</p>
-            <p className="mono">
-              {top10.practiced}/{top10.total} practicadas · {top10.good} bien ·{' '}
-              {top10.toReinforce} por reforzar · {top10.unpracticed} sin practicar
+      <div className="stack-4">
+        <Card className="stack-3" style={{ padding: 'var(--space-5)' }}>
+          <h2 style={{ fontSize: 'var(--text-h3)', letterSpacing: '-0.01em' }}>
+            ENTREVISTA ESENCIAL
+          </h2>
+          <div className="stack-2" style={{ fontSize: 'var(--text-body)' }}>
+            <p>
+              <strong>{interviewStudied}</strong> de {interviewTotal} estudiadas
             </p>
-          </Card>
-          <Card className="stack-2">
-            <p className="eyebrow">Penal esencial</p>
-            <p className="mono">
-              {penalEssential.covered}/{penalEssential.total} cubiertos ·{' '}
-              {penalEssential.mastered} dominados · {penalEssential.needsReview} por repasar ·{' '}
-              {penalEssential.notEvaluated} no evaluados
+            <p>
+              <strong>{interviewPracticed}</strong> practicadas
             </p>
-          </Card>
-        </div>
-      </section>
-
-      <section className="stack-3">
-        <SectionHeading eyebrow="Secundario" title="Índice de preparación" />
-        <Card variant="quiet" className="stack-3">
-          <p className="stat__value">{index.percent}%</p>
-          <p className="caption">
-            Indicador de entrenamiento, no una nota profesional ni una predicción. Se compone de{' '}
-            {Math.round(index.weights.interview * 100)}% entrevista ({index.interviewPercent}%) y{' '}
-            {Math.round(index.weights.penal * 100)}% Penal técnico ({index.penalPercent}%).
-          </p>
-          <p className="caption">
-            Extended Readiness (Nivel 1+2): {extended.percent}% · Depth (Nivel 3): {depth.percent}%
-          </p>
+            {interviewToReinforce > 0 ? (
+              <p style={{ color: 'var(--color-warning, #e67e22)' }}>
+                <strong>{interviewToReinforce}</strong> por reforzar
+              </p>
+            ) : null}
+          </div>
         </Card>
-      </section>
 
-      <section className="stack-3">
-        <SectionHeading eyebrow="Historial" title="Sesiones recientes" />
-        {progress.sessions.length === 0 ? (
-          <EmptyState title="Todavía no has cerrado ninguna sesión" />
-        ) : (
+        <Card className="stack-3" style={{ padding: 'var(--space-5)' }}>
+          <h2 style={{ fontSize: 'var(--text-h3)', letterSpacing: '-0.01em' }}>
+            PENAL ESENCIAL
+          </h2>
+          <div className="stack-2" style={{ fontSize: 'var(--text-body)' }}>
+            <p>
+              <strong>{penalStudied}</strong> de {penalTotal} estudiados
+            </p>
+            <p>
+              <strong>{penalMastered}</strong> dominados
+            </p>
+            {penalNeedsReview > 0 ? (
+              <p style={{ color: 'var(--color-warning, #e67e22)' }}>
+                <strong>{penalNeedsReview}</strong> por repasar
+              </p>
+            ) : null}
+          </div>
+        </Card>
+      </div>
+
+      {progress.sessions.length > 0 ? (
+        <section className="stack-3" style={{ marginTop: 'var(--space-4)' }}>
+          <h3 className="eyebrow">Sesiones completadas recientemente</h3>
           <ul className="item-list">
-            {[...progress.sessions]
-              .reverse()
-              .slice(0, 10)
-              .map((session) => (
-                <li key={session.sessionId} className="item-row">
-                  <span>
-                    <span className="item-row__title">{session.label}</span>
-                    <span className="item-row__meta">
-                      {new Date(session.completedAt).toLocaleString('es-CO')} ·{' '}
-                      {session.answeredCount}/{session.itemCount} actividades ·{' '}
-                      {session.objectiveIds.length} objetivos
-                    </span>
+            {[...progress.sessions].reverse().slice(0, 5).map((s) => (
+              <li key={s.sessionId} className="item-row">
+                <span>
+                  <span className="item-row__title">{s.label}</span>
+                  <span className="item-row__meta">
+                    {s.answeredCount} de {s.itemCount} ítems · {new Date(s.completedAt).toLocaleDateString('es-CO')}
                   </span>
-                  <Badge tone="quiet">
-                    {session.timeBudget === 'full' ? 'completa' : `${session.timeBudget} min`}
-                  </Badge>
-                </li>
-              ))}
+                </span>
+              </li>
+            ))}
           </ul>
-        )}
-      </section>
-
-      <Notice>
-        Este progreso vive solo en este navegador. Si estudias también en el móvil, ese avance será
-        independiente: no hay sincronización entre dispositivos.
-      </Notice>
+        </section>
+      ) : null}
     </div>
   );
 }
+
+
 
 /* --------------------------------------------------------------------- Casos */
 

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { AppShell } from './AppShell';
 import { useThemeEffect } from '@/state/StoreProvider';
 import { HomeScreen } from '@/features/home/HomeScreen';
+import { FlowSelectorScreen } from '@/features/home/FlowSelectorScreen';
 import { SessionScreen } from '@/features/session/SessionScreen';
 import {
   InterviewCollectionScreen,
@@ -56,6 +57,8 @@ export function App() {
             <AppShell>
               <Routes>
                 <Route path="/" element={<HomeScreen />} />
+                <Route path="/estudiar" element={<FlowSelectorScreen mode="study" />} />
+                <Route path="/practicar" element={<FlowSelectorScreen mode="practice" />} />
                 <Route path="/ruta" element={<RouteScreen />} />
                 <Route path="/ruta/:objectiveId" element={<ObjectiveDetailScreen />} />
                 <Route path="/entrevista" element={<InterviewHubScreen />} />

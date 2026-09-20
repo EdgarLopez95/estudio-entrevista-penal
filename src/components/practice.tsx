@@ -10,7 +10,7 @@ import type {
   SelfRating,
   StarStory,
 } from '@/domain/types';
-import { Badge, Button, Card, LevelBadge, Minutes, SourceNote, TrackBadge } from './primitives';
+import { Badge, Button, Card, LevelBadge, SourceNote } from './primitives';
 import { SELF_RATING_LABEL } from '@/domain/interviewPractice';
 import { RATING_LABEL } from '@/domain/flashcardScheduler';
 import { starStory } from '@/content';
@@ -22,7 +22,7 @@ export function QuestionView({
   initialChosen,
   onAnswer,
   onContinue,
-  continueLabel = 'Continuar',
+  continueLabel = 'Siguiente',
 }: {
   question: Question;
   initialChosen?: string;
@@ -48,11 +48,7 @@ export function QuestionView({
 
   return (
     <div className="stack-6">
-      <div className="stack-3">
-        <div className="row">
-          <LevelBadge level={question.level} />
-          <Badge tone="quiet">{question.topic}</Badge>
-        </div>
+      <div className="stack-2">
         <h2 className="prompt">{question.question}</h2>
       </div>
 
@@ -94,7 +90,7 @@ export function QuestionView({
       </div>
 
       {!submitted ? (
-        <Button variant="primary" onClick={submit} disabled={!selected}>
+        <Button variant="primary" onClick={submit} disabled={!selected} block>
           Comprobar
         </Button>
       ) : (
@@ -105,23 +101,22 @@ export function QuestionView({
               {correct ? 'Correcto' : 'Este concepto necesita repaso'}
             </p>
             <p style={{ marginTop: 'var(--space-2)' }}>{question.explanation}</p>
-            {!correct && selected && question.wrongAnswerExplanations[selected] ? (
-              <p className="caption" style={{ marginTop: 'var(--space-2)' }}>
-                {question.wrongAnswerExplanations[selected]}
-              </p>
-            ) : null}
           </div>
 
-          {question.deeperDetail ? (
+          {(question.deeperDetail || (!correct && selected && question.wrongAnswerExplanations[selected])) ? (
             <details className="disclosure">
-              <summary>Ver más detalle</summary>
-              <p style={{ marginTop: 'var(--space-2)' }}>{question.deeperDetail}</p>
+              <summary>Ver explicación completa</summary>
+              <div className="stack-2" style={{ marginTop: 'var(--space-2)' }}>
+                {!correct && selected && question.wrongAnswerExplanations[selected] ? (
+                  <p className="caption">{question.wrongAnswerExplanations[selected]}</p>
+                ) : null}
+                {question.deeperDetail ? <p>{question.deeperDetail}</p> : null}
+              </div>
             </details>
           ) : null}
 
-          <SourceNote source={question} />
           {onContinue ? (
-            <Button variant="primary" onClick={onContinue}>
+            <Button variant="primary" onClick={onContinue} block>
               {continueLabel}
             </Button>
           ) : null}
@@ -174,100 +169,10 @@ export function FlashcardView({
 
 /* ---------------------------------------------------------- Interview prompt */
 
-function InterviewGuidance({
-  prompt,
-  stories,
-  onUseModel,
-}: {
-  prompt: InterviewPrompt;
-  stories: StarStory[];
-  onUseModel: () => void;
-}) {
-  return (
-    <div className="stack-6">
-      <div className="stack-3">
-        <h3>Idea que debe quedar</h3>
-        <p>{prompt.ideaThatMustLand}</p>
-      </div>
-
-      <div className="stack-3">
-        <h3>Puntos que puedes incluir</h3>
-        <ul className="stack-2">
-          {prompt.keyPoints.map((point) => (
-            <li key={point.id}>
-              · {point.text}
-              {point.essential ? '' : ' (opcional)'}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {prompt.avoid.length > 0 ? (
-        <div className="stack-2">
-          <h3>Evita</h3>
-          <ul className="stack-2">
-            {prompt.avoid.map((item) => (
-              <li key={item} className="caption">
-                · {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
-
-      {stories.length > 0 ? (
-        <div className="stack-2">
-          <h3>Historias que te sirven</h3>
-          <ul className="item-list">
-            {stories.map((story) => (
-              <li key={story.id}>
-                <Link className="item-row" to={`/entrevista/star/${story.id}`}>
-                  <span>
-                    <span className="item-row__title">{story.title}</span>
-                    <span className="item-row__meta">{story.competencies.join(' · ')}</span>
-                  </span>
-                  <span aria-hidden="true">→</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
-
-      <details className="disclosure" onToggle={onUseModel}>
-        <summary>Ver respuesta modelo (apoyo, no un guion)</summary>
-        <div className="stack-3 reading" style={{ marginTop: 'var(--space-3)' }}>
-          {prompt.recommendedAnswer.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
-          <p className="caption">
-            Es modelo de contenido: aprende la idea central y dilo con tus palabras.
-          </p>
-        </div>
-      </details>
-
-      {prompt.followUps.length > 0 ? (
-        <div className="stack-2">
-          <h3>Posible follow-up</h3>
-          {prompt.followUps.map((followUp) => (
-            <Card key={followUp.id} variant="quiet" className="stack-2">
-              <p style={{ fontWeight: 'var(--weight-medium)' }}>{followUp.prompt}</p>
-              <p className="caption">{followUp.ideaThatMustLand}</p>
-              <SourceNote source={followUp.source} />
-            </Card>
-          ))}
-        </div>
-      ) : null}
-
-      <SourceNote source={prompt} />
-    </div>
-  );
-}
-
 export function InterviewPromptView({
   prompt,
   onSave,
-  saveLabel = 'Guardar y continuar',
+  saveLabel = 'Siguiente pregunta →',
   presentationMode,
 }: {
   prompt: InterviewPrompt;
@@ -279,13 +184,15 @@ export function InterviewPromptView({
   saveLabel?: string;
   presentationMode?: 'study' | 'practice';
 }) {
-  const [step, setStep] = useState<'choose' | 'prepare' | 'ask' | 'rate'>('choose');
+  const [step, setStep] = useState<'prepare' | 'ask' | 'rate'>(
+    presentationMode === 'study' ? 'prepare' : 'ask',
+  );
   const [rating, setRating] = useState<SelfRating | null>(null);
   const [covered, setCovered] = useState<string[]>([]);
   const [usedModel, setUsedModel] = useState(false);
 
   useEffect(() => {
-    setStep(presentationMode === 'study' ? 'prepare' : presentationMode === 'practice' ? 'ask' : 'choose');
+    setStep(presentationMode === 'study' ? 'prepare' : 'ask');
     setRating(null);
     setCovered([]);
     setUsedModel(false);
@@ -302,76 +209,125 @@ export function InterviewPromptView({
     );
   }
 
-  return (
-    <div className="stack-6">
-      <div className="stack-3">
-        <div className="row">
-          <TrackBadge track={prompt.track} />
-          <LevelBadge level={prompt.level} />
-          <Badge tone="quiet">
-            <Minutes value={prompt.estimatedMinutes} />
-          </Badge>
+  if (presentationMode === 'study' || step === 'prepare') {
+    return (
+      <div className="stack-6">
+        <div className="stack-2">
+          <h2 className="prompt">{prompt.prompt}</h2>
         </div>
-        <p className="eyebrow">La entrevistadora pregunta</p>
-        <h2 className="prompt">{prompt.prompt}</h2>
-        {prompt.structure ? (
-          <ul className="stack-2" style={{ marginTop: 'var(--space-2)' }}>
-            {prompt.structure.map((part) => (
-              <li key={part.label} className="row" style={{ gap: 'var(--space-3)' }}>
-                <span className="badge badge--quiet">{part.label}</span>
-                <span className="caption">{part.hint}</span>
-              </li>
+
+        <div className="stack-2">
+          <h3 className="eyebrow">Idea principal</h3>
+          <p style={{ fontSize: 'var(--text-body)', fontWeight: 'var(--weight-medium)', lineHeight: 'var(--leading-snug)' }}>
+            {prompt.ideaThatMustLand}
+          </p>
+        </div>
+
+        <div className="stack-2">
+          <h3 className="eyebrow">Puntos clave</h3>
+          <ul className="stack-2">
+            {prompt.keyPoints.map((point) => (
+              <li key={point.id}>· {point.text}</li>
             ))}
           </ul>
+        </div>
+
+        {prompt.structure && prompt.structure.length > 0 ? (
+          <div className="stack-2">
+            <h3 className="eyebrow">Cómo organizar la respuesta</h3>
+            <ul className="stack-2">
+              {prompt.structure.map((part) => (
+                <li key={part.label} className="row" style={{ gap: 'var(--space-2)' }}>
+                  <strong>{part.label}:</strong> <span>{part.hint}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        <details className="disclosure" onToggle={() => setUsedModel(true)}>
+          <summary>Ver respuesta completa</summary>
+          <div className="stack-3 reading" style={{ marginTop: 'var(--space-3)' }}>
+            {prompt.recommendedAnswer.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+        </details>
+
+        {prompt.avoid.length > 0 ? (
+          <details className="disclosure">
+            <summary>Qué evitar</summary>
+            <ul className="stack-2 avoid-list" style={{ marginTop: 'var(--space-2)' }}>
+              {prompt.avoid.map((item) => (
+                <li key={item}>
+                  <span aria-hidden="true">·</span> {item}
+                </li>
+              ))}
+            </ul>
+          </details>
+        ) : null}
+
+        {stories.length > 0 ? (
+          <details className="disclosure">
+            <summary>Historias que te sirven (STAR)</summary>
+            <ul className="item-list" style={{ marginTop: 'var(--space-2)' }}>
+              {stories.map((story) => (
+                <li key={story.id}>
+                  <Link className="item-row" to={`/entrevista/star/${story.id}`}>
+                    <span>
+                      <span className="item-row__title">{story.title}</span>
+                      <span className="item-row__meta">{story.competencies.join(' · ')}</span>
+                    </span>
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </details>
         ) : null}
       </div>
+    );
+  }
 
-      {step === 'choose' ? (
-        <div className="stack-4">
-          <p className="prompt__hint">
-            Elige si quieres estudiar primero la respuesta o ensayarla ahora.
-          </p>
-          <div className="row">
-            <Button variant="primary" onClick={() => setStep('prepare')}>
-              Prepararme primero
-            </Button>
-            <Button onClick={() => setStep('ask')}>Practicar ahora</Button>
-          </div>
-        </div>
-      ) : null}
-
-      {step === 'prepare' ? (
-        <div className="stack-6">
-          <InterviewGuidance
-            prompt={prompt}
-            stories={stories}
-            onUseModel={() => setUsedModel(true)}
-          />
-          {presentationMode !== 'study' ? (
-            <div className="row">
-              <Button variant="primary" onClick={() => setStep('ask')}>Practicar ahora</Button>
-              <Button onClick={() => setStep('choose')}>Volver a elegir</Button>
-            </div>
-          ) : null}
-        </div>
-      ) : null}
+  return (
+    <div className="stack-6">
+      <div className="stack-2">
+        <h2 className="prompt">{prompt.prompt}</h2>
+      </div>
 
       {step === 'ask' ? (
-        <div className="stack-4">
-          <p className="prompt__hint">
-            Respóndelo en voz alta, con tus propias palabras. Cuando termines, continúa: la guía se
-            abre después del intento.
+        <div className="stack-5">
+          <p className="prompt__hint" style={{ fontSize: 'var(--text-body)', color: 'var(--text-secondary)' }}>
+            Inspírate y responde en voz alta antes de continuar.
           </p>
-          <Button variant="primary" onClick={() => setStep('rate')}>
-            He respondido
+          <Button variant="primary" onClick={() => setStep('rate')} block>
+            YA RESPONDÍ
           </Button>
         </div>
-      ) : null}
-
-      {step === 'rate' ? (
+      ) : (
         <div className="stack-6">
+          <div className="stack-3">
+            <h3 className="eyebrow">Puntos que debería haber mencionado</h3>
+            <div className="keypoints">
+              {prompt.keyPoints.map((point) => (
+                <button
+                  key={point.id}
+                  type="button"
+                  className="keypoint"
+                  aria-pressed={covered.includes(point.id)}
+                  onClick={() => toggle(point.id)}
+                >
+                  <span className="keypoint__box" aria-hidden="true">
+                    {covered.includes(point.id) ? '☑' : '☐'}
+                  </span>
+                  <span>{point.text}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <fieldset className="stack-3" style={{ border: 0, padding: 0, margin: 0 }}>
-            <legend className="label">¿Cómo te salió?</legend>
+            <legend className="eyebrow" style={{ marginBottom: 'var(--space-2)' }}>¿Cómo te salió?</legend>
             <div className="self-rating">
               {(['blank', 'partial', 'good'] as SelfRating[]).map((value) => (
                 <button
@@ -385,44 +341,21 @@ export function InterviewPromptView({
                 </button>
               ))}
             </div>
-            <p className="caption">
-              Esto registra tu preparación y la cobertura de los puntos clave. No califica tu
-              personalidad ni tu forma de hablar.
-            </p>
           </fieldset>
 
-          <div className="stack-3">
-            <h3>¿Qué cubrí?</h3>
-            <div className="keypoints">
-              {prompt.keyPoints.map((point) => (
-                <button
-                  key={point.id}
-                  type="button"
-                  className="keypoint"
-                  aria-pressed={covered.includes(point.id)}
-                  onClick={() => toggle(point.id)}
-                >
-                  <span className="keypoint__box" aria-hidden="true">
-                    {covered.includes(point.id) ? '[x]' : '[ ]'}
-                  </span>
-                  <span>
-                    {point.text}
-                    {point.essential ? '' : ' (opcional)'}
-                  </span>
-                </button>
+          <details className="disclosure" onToggle={() => setUsedModel(true)}>
+            <summary>Ver respuesta modelo</summary>
+            <div className="stack-3 reading" style={{ marginTop: 'var(--space-3)' }}>
+              {prompt.recommendedAnswer.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
               ))}
             </div>
-          </div>
-
-          <InterviewGuidance
-            prompt={prompt}
-            stories={stories}
-            onUseModel={() => setUsedModel(true)}
-          />
+          </details>
 
           <Button
             variant="primary"
             disabled={!rating}
+            block
             onClick={() =>
               rating &&
               onSave({ selfRating: rating, coveredKeyPointIds: covered, usedModelAnswer: usedModel })
@@ -431,7 +364,7 @@ export function InterviewPromptView({
             {saveLabel}
           </Button>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }
@@ -441,55 +374,35 @@ export function InterviewPromptView({
 export function LessonView({
   lesson,
   onStudied,
-  continueLabel = 'Practicar lo que acabo de estudiar',
+  continueLabel = 'Entendido, continuar',
 }: {
   lesson: Lesson;
-  onStudied: () => void;
+  onStudied?: () => void;
   continueLabel?: string;
 }) {
   return (
     <div className="stack-6">
-      <div className="stack-3">
-        <div className="row">
-          <TrackBadge track={lesson.track} />
-          <LevelBadge level={lesson.level} />
-          <Badge tone="quiet">
-            <Minutes value={lesson.estimatedMinutes} />
-          </Badge>
-        </div>
+      <div className="stack-2">
         <h2>{lesson.title}</h2>
       </div>
 
-      <Card variant="quiet" track={lesson.track} className="stack-2">
-        <p className="eyebrow">Idea esencial</p>
-        <p style={{ fontSize: 'var(--text-h3)', lineHeight: 'var(--leading-snug)' }}>
+      <div className="stack-2">
+        <h3 className="eyebrow">Idea esencial</h3>
+        <p style={{ fontSize: 'var(--text-h3)', lineHeight: 'var(--leading-snug)', fontWeight: 'var(--weight-medium)' }}>
           {lesson.essentialIdea}
         </p>
-      </Card>
+      </div>
 
       <div className="stack-3 reading">
+        <h3 className="eyebrow">Explicación breve</h3>
         {lesson.explanation.map((paragraph, index) => (
           <p key={index}>{paragraph}</p>
         ))}
       </div>
 
-      <div className="stack-2">
-        <h3>Qué recordar</h3>
-        <ul className="stack-2">
-          {lesson.whatToRemember.map((item) => (
-            <li key={item} className="row" style={{ gap: 'var(--space-2)', alignItems: 'baseline' }}>
-              <span aria-hidden="true" className="caption">
-                ·
-              </span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
       {lesson.difference ? (
         <Card variant="quiet" className="stack-2">
-          <p className="eyebrow">No confundir</p>
+          <h3 className="eyebrow">Diferencia visual simple</h3>
           <p>
             <strong>{lesson.difference.a}</strong> vs. <strong>{lesson.difference.b}</strong>
           </p>
@@ -499,16 +412,35 @@ export function LessonView({
 
       {lesson.sourceExample ? (
         <div className="stack-2">
-          <h3>Ejemplo de la fuente</h3>
+          <h3 className="eyebrow">Ejemplo</h3>
           <p className="reading">{lesson.sourceExample}</p>
         </div>
       ) : null}
 
+      {lesson.whatToRemember && lesson.whatToRemember.length > 0 ? (
+        <details className="disclosure">
+          <summary>Ver más detalle</summary>
+          <div className="stack-2" style={{ marginTop: 'var(--space-2)' }}>
+            <p className="eyebrow">Qué recordar</p>
+            <ul className="stack-2">
+              {lesson.whatToRemember.map((item) => (
+                <li key={item} className="row" style={{ gap: 'var(--space-2)', alignItems: 'baseline' }}>
+                  <span aria-hidden="true" className="caption">·</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </details>
+      ) : null}
+
       <SourceNote source={lesson} />
 
-      <Button variant="primary" onClick={onStudied}>
-        {continueLabel}
-      </Button>
+      {onStudied ? (
+        <Button variant="primary" onClick={onStudied}>
+          {continueLabel}
+        </Button>
+      ) : null}
     </div>
   );
 }

@@ -206,7 +206,7 @@ export function PromptDetailScreen() {
   const state = stateOf(progress, resource);
 
   return (
-    <div className="stack-6">
+    <div className="stack-6 practice">
       <div className="row row--between">
         <Link className="btn btn--tertiary" to="/entrevista">
           ← Entrevista

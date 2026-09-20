@@ -8,27 +8,23 @@ import { SearchDialog } from './SearchDialog';
 
 const PRIMARY_NAV = [
   { to: '/', label: 'Inicio' },
-  { to: '/ruta', label: 'Ruta de estudio' },
-  { to: '/flashcards', label: 'Flashcards' },
-  { to: '/practica', label: 'Práctica' },
-  { to: '/casos', label: 'Casos' },
-  { to: '/entrevista', label: 'Entrevista' },
-  { to: '/simulacro', label: 'Simulacro' },
-  { to: '/errores', label: 'Mis errores' },
+  { to: '/estudiar', label: 'Estudiar' },
+  { to: '/practicar', label: 'Practicar' },
   { to: '/progreso', label: 'Progreso' },
 ];
 
 const SECONDARY_NAV = [
-  { to: '/referencia', label: 'Referencia' },
+  { to: '/repaso-final', label: 'Repaso antes de salir' },
+  { to: '/simulacro', label: 'Simulacro' },
+  { to: '/errores', label: 'Mis errores' },
   { to: '/preferencias', label: 'Preferencias' },
 ];
 
 const MOBILE_NAV = [
   { to: '/', label: 'Inicio' },
-  { to: '/penal', label: 'Estudiar' },
-  { to: '/practica', label: 'Practicar' },
-  { to: '/entrevista', label: 'Entrevista' },
-  { to: '/mas', label: 'Más' },
+  { to: '/estudiar', label: 'Estudiar' },
+  { to: '/practicar', label: 'Practicar' },
+  { to: '/progreso', label: 'Progreso' },
 ];
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -158,13 +154,42 @@ export function FocusShell({
   return (
     <div className="shell">
       <main className="shell__main" id="contenido" style={{ gridColumn: '1 / -1' }}>
-        <div className="shell__inner practice">
-          <header className="practice__bar">
-            <button type="button" className="btn btn--tertiary" onClick={onExit}>
-              ← Salir
+        <div className="shell__inner practice" style={{ maxWidth: '640px', margin: '0 auto' }}>
+          <header
+            className="practice__bar"
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: 'var(--space-4)',
+              gap: 'var(--space-2)',
+            }}
+          >
+            <button
+              type="button"
+              className="btn btn--tertiary"
+              onClick={onExit}
+              style={{ paddingLeft: 0 }}
+            >
+              ← Salir del bloque
             </button>
-            <span className="practice__context">{context}</span>
-            <span className="practice__context">{progressLabel}</span>
+            <div style={{ textAlign: 'right' }}>
+              <span
+                className="caption"
+                style={{
+                  fontWeight: 'var(--weight-medium)',
+                  color: 'var(--text-secondary)',
+                  display: 'block',
+                }}
+              >
+                {context}
+              </span>
+              {progressLabel ? (
+                <span className="caption" style={{ color: 'var(--text-muted)' }}>
+                  {progressLabel}
+                </span>
+              ) : null}
+            </div>
           </header>
           {progressNode}
           {children}

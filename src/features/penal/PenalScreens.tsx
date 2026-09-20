@@ -200,7 +200,7 @@ export function LessonDetailScreen() {
   }
 
   return (
-    <div className="stack-6">
+    <div className="stack-6 practice">
       <div className="row row--between">
         <Link className="btn btn--tertiary" to="/penal">
           ← Penal esencial
