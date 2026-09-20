@@ -1,0 +1,111 @@
+/*
+ * Foundations del design system (contrato §18.1) y dirección visual de design/direction.md.
+ * Roles semánticos: nunca se usan valores de color sueltos en los componentes.
+ */
+
+:root {
+  /* Color — light */
+  --background: #f7f6f4;
+  --surface-1: #ffffff;
+  --surface-2: #f1efec;
+  --surface-3: #e8e5e0;
+  --text-primary: #1a1c1e;
+  --text-secondary: #474c52;
+  --text-muted: #63696f;
+  --outline: #d9d5cf;
+  --outline-strong: #918b83;
+  --primary: #1c4a6b;
+  --primary-hover: #163b57;
+  --primary-active: #0f2c42;
+  --on-primary: #ffffff;
+  --primary-soft: #e5edf4;
+  --success: #1c6647;
+  --warning: #7e5310;
+  --error: #94252a;
+  --info: #1c4a6b;
+  --focus-ring: #1c4a6b;
+  --track-interview: #8f5334;
+  --track-penal: #1c4a6b;
+  --track-cross: #5c5470;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radios */
+  --radius-card: 12px;
+  --radius-control: 10px;
+  --radius-chip: 8px;
+  --radius-pill: 999px;
+
+  /* Elevación mínima: separación por superficie, no por sombras grandes */
+  --elevation-1: 0 1px 2px rgba(26, 28, 30, 0.05);
+  --elevation-2: 0 2px 8px rgba(26, 28, 30, 0.07);
+
+  /* Retícula */
+  --sidebar-width: 264px;
+  --content-max: 1120px;
+  --reading-max: 66ch;
+  --gutter: 16px;
+  --tap-target: 44px;
+  --tap-target-mobile: 48px;
+
+  /* Tipografía */
+  --font-sans: 'Geist Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', 'Consolas', monospace;
+  --text-display: clamp(1.875rem, 1.55rem + 1.4vw, 2.5rem);
+  --text-h1: clamp(1.5rem, 1.34rem + 0.7vw, 1.95rem);
+  --text-h2: clamp(1.1875rem, 1.12rem + 0.35vw, 1.4rem);
+  --text-h3: 1.125rem;
+  --text-title: 1rem;
+  --text-body: 1rem;
+  --text-body-sm: 0.9375rem;
+  --text-label: 0.8125rem;
+  --text-caption: 0.75rem;
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.65;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* Motion 100–250ms */
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --duration-slow: 240ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.25, 1);
+}
+
+:root[data-theme='dark'] {
+  --background: #121415;
+  --surface-1: #191c1e;
+  --surface-2: #202426;
+  --surface-3: #282d30;
+  --text-primary: #eceae6;
+  --text-secondary: #b6bbbf;
+  --text-muted: #949a9f;
+  --outline: #32383b;
+  --outline-strong: #6b7276;
+  --primary: #9ac8ec;
+  --primary-hover: #b4d8f4;
+  --primary-active: #7fb6df;
+  --on-primary: #0d1b27;
+  --primary-soft: #1d2b36;
+  --success: #7fc9a3;
+  --warning: #e3b570;
+  --error: #f3a09a;
+  --info: #9ac8ec;
+  --focus-ring: #9ac8ec;
+  --track-interview: #dda482;
+  --track-penal: #9ac8ec;
+  --track-cross: #b6acd0;
+  --elevation-1: none;
+  --elevation-2: none;
+}

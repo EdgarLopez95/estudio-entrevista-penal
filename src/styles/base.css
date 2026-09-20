@@ -1,0 +1,218 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1 {
+  font-size: var(--text-h1);
+  line-height: var(--leading-tight);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: var(--text-h2);
+  line-height: var(--leading-snug);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.005em;
+}
+
+h3 {
+  font-size: var(--text-h3);
+  line-height: var(--leading-snug);
+  font-weight: var(--weight-semibold);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: var(--primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* El foco nunca se retira sin equivalente (contrato §20). */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* La navegación móvil es fija: al recibir foco, el control conserva espacio
+   suficiente debajo para no quedar tapado por ella. */
+@media (max-width: 1023px) {
+  :focus {
+    scroll-margin-bottom: calc(72px + env(safe-area-inset-bottom) + var(--space-4));
+  }
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -48px;
+  z-index: 50;
+  padding: var(--space-2) var(--space-4);
+  background: var(--surface-1);
+  border: 1px solid var(--outline);
+  border-radius: var(--radius-control);
+  transition: top var(--duration-fast) var(--ease-out);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.label {
+  font-size: var(--text-label);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+}
+
+.caption {
+  font-size: var(--text-caption);
+  color: var(--text-muted);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.reading {
+  max-width: var(--reading-max);
+}
+
+.stack-2 > * + * {
+  margin-top: var(--space-2);
+}
+
+.stack-3 > * + * {
+  margin-top: var(--space-3);
+}
+
+.stack-4 > * + * {
+  margin-top: var(--space-4);
+}
+
+.stack-6 > * + * {
+  margin-top: var(--space-6);
+}
+
+.stack-8 > * + * {
+  margin-top: var(--space-8);
+}
+
+/* Entrada de pantalla: 180ms, escalonada como máximo en tres bloques. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.enter {
+  animation: rise var(--duration-base) var(--ease-out) both;
+}
+
+.enter-2 {
+  animation-delay: 40ms;
+}
+
+.enter-3 {
+  animation-delay: 80ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .enter {
+    animation: none;
+  }
+}

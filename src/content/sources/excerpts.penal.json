@@ -1,0 +1,710 @@
+{
+  "pen-s1-maxima": {
+    "section": "§1. Qué debes dominar primero — Prioridad máxima",
+    "text": "Conducta punible: tipicidad, antijuridicidad y culpabilidad. Dolo, culpa y preterintención. Tentativa. Autoría, coautoría, determinador y cómplice. Causales de ausencia de responsabilidad. Etapas básicas del proceso penal acusatorio. Diferencia entre juez de control de garantías y juez de conocimiento. Captura, flagrancia y control de legalidad. Imputación vs. acusación. Medida de aseguramiento."
+  },
+  "pen-s1-segunda": {
+    "section": "§1. Qué debes dominar primero — Segunda prioridad",
+    "text": "preclusión; principio de oportunidad; preacuerdos; denuncia vs. querella; presunción de inocencia e in dubio pro reo; derechos de víctimas; diferencia entre indiciado, imputado, acusado y condenado; prueba ilícita/ilegal y cláusula de exclusión; prisión domiciliaria y suspensión de la ejecución de la pena; extinción y cumplimiento de la pena."
+  },
+  "pen-s2-sustancial": {
+    "section": "§2. Estructura básica del Derecho Penal — Derecho Penal sustancial",
+    "text": "¿Existe una conducta punible y quién puede responder por ella? La principal norma es la Ley 599 de 2000 — Código Penal."
+  },
+  "pen-s2-procesal": {
+    "section": "§2. Estructura básica del Derecho Penal — Derecho Procesal Penal",
+    "text": "¿Cómo investiga, acusa, defiende, prueba y decide el Estado esa posible conducta? La principal norma para el sistema penal acusatorio es la Ley 906 de 2004 — Código de Procedimiento Penal."
+  },
+  "pen-s2-penitenciario": {
+    "section": "§2. Estructura básica del Derecho Penal — Derecho Penitenciario y ejecución de penas",
+    "text": "¿Cómo se ejecuta la sentencia y qué decisiones corresponden después de la condena?"
+  },
+  "pen-s3-estructura": {
+    "section": "§3. ¿Qué es una conducta punible?",
+    "text": "El artículo 9 del Código Penal establece la estructura básica: Para que una conducta sea punible debe ser típica, antijurídica y culpable."
+  },
+  "pen-s3-tipicidad": {
+    "section": "§3. ¿Qué es una conducta punible? — Tipicidad",
+    "text": "La conducta encaja en la descripción que la ley penal ha definido previamente. Pregunta mental: ¿Los hechos corresponden a los elementos de un tipo penal? No basta con que algo parezca moralmente incorrecto. Debe existir una descripción legal previa y suficientemente clara."
+  },
+  "pen-s3-antijuridicidad": {
+    "section": "§3. ¿Qué es una conducta punible? — Antijuridicidad",
+    "text": "La conducta típica debe lesionar o poner efectivamente en peligro, sin justa causa, el bien jurídicamente tutelado."
+  },
+  "pen-s3-antijuridicidad-ejemplo": {
+    "section": "§3. ¿Qué es una conducta punible? — Antijuridicidad",
+    "text": "lesionar a otro puede ser típico; pero si la conducta se realiza en una legítima defensa que reúne los requisitos legales, puede excluirse la responsabilidad."
+  },
+  "pen-s3-culpabilidad": {
+    "section": "§3. ¿Qué es una conducta punible? — Culpabilidad",
+    "text": "Permite formular un reproche personal al autor. No hay responsabilidad objetiva: no basta con que se haya producido un resultado."
+  },
+  "pen-s3-corta": {
+    "section": "§3. ¿Qué es una conducta punible? — Respuesta corta para entrevista",
+    "text": "Una conducta punible requiere tipicidad, antijuridicidad y culpabilidad. Primero se verifica si los hechos encajan en el tipo penal; después si lesionan o ponen en peligro el bien jurídico sin una causa de justificación; y finalmente si el hecho puede reprocharse personalmente al autor."
+  },
+  "pen-s4-legalidad": {
+    "section": "§4. Principios que debes tener presentes — Legalidad",
+    "text": "No hay delito ni pena sin ley previa. No se puede crear un delito por analogía perjudicial al procesado."
+  },
+  "pen-s4-presuncion": {
+    "section": "§4. Principios que debes tener presentes — Presunción de inocencia",
+    "text": "Toda persona se presume inocente mientras no exista decisión judicial que establezca su responsabilidad. La carga de probar la acusación no corresponde al acusado."
+  },
+  "pen-s4-indubio": {
+    "section": "§4. Principios que debes tener presentes — In dubio pro reo",
+    "text": "Si al momento de decidir permanece una duda razonable sobre la responsabilidad penal, debe resolverse en favor del acusado."
+  },
+  "pen-s4-favorabilidad": {
+    "section": "§4. Principios que debes tener presentes — Favorabilidad",
+    "text": "Una norma penal posterior más favorable puede aplicarse al procesado o condenado en los casos previstos por el ordenamiento. Este principio es especialmente relevante en ejecución de penas."
+  },
+  "pen-s4-dignidad": {
+    "section": "§4. Principios que debes tener presentes — Dignidad humana",
+    "text": "El proceso y la ejecución penal deben respetar la dignidad incluso de la persona investigada o condenada."
+  },
+  "pen-s5-modalidades": {
+    "section": "§5. Dolo, culpa y preterintención",
+    "text": "El Código Penal reconoce tres modalidades de conducta: dolosa, culposa y preterintencional. La culpa y la preterintención solo son punibles cuando la ley expresamente lo establece."
+  },
+  "pen-s5-dolo": {
+    "section": "§5. Dolo, culpa y preterintención — Dolo",
+    "text": "Existe cuando el agente conoce los hechos que constituyen la infracción y quiere su realización. También contempla el supuesto en el que la realización se prevé como probable y el agente deja su no producción librada al azar."
+  },
+  "pen-s5-culpa": {
+    "section": "§5. Dolo, culpa y preterintención — Culpa",
+    "text": "El resultado es producto de la infracción al deber objetivo de cuidado y el agente: debía preverlo por ser previsible, o lo previó, pero confió en poder evitarlo."
+  },
+  "pen-s5-preterintencion": {
+    "section": "§5. Dolo, culpa y preterintención — Preterintención",
+    "text": "El resultado producido, aunque previsible, excede la intención inicial del agente."
+  },
+  "pen-s5-respuesta": {
+    "section": "§5. Dolo, culpa y preterintención — Respuesta de entrevista",
+    "text": "En el dolo existe conocimiento y voluntad de realizar la conducta; en la culpa el resultado deriva de la infracción al deber objetivo de cuidado; y en la preterintención el resultado termina siendo más grave que lo querido inicialmente, aunque era previsible."
+  },
+  "pen-s6-omision": {
+    "section": "§6. Acción, omisión y posición de garante",
+    "text": "Una conducta punible puede realizarse por acción o por omisión. En determinados delitos, una persona puede responder por no impedir un resultado cuando tenía un deber jurídico concreto de protección o vigilancia y estaba en posibilidad de actuar."
+  },
+  "pen-s6-garante": {
+    "section": "§6. Acción, omisión y posición de garante",
+    "text": "El Código Penal contempla situaciones de posición de garante, entre ellas supuestos relacionados con: asumir voluntariamente protección; comunidad estrecha de vida; actividad riesgosa emprendida conjuntamente; creación previa de una situación antijurídica de riesgo."
+  },
+  "pen-s6-respuesta": {
+    "section": "§6. Acción, omisión y posición de garante — Respuesta",
+    "text": "Sí, cuando existe un deber jurídico de impedir el resultado y la persona, pudiendo hacerlo, omite actuar. No cualquier omisión genera responsabilidad: debe analizarse el deber de garante y los elementos del tipo correspondiente."
+  },
+  "pen-s7-tentativa": {
+    "section": "§7. Tentativa",
+    "text": "Existe tentativa cuando: se inicia la ejecución; mediante actos idóneos e inequívocamente dirigidos a consumar el delito; pero la consumación no ocurre por circunstancias ajenas a la voluntad del agente."
+  },
+  "pen-s7-diferencia": {
+    "section": "§7. Tentativa — Diferencia clave",
+    "text": "Actos preparatorios no son lo mismo que inicio de ejecución."
+  },
+  "pen-s7-respuesta": {
+    "section": "§7. Tentativa — Respuesta orientativa",
+    "text": "Cuando el sujeto supera la mera preparación e inicia actos idóneos e inequívocamente dirigidos a la consumación del delito, pero el resultado no se produce por circunstancias ajenas a su voluntad."
+  },
+  "pen-s8-autor": {
+    "section": "§8. Autoría y participación — Autor",
+    "text": "Realiza la conducta punible por sí mismo o utilizando a otro como instrumento, según la modalidad correspondiente."
+  },
+  "pen-s8-coautor": {
+    "section": "§8. Autoría y participación — Coautor",
+    "text": "Existe acuerdo común y división del trabajo criminal con un aporte relevante a la realización."
+  },
+  "pen-s8-determinador": {
+    "section": "§8. Autoría y participación — Determinador",
+    "text": "Induce o determina a otro a realizar la conducta antijurídica."
+  },
+  "pen-s8-complice": {
+    "section": "§8. Autoría y participación — Cómplice",
+    "text": "Contribuye a la realización de la conducta o presta una ayuda posterior cuando existe concierto previo o concomitante."
+  },
+  "pen-s8-respuesta": {
+    "section": "§8. Autoría y participación — Respuesta",
+    "text": "El coautor interviene en la ejecución dentro de un acuerdo común y una división del trabajo criminal con un aporte relevante. El cómplice presta una contribución o ayuda a la conducta ajena sin ocupar la posición de coautor. La calificación depende del papel concreto que tuvo en el hecho."
+  },
+  "pen-s9-concurso": {
+    "section": "§9. Concurso de conductas punibles",
+    "text": "Puede existir concurso cuando: una misma acción u omisión infringe varias disposiciones penales, o varias acciones u omisiones infringen una o varias disposiciones."
+  },
+  "pen-s9-clave": {
+    "section": "§9. Concurso de conductas punibles — Concepto clave",
+    "text": "El primero se refiere a pluralidad de infracciones; el segundo, a pluralidad de personas o formas de intervención."
+  },
+  "pen-s10-causales": {
+    "section": "§10. Causales de ausencia de responsabilidad",
+    "text": "caso fortuito o fuerza mayor; consentimiento válidamente emitido cuando el bien jurídico sea disponible; estricto cumplimiento de un deber legal; cumplimiento de orden legítima de autoridad competente dentro de los límites legales; ejercicio legítimo de un derecho, actividad lícita o cargo público; legítima defensa; estado de necesidad; insuperable coacción ajena; miedo insuperable;"
+  },
+  "pen-s10-legitima": {
+    "section": "§10. Causales de ausencia de responsabilidad — Legítima defensa",
+    "text": "Es una causal de ausencia de responsabilidad cuando una persona actúa para defender un derecho propio o ajeno frente a una agresión injusta, actual o inminente, dentro de los requisitos de necesidad y proporcionalidad que exige el ordenamiento."
+  },
+  "pen-s10-necesidad": {
+    "section": "§10. Causales de ausencia de responsabilidad — Estado de necesidad",
+    "text": "Se relaciona con actuar para proteger un derecho propio o ajeno frente a un peligro actual o inminente que no puede evitarse de otra forma, bajo las condiciones establecidas por la ley."
+  },
+  "pen-s11-inimputabilidad": {
+    "section": "§11. Inimputabilidad",
+    "text": "En términos generales, una persona es inimputable cuando al momento de ejecutar la conducta típica y antijurídica no tiene capacidad de: comprender su ilicitud, o determinarse de acuerdo con esa comprensión, por las causas reconocidas legalmente."
+  },
+  "pen-s11-noconfundir": {
+    "section": "§11. Inimputabilidad — No confundir",
+    "text": "Inimputabilidad no significa automáticamente que \"no pasó nada\". El ordenamiento contempla medidas de seguridad y un tratamiento jurídico distinto."
+  },
+  "pen-s12-investigacion": {
+    "section": "§12. Mapa del proceso penal acusatorio — Investigación",
+    "text": "Indagación: comienza con la noticia criminal. Imputación: marca el paso a la investigación propiamente dicha. Investigación posterior a imputación. La Fiscalía decide si acusa o solicita/gestiona una salida procesal correspondiente."
+  },
+  "pen-s12-juicio": {
+    "section": "§12. Mapa del proceso penal acusatorio — Juicio",
+    "text": "Comienza con la acusación y comprende, de forma simplificada: escrito y audiencia de formulación de acusación; descubrimiento probatorio; audiencia preparatoria; juicio oral; sentido del fallo y sentencia; recursos; ejecutoria; ejecución de la pena cuando hay condena."
+  },
+  "pen-s12-formula": {
+    "section": "§12. Mapa del proceso penal acusatorio — Fórmula para memorizar",
+    "text": "Noticia criminal → indagación → imputación → investigación → acusación → preparatoria → juicio oral → sentencia → ejecución."
+  },
+  "pen-s13-noticia": {
+    "section": "§13. Noticia criminal, denuncia y querella — Noticia criminal",
+    "text": "Es la información que pone en conocimiento de la autoridad la posible comisión de una conducta punible."
+  },
+  "pen-s13-respuesta": {
+    "section": "§13. Noticia criminal, denuncia y querella — Respuesta",
+    "text": "No. Ambas pueden poner hechos en conocimiento de la autoridad, pero la querella funciona como requisito de procedibilidad para determinados delitos y debe presentarla quien esté legitimado, salvo las excepciones legales."
+  },
+  "pen-s14-sujetos": {
+    "section": "§14. Indiciado, imputado, acusado y condenado",
+    "text": "Persona respecto de la cual existen actuaciones de indagación pero aún no se le ha formulado imputación."
+  },
+  "pen-s14-respuesta": {
+    "section": "§14. Indiciado, imputado, acusado y condenado — Pregunta probable",
+    "text": "Porque el estado procesal determina derechos, cargas, actos procesales posibles y la etapa en la que se encuentra la persecución penal."
+  },
+  "pen-s15-garantias": {
+    "section": "§15. Juez de control de garantías vs. juez de conocimiento — Juez de control de garantías",
+    "text": "Interviene principalmente para proteger derechos fundamentales durante indagación e investigación y resolver solicitudes como: control de legalidad de captura; medidas de aseguramiento; controles sobre determinadas actuaciones de investigación; audiencias preliminares; formulación de imputación."
+  },
+  "pen-s15-garantias-limite": {
+    "section": "§15. Juez de control de garantías vs. juez de conocimiento — Juez de control de garantías",
+    "text": "No decide la responsabilidad final del acusado en ese mismo caso."
+  },
+  "pen-s15-conocimiento": {
+    "section": "§15. Juez de control de garantías vs. juez de conocimiento — Juez de conocimiento",
+    "text": "Dirige la etapa de juzgamiento: acusación; preparatoria; juicio oral; valoración de la prueba; sentencia."
+  },
+  "pen-s15-corta": {
+    "section": "§15. Juez de control de garantías vs. juez de conocimiento — Respuesta corta",
+    "text": "El juez de garantías controla la afectación de derechos fundamentales durante las etapas preliminares; el juez de conocimiento conduce el juzgamiento y decide sobre responsabilidad a partir de la prueba practicada en juicio."
+  },
+  "pen-s16-captura": {
+    "section": "§16. Captura",
+    "text": "Como regla general, la captura requiere orden escrita de un juez de control de garantías, salvo las excepciones legales como flagrancia."
+  },
+  "pen-s16-plazo": {
+    "section": "§16. Captura",
+    "text": "La persona capturada debe ser puesta a disposición de un juez de control de garantías dentro del plazo constitucional y legal correspondiente, que en el Código aparece como máximo de 36 horas, para control de legalidad y decisiones posteriores."
+  },
+  "pen-s17-flagrancia": {
+    "section": "§17. Flagrancia",
+    "text": "En términos generales, hay flagrancia cuando una persona: es sorprendida durante la comisión; es individualizada durante la comisión y aprehendida inmediatamente después; es encontrada inmediatamente después con objetos, instrumentos o huellas que permiten inferir fundadamente su participación; y otros supuestos expresamente previstos por el artículo 301 de la Ley 906."
+  },
+  "pen-s17-cualquiera": {
+    "section": "§17. Flagrancia — Pregunta probable",
+    "text": "Sí. El Código permite que cualquier persona realice la aprehensión de quien sea sorprendido en flagrancia, pero debe entregarlo inmediatamente a la autoridad siguiendo el procedimiento legal."
+  },
+  "pen-s18-imputacion": {
+    "section": "§18. Formulación de imputación",
+    "text": "La imputación es un acto de comunicación de la Fiscalía mediante el cual informa a una persona su calidad de imputado y los hechos jurídicamente relevantes que se le atribuyen. No equivale a una condena."
+  },
+  "pen-s18-respuesta": {
+    "section": "§18. Formulación de imputación — Pregunta probable",
+    "text": "No. La imputación vincula formalmente a la persona al proceso en esa calidad, pero mantiene la presunción de inocencia. La responsabilidad debe probarse en juicio o definirse mediante los mecanismos legales correspondientes."
+  },
+  "pen-s19-imputacion": {
+    "section": "§19. Imputación vs. acusación — Imputación",
+    "text": "ocurre ante juez de control de garantías; comunica formalmente los hechos jurídicamente relevantes atribuidos; marca una fase de investigación; no es todavía el juicio."
+  },
+  "pen-s19-acusacion": {
+    "section": "§19. Imputación vs. acusación — Acusación",
+    "text": "se presenta ante el juez competente para el juzgamiento; exige un nivel superior de soporte: la Fiscalía debe poder afirmar con probabilidad de verdad que la conducta existió y que el imputado es autor o partícipe; da paso a la etapa de juicio."
+  },
+  "pen-s19-respuesta": {
+    "section": "§19. Imputación vs. acusación — Respuesta de entrevista",
+    "text": "La imputación es esencialmente un acto de comunicación que vincula formalmente al imputado a la investigación; la acusación es la decisión de llevar el caso a juicio cuando la Fiscalía considera que cuenta con fundamento suficiente para sostener, con probabilidad de verdad, la existencia del delito y la participación del acusado."
+  },
+  "pen-s20-hjr": {
+    "section": "§20. Hechos jurídicamente relevantes",
+    "text": "Son los hechos que contienen las circunstancias necesarias para encuadrar jurídicamente la conducta y permitir el ejercicio adecuado de defensa."
+  },
+  "pen-s20-buena": {
+    "section": "§20. Hechos jurídicamente relevantes — Buena respuesta",
+    "text": "Los hechos jurídicamente relevantes son aquellos hechos concretos que permiten estructurar la hipótesis delictiva y que el procesado debe conocer con claridad para poder ejercer su defensa."
+  },
+  "pen-s21-medida": {
+    "section": "§21. Medida de aseguramiento",
+    "text": "La medida de aseguramiento no es una pena anticipada."
+  },
+  "pen-s21-requisitos": {
+    "section": "§21. Medida de aseguramiento",
+    "text": "El artículo 308 de la Ley 906 exige: inferencia razonable de autoría o participación con base en elementos obtenidos legalmente, y una finalidad constitucional/procesal, como: evitar obstrucción de la justicia; proteger a la sociedad o a la víctima; asegurar comparecencia o cumplimiento."
+  },
+  "pen-s21-respuesta": {
+    "section": "§21. Medida de aseguramiento — Pregunta probable",
+    "text": "No. Imputación y medida de aseguramiento son decisiones distintas. La restricción de la libertad exige solicitud, fundamento y cumplimiento de los requisitos legales ante el juez de control de garantías."
+  },
+  "pen-s22-acusacion": {
+    "section": "§22. Audiencia de formulación de acusación",
+    "text": "En esta audiencia pueden tratarse, entre otros: competencia; impedimentos y recusaciones; nulidades; observaciones al escrito de acusación; formulación de la acusación; reconocimiento de víctima; inicio o desarrollo del descubrimiento probatorio."
+  },
+  "pen-s22-recuerda": {
+    "section": "§22. Audiencia de formulación de acusación — Recuerda",
+    "text": "Acusación no es juicio oral todavía."
+  },
+  "pen-s23-descubrimiento": {
+    "section": "§23. Descubrimiento probatorio",
+    "text": "Busca que las partes conozcan oportunamente los elementos que serán utilizados y puedan ejercer contradicción y defensa. La Fiscalía tiene deberes de descubrimiento que incluyen información favorable al acusado en los términos legales."
+  },
+  "pen-s23-importancia": {
+    "section": "§23. Descubrimiento probatorio — Pregunta probable",
+    "text": "Porque la defensa no puede ser sorprendida en juicio con material que debía haber sido descubierto previamente. Es una garantía de contradicción, igualdad de armas y debido proceso."
+  },
+  "pen-s24-preparatoria": {
+    "section": "§24. Audiencia preparatoria",
+    "text": "si el descubrimiento quedó completo; descubrimiento de la defensa; enunciación de pruebas; estipulaciones probatorias; solicitudes de prueba; debates de pertinencia, admisibilidad y exclusión; definición del material que llegará al juicio."
+  },
+  "pen-s24-corta": {
+    "section": "§24. Audiencia preparatoria — Respuesta corta",
+    "text": "La preparatoria organiza probatoriamente el juicio: allí se depura qué pruebas se practicarán y se resuelven debates sobre su admisión o exclusión."
+  },
+  "pen-s25-teoria": {
+    "section": "§25. Teoría del caso",
+    "text": "Es la explicación coherente del caso que integra: hechos; derecho; prueba. Debe responder: qué ocurrió; por qué jurídicamente significa lo que sostengo; con qué prueba puedo demostrarlo."
+  },
+  "pen-s25-defensa": {
+    "section": "§25. Teoría del caso — Defensa",
+    "text": "controvertir la ocurrencia; discutir autoría/participación; cuestionar tipicidad o culpabilidad; plantear causal de exclusión; cuestionar legalidad o suficiencia probatoria; generar duda razonable; desarrollar una teoría alternativa cuando sea estratégico."
+  },
+  "pen-s26-emp": {
+    "section": "§26. Elemento material probatorio, evidencia física y prueba — Antes del juicio",
+    "text": "elementos materiales probatorios; evidencia física; información legalmente obtenida."
+  },
+  "pen-s26-prueba": {
+    "section": "§26. Elemento material probatorio, evidencia física y prueba — Prueba",
+    "text": "En sentido procesal estricto, adquiere esa calidad cuando se introduce y practica conforme a las reglas del juicio, con inmediación y contradicción, salvo las figuras excepcionales como prueba anticipada."
+  },
+  "pen-s26-frase": {
+    "section": "§26. Elemento material probatorio, evidencia física y prueba — Frase fuerte para entrevista",
+    "text": "No todo elemento recogido durante investigación es automáticamente \"prueba de juicio\"; debe ser incorporado y controvertido conforme a las reglas procesales."
+  },
+  "pen-s27-cadena": {
+    "section": "§27. Cadena de custodia",
+    "text": "La cadena de custodia busca preservar: identidad; integridad; autenticidad; condiciones de recolección, manejo, traslado, almacenamiento y análisis de los elementos."
+  },
+  "pen-s27-falla": {
+    "section": "§27. Cadena de custodia — Pregunta probable",
+    "text": "Una falla puede generar debates sobre autenticidad, integridad, credibilidad o valoración y, según el caso, sobre admisibilidad. Debe analizarse concretamente qué se rompió y qué efecto jurídico tiene."
+  },
+  "pen-s28-exclusion": {
+    "section": "§28. Prueba ilícita, exclusión y debido proceso",
+    "text": "El Código de Procedimiento Penal establece una cláusula de exclusión para prueba obtenida con violación de garantías fundamentales en los términos constitucionales y legales."
+  },
+  "pen-s28-respuesta": {
+    "section": "§28. Prueba ilícita, exclusión y debido proceso — Respuesta segura",
+    "text": "Cuando un elemento se obtiene vulnerando derechos fundamentales, debe analizarse la cláusula de exclusión y los efectos que esa ilicitud pueda tener sobre el material derivado, según las reglas y excepciones reconocidas por el ordenamiento."
+  },
+  "pen-s29-principios": {
+    "section": "§29. Principios probatorios del juicio",
+    "text": "El juicio es público, salvo restricciones legalmente justificadas."
+  },
+  "pen-s29-inmediacion": {
+    "section": "§29. Principios probatorios del juicio — Inmediación",
+    "text": "El juez que decide debe recibir y valorar la prueba practicada ante él, con las excepciones legales."
+  },
+  "pen-s30-pertinencia": {
+    "section": "§30. Pertinencia y admisibilidad — Pertinencia",
+    "text": "La prueba debe relacionarse con los hechos o circunstancias relevantes del caso o hacer más o menos probable un hecho jurídicamente importante."
+  },
+  "pen-s30-admisibilidad": {
+    "section": "§30. Pertinencia y admisibilidad — Admisibilidad",
+    "text": "Incluso una prueba pertinente puede tener restricciones cuando: produzca grave perjuicio indebido; genere confusión; tenga escaso valor frente al efecto perjudicial; dilate injustificadamente; o exista otra causal legal de exclusión/inadmisión."
+  },
+  "pen-s31-estandar": {
+    "section": "§31. Estándar para condenar",
+    "text": "El artículo 381 de la Ley 906 establece que para condenar se requiere conocimiento más allá de toda duda sobre: la existencia del delito; la responsabilidad penal del acusado; fundado en las pruebas debatidas en juicio."
+  },
+  "pen-s31-respuesta": {
+    "section": "§31. Estándar para condenar — Pregunta probable",
+    "text": "No. La \"probabilidad de verdad\" aparece como estándar para presentar acusación; la condena exige un estándar mucho más alto: conocimiento más allá de toda duda razonable a partir de la prueba debatida en juicio."
+  },
+  "pen-s32-preclusion": {
+    "section": "§32. Preclusión",
+    "text": "La preclusión termina la persecución penal respecto de los hechos y persona en los términos decididos y, una vez firme, produce efectos de cosa juzgada. Procede por causales legales."
+  },
+  "pen-s32-concepto": {
+    "section": "§32. Preclusión — Concepto de entrevista",
+    "text": "Es una terminación anticipada del proceso cuando se configura una causal legal que impide continuar válidamente la persecución penal."
+  },
+  "pen-s33-oportunidad": {
+    "section": "§33. Principio de oportunidad",
+    "text": "Es una facultad reglada de la Fiscalía para suspender, interrumpir o renunciar a la persecución penal en determinados supuestos legales y bajo control judicial cuando corresponda."
+  },
+  "pen-s33-limites": {
+    "section": "§33. Principio de oportunidad — No es",
+    "text": "causales legales; política criminal; control; derechos de víctimas; límites expresos."
+  },
+  "pen-s34-preacuerdos": {
+    "section": "§34. Preacuerdos y aceptación de cargos — Buena respuesta",
+    "text": "Los preacuerdos son instrumentos de terminación anticipada entre Fiscalía e imputado o acusado, con participación de la defensa y control del juez. No son negociaciones completamente libres: deben respetar garantías fundamentales y límites legales."
+  },
+  "pen-s35-victima": {
+    "section": "§35. Víctima en el proceso penal",
+    "text": "información; participación; protección; verdad; justicia; reparación; intervención en momentos procesales definidos por la ley y la jurisprudencia."
+  },
+  "pen-s35-abogado": {
+    "section": "§35. Víctima en el proceso penal — Si te preguntan el papel del abogado de víctima",
+    "text": "Debe proteger los intereses de la víctima dentro del marco procesal, intervenir en los espacios reconocidos por la ley y asegurar que sus derechos a verdad, justicia y reparación sean considerados sin sustituir las funciones constitucionales de la Fiscalía."
+  },
+  "pen-s36-defensa": {
+    "section": "§36. Defensa técnica",
+    "text": "conocer el expediente; guardar confidencialidad; asesorar de manera independiente; controvertir la teoría y prueba de la Fiscalía; proteger garantías; actuar éticamente; no fabricar evidencia ni inducir falsedad."
+  },
+  "pen-s37-habeas": {
+    "section": "§37. Hábeas corpus",
+    "text": "La Ley 1095 de 2006 define el hábeas corpus como: derecho fundamental; acción constitucional; que protege la libertad personal cuando: alguien es privado de la libertad con violación de garantías constitucionales o legales, o la privación se prolonga ilegalmente."
+  },
+  "pen-s37-plazo": {
+    "section": "§37. Hábeas corpus — Plazo de decisión",
+    "text": "La Constitución exige decisión dentro de 36 horas."
+  },
+  "pen-s37-tutela": {
+    "section": "§37. Hábeas corpus — Diferencia con tutela",
+    "text": "La tutela es un mecanismo general de protección de derechos fundamentales cuando se cumplen sus requisitos. El hábeas corpus es el mecanismo específico y preferente para proteger la libertad frente a privación ilegal o prolongación ilegal."
+  },
+  "pen-s37-respuesta": {
+    "section": "§37. Hábeas corpus — Respuesta muy buena para ti",
+    "text": "En los juzgados tuve contacto con acciones de habeas corpus. Lo entiendo como una garantía reforzada de la libertad personal, distinta de la tutela por su objeto específico y por el término especialmente breve para resolverla."
+  },
+  "pen-s38-medida": {
+    "section": "§38. Medida de aseguramiento vs. pena — Medida de aseguramiento",
+    "text": "ocurre antes de sentencia definitiva; tiene fines cautelares/procesales; no supone culpabilidad; debe cumplir necesidad, proporcionalidad y requisitos legales."
+  },
+  "pen-s38-pena": {
+    "section": "§38. Medida de aseguramiento vs. pena — Pena",
+    "text": "consecuencia jurídica de una sentencia condenatoria; persigue los fines constitucionales y legales de la sanción; su ejecución es controlada por las autoridades competentes."
+  },
+  "pen-s38-respuesta": {
+    "section": "§38. Medida de aseguramiento vs. pena — Pregunta probable",
+    "text": "No. Sigue amparada por la presunción de inocencia. La detención preventiva es una medida cautelar, no una pena."
+  },
+  "pen-s39-juez": {
+    "section": "§39. ¿Qué hace un Juez de Ejecución de Penas y Medidas de Seguridad?",
+    "text": "La Ley 65 de 1993 señala que estos jueces garantizan la legalidad de la ejecución de la sanción penal."
+  },
+  "pen-s39-funciones": {
+    "section": "§39. ¿Qué hace un Juez de Ejecución de Penas y Medidas de Seguridad?",
+    "text": "condiciones de ejecución; libertad posterior a sentencia; redención; beneficios y mecanismos sustitutivos cuando correspondan; acumulación jurídica de penas; aplicación de favorabilidad; extinción de la condena; peticiones de internos relacionadas con derechos que afecten la ejecución de la pena."
+  },
+  "pen-s39-respuesta": {
+    "section": "§39. ¿Qué hace un Juez de Ejecución de Penas y Medidas de Seguridad? — Respuesta de entrevista",
+    "text": "El juez de ejecución no vuelve a juzgar si la persona cometió el delito. Su función central es controlar la legalidad de la forma en que se ejecuta una sentencia que ya está en firme y resolver los asuntos que la ley le atribuye durante el cumplimiento de la pena."
+  },
+  "pen-s40-domiciliaria": {
+    "section": "§40. Prisión intramural y prisión domiciliaria",
+    "text": "La prisión domiciliaria es una forma sustitutiva de cumplimiento de la pena de prisión cuando se cumplen los requisitos legales."
+  },
+  "pen-s40-respuesta": {
+    "section": "§40. Prisión intramural y prisión domiciliaria — Pregunta probable",
+    "text": "No. Sigue siendo una pena privativa de la libertad, aunque se cumple en el lugar autorizado y bajo las condiciones y controles correspondientes."
+  },
+  "pen-s41-suspension": {
+    "section": "§41. Suspensión de la ejecución de la pena",
+    "text": "El Código Penal contempla la posibilidad de suspender la ejecución de la pena privativa de la libertad bajo requisitos objetivos y subjetivos determinados. Uno de los requisitos legales centrales es que la pena impuesta no exceda el límite previsto por el artículo 63, actualmente cuatro años, además de las demás condiciones y exclusiones legales."
+  },
+  "pen-s42-condicional": {
+    "section": "§42. Libertad condicional",
+    "text": "El artículo 64 del Código Penal exige, entre otros elementos: haber cumplido 3/5 partes de la pena; adecuado desempeño y comportamiento durante tratamiento penitenciario; arraigo familiar y social; además de los requisitos relacionados con reparación o garantía, salvo los supuestos legales."
+  },
+  "pen-s42-respuesta": {
+    "section": "§42. Libertad condicional — Pregunta probable",
+    "text": "No. El cumplimiento de las tres quintas partes es un requisito importante, pero no es el único. Deben verificarse los demás requisitos legales y la valoración que corresponde al juez."
+  },
+  "pen-s43-redencion": {
+    "section": "§43. Redención de pena",
+    "text": "La legislación penitenciaria permite redimir parte de la pena mediante actividades reconocidas legalmente, como trabajo, estudio o enseñanza, sujetas a certificación y evaluación. El juez de ejecución reconoce la redención al verificar los requisitos."
+  },
+  "pen-s44-extincion": {
+    "section": "§44. Extinción de la condena y paz y salvo",
+    "text": "En tu experiencia en el Juzgado Tercero trabajaste con actuaciones de cierre de expedientes y paz y salvos una vez las personas habían cumplido la condena correspondiente."
+  },
+  "pen-s44-forma": {
+    "section": "§44. Extinción de la condena y paz y salvo — Forma profesional de explicarlo",
+    "text": "Revisaba expedientes para proyectar actuaciones asociadas al cierre y cumplimiento de la pena, verificando que jurídicamente procediera la terminación del trámite correspondiente."
+  },
+  "pen-s44-evita": {
+    "section": "§44. Extinción de la condena y paz y salvo",
+    "text": "Evita simplificarlo como \"yo borraba antecedentes\" porque no describe jurídicamente lo que hacías y puede ser incorrecto."
+  },
+  "pen-s45-prescripcion": {
+    "section": "§45. Prescripción",
+    "text": "Por el paso del tiempo y las reglas legales puede extinguirse la potestad estatal de perseguir penalmente una conducta."
+  },
+  "pen-s45-calculo": {
+    "section": "§45. Prescripción — Si te piden cálculo exacto",
+    "text": "La fórmula depende del delito, pena máxima, actos interruptivos/suspensivos y reglas especiales. En una entrevista explicaría el concepto y verificaría el artículo aplicable para hacer el cálculo exacto."
+  },
+  "pen-s46-nulidad": {
+    "section": "§46. Nulidad — Respuesta madura",
+    "text": "En materia procesal penal no toda irregularidad genera nulidad. Debe existir una afectación sustancial que justifique retrotraer o invalidar la actuación conforme a los principios legales."
+  },
+  "pen-s47-recursos": {
+    "section": "§47. Recursos básicos",
+    "text": "Busca que el mismo funcionario reconsidere su decisión, cuando procede."
+  },
+  "pen-s47-apelacion": {
+    "section": "§47. Recursos básicos — Apelación",
+    "text": "Busca revisión por el superior funcional en los casos previstos. En el sistema oral muchos recursos se interponen y sustentan en audiencia."
+  },
+  "pen-s48-metodo": {
+    "section": "§48. ¿Cómo analizar un caso penal si te ponen un caso hipotético?",
+    "text": "Paso 1 — Hechos ¿Qué pasó exactamente? ¿Quién hizo qué? ¿Cuándo? ¿Dónde? ¿Con qué medio? ¿A quién?"
+  },
+  "pen-s48-pasos": {
+    "section": "§48. ¿Cómo analizar un caso penal si te ponen un caso hipotético?",
+    "text": "Paso 2 — Tipo penal posible ¿Qué bien jurídico parece afectado? ¿Qué elementos objetivos exige el tipo? ¿Qué elemento subjetivo exige? Paso 3 — Intervención ¿Autor? ¿Coautor? ¿Determinador? ¿Cómplice? Paso 4 — Modalidad subjetiva ¿Dolo? ¿Culpa? ¿Preterintención? Paso 5 — Consumación ¿Consumado o tentativa?"
+  },
+  "pen-s48-pasos2": {
+    "section": "§48. ¿Cómo analizar un caso penal si te ponen un caso hipotético?",
+    "text": "Paso 7 — Prueba ¿Qué tendría que demostrar Fiscalía? ¿Qué elementos existen? ¿Son legales? ¿Son pertinentes y confiables? ¿Qué podría controvertir la defensa? Paso 8 — Estado procesal ¿Estamos antes de imputación? ¿En acusación? ¿En juicio? ¿En ejecución? Paso 9 — Petición concreta ¿Qué debe pedir jurídicamente el abogado en esa etapa?"
+  },
+  "pen-s48-cierre": {
+    "section": "§48. ¿Cómo analizar un caso penal si te ponen un caso hipotético?",
+    "text": "Este método vale más que memorizar cincuenta artículos."
+  },
+  "pen-s49-hipotesis": {
+    "section": "§49. Caso práctico 1 — riña y legítima defensa — Hipótesis",
+    "text": "A golpea a B. B responde usando fuerza y causa una lesión grave."
+  },
+  "pen-s49-analizar": {
+    "section": "§49. Caso práctico 1 — riña y legítima defensa — Qué debes analizar",
+    "text": "¿Quién inició la agresión? ¿La agresión era actual o inminente? ¿La respuesta buscaba defender un derecho? ¿Era necesaria? ¿Hubo exceso? ¿Qué lesiones existen y con qué incapacidad/secuela? ¿Qué prueba hay: testigos, videos, historia clínica, peritaje?"
+  },
+  "pen-s49-nunca": {
+    "section": "§49. Caso práctico 1 — riña y legítima defensa — Nunca respondas",
+    "text": "Es legítima defensa porque él pegó primero."
+  },
+  "pen-s50-hipotesis": {
+    "section": "§50. Caso práctico 2 — tentativa de homicidio vs. lesiones — Hipótesis",
+    "text": "Una persona ataca a otra con arma blanca y la víctima sobrevive."
+  },
+  "pen-s50-analizar": {
+    "section": "§50. Caso práctico 2 — tentativa de homicidio vs. lesiones — Qué analizar",
+    "text": "intención inferible; zona del cuerpo atacada; arma utilizada; número e intensidad de ataques; expresiones previas; comportamiento posterior; contexto; idoneidad de los actos; prueba disponible."
+  },
+  "pen-s50-idea": {
+    "section": "§50. Caso práctico 2 — tentativa de homicidio vs. lesiones — Idea",
+    "text": "La diferencia entre tentativa de homicidio y lesiones puede depender, entre otros elementos, de la intención demostrable y las circunstancias objetivas."
+  },
+  "pen-s51-hipotesis": {
+    "section": "§51. Caso práctico 3 — captura — Hipótesis",
+    "text": "La Policía captura a una persona varias horas después de un hurto porque un testigo dice reconocerla."
+  },
+  "pen-s51-preguntar": {
+    "section": "§51. Caso práctico 3 — captura — Qué debes preguntar",
+    "text": "¿existía orden judicial? si alegan flagrancia, ¿qué modalidad? ¿hubo inmediatez? ¿cómo ocurrió la individualización? ¿qué elementos conectan a la persona con el hecho? ¿cuándo fue puesta ante juez? ¿se respetaron derechos del capturado?"
+  },
+  "pen-s51-cierre": {
+    "section": "§51. Caso práctico 3 — captura",
+    "text": "El análisis de legalidad de captura es distinto del análisis de culpabilidad."
+  },
+  "pen-s52-hipotesis": {
+    "section": "§52. Caso práctico 4 — medida de aseguramiento — Hipótesis",
+    "text": "Fiscalía demuestra inferencia razonable de participación y pide detención intramural."
+  },
+  "pen-s52-preguntar": {
+    "section": "§52. Caso práctico 4 — medida de aseguramiento — Debes preguntar",
+    "text": "¿qué elementos sostienen inferencia razonable? ¿qué finalidad del art. 308 se invoca? ¿riesgo de obstrucción? ¿peligro para víctima/comunidad? ¿riesgo de no comparecer? ¿es necesaria? ¿es proporcional? ¿procede detención intramural para ese delito? ¿hay medida menos restrictiva suficiente?"
+  },
+  "pen-s53-hipotesis": {
+    "section": "§53. Caso práctico 5 — libertad condicional — Hipótesis",
+    "text": "Una persona ya cumplió 3/5 de la pena."
+  },
+  "pen-s53-revisar": {
+    "section": "§53. Caso práctico 5 — libertad condicional — Respuesta",
+    "text": "tiempo cumplido; redenciones reconocidas; conducta penitenciaria; arraigo; reparación/garantía en los términos aplicables; exclusiones legales; valoración judicial."
+  },
+  "pen-s54-tipicidad": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué es tipicidad?",
+    "text": "Adecuación de los hechos a la descripción legal de un delito."
+  },
+  "pen-s54-antijuridicidad": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué es antijuridicidad?",
+    "text": "Lesión o puesta en peligro efectiva del bien jurídico, sin justa causa."
+  },
+  "pen-s54-culpabilidad": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué es culpabilidad?",
+    "text": "Juicio de reproche personal que permite atribuir responsabilidad penal, proscribiendo responsabilidad objetiva."
+  },
+  "pen-s54-dolo": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué es dolo?",
+    "text": "Conocimiento de los hechos constitutivos del delito y voluntad de realizarlos, incluyendo los supuestos legales de previsión probable dejada al azar."
+  },
+  "pen-s54-culpa": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué es culpa?",
+    "text": "Resultado derivado de infracción al deber objetivo de cuidado que debía preverse o que, previsto, se confió poder evitar."
+  },
+  "pen-s54-tentativa": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué es tentativa?",
+    "text": "Inicio de ejecución idóneo e inequívoco sin consumación por causa ajena a la voluntad del agente."
+  },
+  "pen-s54-coautoria": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué es coautoría?",
+    "text": "Realización conjunta con acuerdo común y división del trabajo criminal relevante."
+  },
+  "pen-s54-flagrancia": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué es flagrancia?",
+    "text": "Situación definida legalmente en la que una persona es sorprendida en comisión o en circunstancias inmediatas que permiten su aprehensión bajo los supuestos del Código."
+  },
+  "pen-s54-imputacion": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué es imputación?",
+    "text": "Comunicación formal de los hechos jurídicamente relevantes atribuidos y de la calidad de imputado."
+  },
+  "pen-s54-acusacion": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué es acusación?",
+    "text": "Acto por el que Fiscalía lleva el caso a juicio al considerar satisfecho el estándar legal para acusar."
+  },
+  "pen-s54-medida": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué es una medida de aseguramiento?",
+    "text": "Medida cautelar destinada a fines procesales y de protección legalmente definidos; no es pena."
+  },
+  "pen-s54-teoria": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué es teoría del caso?",
+    "text": "Explicación coherente de hechos, derecho y prueba que sostiene la posición de una parte."
+  },
+  "pen-s54-cadena": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué es cadena de custodia?",
+    "text": "Sistema de control que busca preservar identidad e integridad de la evidencia desde su obtención hasta su utilización."
+  },
+  "pen-s54-estandar": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué estándar se requiere para condenar?",
+    "text": "Conocimiento más allá de toda duda razonable, basado en prueba debatida en juicio."
+  },
+  "pen-s54-habeas": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué es hábeas corpus?",
+    "text": "Derecho fundamental y acción constitucional para proteger libertad frente a privación ilegal o prolongación ilegal."
+  },
+  "pen-s54-ejecucion": {
+    "section": "§54. Preguntas técnicas rápidas — ¿Qué hace un juez de ejecución?",
+    "text": "Controla legalidad de la ejecución de la pena y resuelve los asuntos que la ley le asigna una vez existe condena ejecutoriada."
+  },
+  "pen-s55-que-hacias": {
+    "section": "§55. Preguntas que pueden hacerte POR TU EXPERIENCIA — ¿Qué hacías exactamente en ejecución de penas?",
+    "text": "Trabajaba con expedientes de personas condenadas y actuaciones posteriores a la sentencia. Proyectaba documentos, realizaba seguimiento, apoyaba acciones constitucionales y notificaciones, y tenía contacto con personas privadas de la libertad. En una de mis experiencias también trabajé en trámites de cierre de expedientes una vez se verificaba el cumplimiento correspondiente."
+  },
+  "pen-s55-carcel": {
+    "section": "§55. Preguntas que pueden hacerte POR TU EXPERIENCIA — ¿Qué aprendiste trabajando dentro de la cárcel?",
+    "text": "Que el Derecho Penal no termina con una sentencia. La ejecución de la pena también exige control judicial, respeto de derechos, acceso a información y una perspectiva de resocialización. Aprendí además a comunicar decisiones jurídicas a personas que no necesariamente manejan lenguaje técnico."
+  },
+  "pen-s55-juzgar-ejecutar": {
+    "section": "§55. Preguntas que pueden hacerte POR TU EXPERIENCIA — ¿Qué diferencia hay entre juzgar y ejecutar una pena?",
+    "text": "El juez de conocimiento determina responsabilidad y, si corresponde, impone una sanción. El juez de ejecución parte de una sentencia ya ejecutoriada y controla la legalidad de su cumplimiento y los asuntos posteriores que la ley le atribuye."
+  },
+  "pen-s55-pazysalvo": {
+    "section": "§55. Preguntas que pueden hacerte POR TU EXPERIENCIA — ¿Qué era un paz y salvo en tu trabajo?",
+    "text": "Era la forma práctica con la que en el despacho nos referíamos a actuaciones de cierre relacionadas con personas que ya habían cumplido su condena y frente a las cuales correspondía verificar y proyectar el trámite final del expediente."
+  },
+  "pen-s56-brecha": {
+    "section": "§56. Tu brecha más probable: litigio penal privado",
+    "text": "No he tenido todavía esa actuación directamente como apoderada. Lo que sí he trabajado es [experiencia real relacionada]. Entiendo conceptualmente que [explicación]. En un caso real revisaría el expediente, la norma vigente y la estrategia con el abogado responsable antes de actuar."
+  },
+  "pen-s56-cierre": {
+    "section": "§56. Tu brecha más probable: litigio penal privado",
+    "text": "Esta forma de contestar es mucho más fuerte que fingir experiencia."
+  },
+  "pen-s57-patron": {
+    "section": "§57. Cómo razonar una pregunta que no recuerdas",
+    "text": "Concepto → requisito → finalidad → aplicación al caso."
+  },
+  "pen-s57-ejemplo": {
+    "section": "§57. Cómo razonar una pregunta que no recuerdas — Ejemplo",
+    "text": "No recuerdo el número exacto del artículo sobre medida de aseguramiento, pero el análisis requiere una inferencia razonable de autoría o participación y además una finalidad cautelar concreta, como evitar obstrucción, proteger a la víctima/comunidad o asegurar comparecencia. Después revisaría si la medida solicitada es necesaria, proporcional y legalmente procedente para ese delito."
+  },
+  "pen-s57-cierre": {
+    "section": "§57. Cómo razonar una pregunta que no recuerdas",
+    "text": "Eso demuestra criterio jurídico aunque no recuerdes el artículo."
+  },
+  "pen-s58-penal": {
+    "section": "§58. Artículos que SÍ vale la pena tener ubicados — Código Penal, Ley 599 de 2000",
+    "text": "Art. 9: conducta punible. Art. 10: tipicidad. Art. 11: antijuridicidad. Art. 12: culpabilidad. Arts. 21–24: modalidades, dolo, culpa, preterintención. Art. 25: acción y omisión / posición de garante. Art. 27: tentativa. Arts. 29–30: autores y partícipes. Art. 31: concurso. Art. 32: ausencia de responsabilidad. Art. 63: suspensión de la ejecución de la pena. Art. 64: libertad condicional. Art. 83 y ss.: prescripción de la acción penal."
+  },
+  "pen-s58-procedimiento": {
+    "section": "§58. Artículos que SÍ vale la pena tener ubicados — Código de Procedimiento Penal, Ley 906 de 2004",
+    "text": "Arts. 153–154: audiencias preliminares. Art. 286 y ss.: formulación de imputación. Arts. 296–302: libertad, captura y flagrancia. Art. 308: requisitos de medida de aseguramiento. Art. 313: procedencia de detención preventiva. Art. 336: presentación de acusación. Art. 337: contenido de acusación. Arts. 339 y ss.: audiencia de formulación de acusación. Arts. 355–356: audiencia preparatoria. Arts. 371–381: teoría del caso, prueba y estándar de condena. Arts. 459 y ss.: ejecución de sentencias."
+  },
+  "pen-s58-otras": {
+    "section": "§58. Artículos que SÍ vale la pena tener ubicados — Otras",
+    "text": "Ley 1095 de 2006: hábeas corpus. Ley 65 de 1993: Código Penitenciario y Carcelario."
+  },
+  "pen-s58-aviso": {
+    "section": "§58. Artículos que SÍ vale la pena tener ubicados",
+    "text": "No es necesario recitarlos, pero reconocerlos da seguridad."
+  },
+  "pen-s59-captura-medida": {
+    "section": "§59. Conceptos que NO debes mezclar",
+    "text": "La captura es aprehensión; la medida es una decisión cautelar posterior con requisitos propios."
+  },
+  "pen-s59-detencion-pena": {
+    "section": "§59. Conceptos que NO debes mezclar",
+    "text": "La primera es cautelar; la segunda surge de condena."
+  },
+  "pen-s59-imputacion-acusacion": {
+    "section": "§59. Conceptos que NO debes mezclar",
+    "text": "La primera comunica vinculación; la segunda lleva el asunto a juicio."
+  },
+  "pen-s59-emp-prueba": {
+    "section": "§59. Conceptos que NO debes mezclar",
+    "text": "La prueba debe incorporarse/practicarse conforme a reglas procesales."
+  },
+  "pen-s59-habeas-tutela": {
+    "section": "§59. Conceptos que NO debes mezclar",
+    "text": "El primero protege específicamente libertad frente a privación ilegal o prolongada."
+  },
+  "pen-s59-domiciliaria-condicional": {
+    "section": "§59. Conceptos que NO debes mezclar",
+    "text": "La primera sigue siendo privación de libertad; la segunda supone libertad sometida a condiciones."
+  },
+  "pen-s59-coautor-complice": {
+    "section": "§59. Conceptos que NO debes mezclar",
+    "text": "El primero integra la ejecución conjunta; el segundo contribuye a una conducta ajena."
+  },
+  "pen-s59-tipicidad-antijuridicidad": {
+    "section": "§59. Conceptos que NO debes mezclar",
+    "text": "Encaje en tipo vs. lesión sin justa causa."
+  },
+  "pen-s59-preclusion-absolucion": {
+    "section": "§59. Conceptos que NO debes mezclar",
+    "text": "La preclusión termina anticipadamente; la absolución normalmente resulta del juzgamiento."
+  },
+  "pen-s60-bloque1": {
+    "section": "§60. Estrategia final de estudio para esta noche — Bloque 1",
+    "text": "conducta punible; dolo/culpa; tentativa; autoría/participación; ausencia de responsabilidad."
+  },
+  "pen-s60-bloque4": {
+    "section": "§60. Estrategia final de estudio para esta noche — Bloque 4",
+    "text": "ejecución de penas; libertad condicional; redención; prisión domiciliaria; hábeas corpus; población privada de libertad."
+  },
+  "pen-s62-perfil": {
+    "section": "§62. Lo último que debes recordar",
+    "text": "Abogada junior con experiencia real en juzgados de ejecución de penas, contacto con población privada de la libertad, elaboración de documentos judiciales, manejo de acciones constitucionales, disciplina fuerte de términos y una motivación auténtica por crecer en litigio penal."
+  },
+  "pen-s62-pasos": {
+    "section": "§62. Lo último que debes recordar",
+    "text": "define lo que sí sabes; razona; no inventes; explica cómo verificarías; vuelve al caso concreto."
+  },
+  "pen-aviso": {
+    "section": "Aviso del documento fuente",
+    "text": "este documento es material de estudio para entrevista, no un concepto jurídico para un caso concreto. La legislación penal cambia con frecuencia. Para una actuación real siempre debe verificarse el texto vigente de la norma y la jurisprudencia aplicable."
+  }
+}

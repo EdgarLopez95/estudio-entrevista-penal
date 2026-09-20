@@ -1,0 +1,1134 @@
+{
+  "ent-cierre": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "c046d747324f72bbf6e82436b7ad9ecafd606636422c2c5a2d3d004e9934d3e5"
+  },
+  "ent-s1-evaluan": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "56f2ac2ce3e4a9e18759bdfd1ada8c93c150fd8776e244d5e433f986794b3baa"
+  },
+  "ent-s1-star": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "f1a6a4aca1c3a442539602c76ef5c6a410dc13f296b56a7e1fbf737a94868b8f"
+  },
+  "ent-s10-aviso": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "67e0f95e930b05724cbc9d348f8a59d14df1f1c2f3e7b71661b9c02a7c74dc7e"
+  },
+  "ent-s10-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "5f567c7fa21dfcad51641cbf6a2a1967c4b945922a27bccf151c581599c72251"
+  },
+  "ent-s11-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "898767ffe2a2c520fc2051f327e3831c4fcd3fef60912a1dc301af9f6b443468"
+  },
+  "ent-s12-comunicacion": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "241625560721dc3f5878da19f7a6a9396c0374a85515580ac2dccd7941a3b76e"
+  },
+  "ent-s12-fortaleza": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "e4781e998b22747939b581faa239d352ca7c302bca4a084145540d1eb5b4c9a6"
+  },
+  "ent-s13-excel": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "2ed54d95b06eaf8d55dabf46c8531d49014c82b7f56ffe493bac8954a1f13d3e"
+  },
+  "ent-s13-perfeccionista": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "a20f5b51c37206bfcf560ab81a71159908016eed231fbe2e7ad183c5a2f45e98"
+  },
+  "ent-s13-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "53a746644c439f03dae10cc417109c192812f7431b5c075a2e8c6ef450d5ec40"
+  },
+  "ent-s14-accion": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "6617f1a3465f36e2ef653e91928658123d59e2d4289fb040187bbc0ca5c646ab"
+  },
+  "ent-s14-demuestra": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "ef2586db5fddd265401c80104d41ed7c5eb0cc30c5688684d595ec29fe84833d"
+  },
+  "ent-s14-intro": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "97aa77152ff67a460bc869d28a3f387cae80d24836c129f8b4e2c2ff0df3fbcf"
+  },
+  "ent-s14-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "f054b80b706c148cc4ecc5198f871ff4b2fe4750b20b9ed60d9179222a043b2c"
+  },
+  "ent-s14-resultado": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "b24bacf3f8fcd3b6847857b319c229e2b005dbbf5bed11724e6ee781efff66a6"
+  },
+  "ent-s14-situacion": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "924b9e8538fcef69e61b858e6f4dc58d5f15b3c71883813cde890e645634a0d6"
+  },
+  "ent-s14-tarea": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "b8bc329abb0d22a6128556c907863b9f7d64e385c26b560267adc2a0e06ad953"
+  },
+  "ent-s15-aviso": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "bc68cdbe3852bff9d00ea0eeb6c8c352c87b83c5b219919e9063fa65fad66119"
+  },
+  "ent-s15-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "ab5df8c54599c74412fac0d7e8c99a2038f3420bac7c9ec0e3a0bd3e1108ac0b"
+  },
+  "ent-s16-cifras": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "8d931b99053320244bbf3d20966490dc398350008049fa119d696763959f8980"
+  },
+  "ent-s16-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "078a68b94961701f42b9512e8e7f6ec789b7414b98d7c7f93b38cc9dcc7eb3ed"
+  },
+  "ent-s17-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "05519efd392e344f175a382cfdc47ef9868f1ad6f3fe6ea103e935868462f18e"
+  },
+  "ent-s18-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "1e8d235986513276dfc969ffe57808184c457792f512845b894f4007cafb42af"
+  },
+  "ent-s19-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "a84416937a8dcd15db51b375117399446e4ac1c51b5f2a313a4895873f855371"
+  },
+  "ent-s2-idea1": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "83d0084f0c4e9eca4a746f078e1d11cbb816a74ba6676d9041c751441036b458"
+  },
+  "ent-s2-idea2": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "1ce230295c091f3a71d3e85a4ca0ced1246a8a25075858c24953671e9659c844"
+  },
+  "ent-s2-idea3": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "504a1e3480cd7a26318f8eb7817f7006f0e5f8f68c42126d37b3736f3ddb9a9f"
+  },
+  "ent-s20-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "69678616a057fcf59ae30e66b18de905b03ed5c94f5cfe995df8f54cea9a5883"
+  },
+  "ent-s21-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "719694028518f2b79dd313099a582ed6a832a3283d84a97a50a5affb14a40323"
+  },
+  "ent-s22-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "390d04547bbacca25cfc7068f71ebfb55fc9c2d5dd91e158d46902f703b2a0fa"
+  },
+  "ent-s23-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "64d97d1c62c269f75417d4975fb9e45e48e831921d0c7b8a418bcdbf2bdd3497"
+  },
+  "ent-s24-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "e4e1058259b8f97c3ecfd9814346eff81fdea88290ba4fc981f871db4688967e"
+  },
+  "ent-s25-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "112c37942a9053436a21f228e6e462cd30aee583430e4e8b7bbb5a97abf3a4b7"
+  },
+  "ent-s26-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "53d30742e72f7861b7c7927abe27f0d9d2558a096bbb2e69feaea3403473540f"
+  },
+  "ent-s27-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "fd1e9340453ac08602ce4205aabbf89d763253c8f5d205f897221ba12f6b6c57"
+  },
+  "ent-s28-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "84944560ca8585b8af3a9d5a45d1a41a82e6e49257128d71c4e7d6d4b1c1447a"
+  },
+  "ent-s29-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "dfdea23cbd2c322befd9644ad4cb1bfbe53246a904eb8c7755a8270200872c71"
+  },
+  "ent-s3-evita": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "829a72923e66156b1f3fefe18583dec237ef8111ce9487a982faebe8089eab4d"
+  },
+  "ent-s3-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "3f8abd1aa631d4463d3ebd65f3937d1ce7de15ff0ab84bc605b59261b84199df"
+  },
+  "ent-s3-respuesta-2": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "275eb6a4e8e58ac97ac094aeee8a43d9d3d0c62312b182b6b6894ca845e4366b"
+  },
+  "ent-s3-transmitir": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "45c6d3235473f1c641d085eb8e67148fbf8f8e50d914aa097bd16127e8cf064f"
+  },
+  "ent-s30-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "d214132380b5ac91d9e186d5278d0a10b84eec8fdf13662b2d3e3bfaebee1859"
+  },
+  "ent-s31-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "8a4328c65ddd5a8510971ab05c75b63af567aa90a65f92e64936873e35a585dc"
+  },
+  "ent-s32-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "f081fe0787d21dae5606d13eed54b6c68b0b24d828e5b27bc59ec626e55c1f76"
+  },
+  "ent-s33-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "a1e242aedd4d5b747d5decdfe6bbe63011e74d5f7f3b2b9d493174f9379496bd"
+  },
+  "ent-s34-aviso": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "a0650ef56abf781213dc5b0c1b69f45f38ca584c098ee44e04aebe09ab0d484a"
+  },
+  "ent-s34-cierre": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "14d47b2c47a0100fd984273d6320616d3c9ca8aa8d3acac9acc0dc2991b93393"
+  },
+  "ent-s34-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "9245aa489abeb0f126d95572c1204d50c9d31ee0c7d5048bace7e43fa1475178"
+  },
+  "ent-s35-actual": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "bebd0116852b93268a54028aac49d4d4dd634a9ab819ee6168a1d6d96e63b612"
+  },
+  "ent-s35-criterio": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "d0c0281526ed07c27389874be32b9ecaf6341ea9a9c54388ec443487b9b8cdd0"
+  },
+  "ent-s35-nota": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "0bb4a5b6dd335200d84b91e8f0c391307a1c486460891a9ebf35b4f417840c08"
+  },
+  "ent-s35-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "c52d61cf74085658ff56e3e2d9593392553742c8e2e1bef3f9b6602a3c88532c"
+  },
+  "ent-s36-aviso": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "7384241109a8da6229edbbb6230f65145979d2833d7cbfcee58a0f3024a97a62"
+  },
+  "ent-s36-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "0ca459f3c1b6e080525d97d6734c3af1e651c0940ef75451b657f894ff757d9c"
+  },
+  "ent-s37-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "506006f155f807160e2e33e0dee4204b8a187ad6c612cc0ceea2704c6e3dbc52"
+  },
+  "ent-s38-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "be0082d986c07781bbec69245686c5b5f9880b42bcd818ec865ddf23c91a9b60"
+  },
+  "ent-s39-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "b08c4401312abdfbf6df4d0f13cbff387850538707eb16d5104e9b887b43007f"
+  },
+  "ent-s4-diferencial": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "09b9c54c697c5c50d38496980193398087f1512882adf1c2b3526d837d70c9fe"
+  },
+  "ent-s4-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "2da8b48419eac5f99095cdc4ff18e48ab2bb3298b6ccb1971138dbcc424c3d33"
+  },
+  "ent-s40-dificultad": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "4acedb06d2482b07d9150b1a97d0d3dd7439c91d0f8d5f405a3dcabf40ea9db2"
+  },
+  "ent-s40-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "a01b99a6c826e760d9700946f05e701b4c5268ee79e2b4ffa7b8bdfedb7afcaf"
+  },
+  "ent-s41-cierre": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "01fa70638bbfa2cadaa189ad6c9c580656f6482f2437e945816fbb70a9fbf883"
+  },
+  "ent-s41-condiciones": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "775ef45b618275cba1e3c9ccb250b71509bdf28ee139cafa8f8d778ad5ce6429"
+  },
+  "ent-s41-intro": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "0811dfb51b1bad02e3d39a490838a6cc51a647f1b231a2c3b5de245047b1e5d7"
+  },
+  "ent-s41-p1": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "af212608496a480613ff3819dc184fd3147b48e0b545c5cbda457bd2c0dea35a"
+  },
+  "ent-s41-p2": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "71a87d7fcdd6ae52a13341a0629dbce42dc30bfdefa190abcc6fc2a6bd2069af"
+  },
+  "ent-s41-p3": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "452b86cd608abb9f5753839151958cd83ac43adccbb13d607ade23fd23673a18"
+  },
+  "ent-s41-p4": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "336cb3d1aeeaed511bada6ab427036b60fd4dd529b831be7916be2deb28a226b"
+  },
+  "ent-s41-p5": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "b4a5e14fe5d4ca4b23008c9cf969032c07cf0a23756ae7e00416e2d2c584d1eb"
+  },
+  "ent-s42-a": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "3ccbc4bc2fcce7e8eb752a4e5e04b24e98b94c5019db0b9bab7d89affb1b6f7b"
+  },
+  "ent-s42-a-usos": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "221eb83b088fc7ff62f26e2c5eb746f409e6ca2c3971447546ef0b3aef7f09ed"
+  },
+  "ent-s42-b": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "7adcb52bc6bb7f7395d1570cbc34e44550edfcd59c99e439477af3fa31e67193"
+  },
+  "ent-s42-b-usos": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "e89c69f24d9b520e6df69093647a3725038faaad960d452b4c2d254c94298712"
+  },
+  "ent-s42-c": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "4558a210aaced62c68aeb9522bc9eb1dace709375fe3817e5b3cf6e60719e30b"
+  },
+  "ent-s42-c-usos": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "f58cde7fd58af2e57c5e2a2526738a6444757d564aee601ca12d920a3997cdd0"
+  },
+  "ent-s42-d": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "80c7ec5031551dbf1716b70e2812bde332abb4e338e1d99272050563667d8995"
+  },
+  "ent-s42-d-usos": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "299ef0adeb8a8b1492de329371d21c906b54aca38b801ac4c1ae341079315ae0"
+  },
+  "ent-s42-e": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "3695dd54654f0384599e2dda91248e8a63b7754d34a015d3cd630599341101cf"
+  },
+  "ent-s42-e-usos": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "28740cef21dff40559daeb269a2e921759bb2e76034b02dea64e7303614ab98e"
+  },
+  "ent-s43-inventar": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "8403dafd6d2e73b3d6bf45fbdeacc780b104bf649de65190e2b972b342b95a53"
+  },
+  "ent-s43-lista": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "cd224ed86ce215c66dc4fbab06ae1bceb25e9c60be6d0d5b3597f7a7df371114"
+  },
+  "ent-s43-nose": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "5053ba8bc659abe47ed0fa05a8cdb550d8736b4ad0cf1cd3030b5409073a8159"
+  },
+  "ent-s44-cierre": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "737b5a0917b598808cdd3962d3ecd8e308022041178ce3725e07c545e1db01d3"
+  },
+  "ent-s44-formula": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "f24f785d1cf68a3b3a465f26c78c29a504ae5ff9b65db493be64db5da5361b75"
+  },
+  "ent-s44-intro": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "9b0c75c73d485be0fabd34ad54ab9d27f92548a1f2c099f51dac2bb48e9df1bd"
+  },
+  "ent-s45-cierre": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "bbff64f302696f4cceb263ec5c6ec1c41e93cc351e666be4405ba30955ebe7af"
+  },
+  "ent-s45-frase2": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "b67a1ec7096f9aec10616f8e6187436a9a8a36516684bd97b2a27ad8ed19ef5b"
+  },
+  "ent-s45-frase3": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "dd7e0d2b53ec06a9fdf3a34e4f906502ff1ac735f99948660737fad387de4657"
+  },
+  "ent-s45-frases": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "446e90d1d2b0234f04801bd46cc6c41ef9df3447f837d9b2e96d55465bae5900"
+  },
+  "ent-s46-cierre": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "c239ca208b342ca85c93536f883de47b5bead5eef11aef1ef3b89acb490847c3"
+  },
+  "ent-s46-lista": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "27de03413dd69bd6f6e15eb342425acb857d482364cfe3ad4d821ec1918cfdc1"
+  },
+  "ent-s47-preparacion": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "5ea68e8e7631d416931ea47ed5447eddbf94e71b4fa712e18f3e27de3c6e2380"
+  },
+  "ent-s5-brecha": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "fdf312cb3813358f5eb6ef95f6ccb5e304d7a9e40c78b68e354974c57ad212c1"
+  },
+  "ent-s5-frase": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "99478b81b94ececf8711691e19401e6d5ab9b1e0d71f9604e4e4734471986ddd"
+  },
+  "ent-s5-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "9134c343474f729e535e5e7f59d508246c2b351f0e9090cde6432b4fb5a4f7d1"
+  },
+  "ent-s6-nunca": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "060f5ceb34f5fac691fdca7164b2dc990f13c5e878ac2630f68ccecb3e0d2a31"
+  },
+  "ent-s6-nunca-razon": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "ca10f791b6be775a91dfe4da92d6327fe73f38a7ae94d3917e486910a6cc8c35"
+  },
+  "ent-s6-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "b70fae80c4b6837d534afb4710617311ad5388a35faa2bd6c5944187e08d8af0"
+  },
+  "ent-s7-carga": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "4530cb10e3be5cf6164326bf5d969babb912f0be5330e096a1524e5df9f186c7"
+  },
+  "ent-s7-delicada": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "f72f394168a77c61819f59dba73dcca56c4c4c1ee19a6ec4057ddb469c1731f3"
+  },
+  "ent-s7-nodigas": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "08d78c8d0ac75e94822e3a46de0ba576a93624b1295394115ec44b4dd3e101f1"
+  },
+  "ent-s7-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "86f579f8c561c03fbf81d81c53a9b89794e4836e2646cf86fb6243259d20521f"
+  },
+  "ent-s8-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "0c5f10335d28c262689ccaf1c27a74fa28937d9f0fc351e1a83ccd63e0db8694"
+  },
+  "ent-s9-respuesta": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "43fcee87d878674ce8ff6f6e4e6a2d45e2914551ba1e7fbf8604476d25f0c8b2"
+  },
+  "ent-uso": {
+    "sourceId": "ENTREVISTA_MD",
+    "hash": "60e2fdf1e0d068d69533509712b593e5dfe5ba9a122ca33c1609ffa2ba288b85"
+  },
+  "pen-aviso": {
+    "sourceId": "PENAL_MD",
+    "hash": "572a71c44ed083ac4b6a410452a381ad75f633e72ff2c3294dadeb558b4a88d3"
+  },
+  "pen-s1-maxima": {
+    "sourceId": "PENAL_MD",
+    "hash": "37641cdbfb7adda42fda2ad453296e09bbd1b6fedae37afe5a50c36b92d28241"
+  },
+  "pen-s1-segunda": {
+    "sourceId": "PENAL_MD",
+    "hash": "272f76422201d3d121a854db35e8d2ac92afacc9950ee3f49446153c639b60e6"
+  },
+  "pen-s10-causales": {
+    "sourceId": "PENAL_MD",
+    "hash": "a2e486b9dbedc951e5e78918d69778e62e2561a5df4024287f01dab56ff855d6"
+  },
+  "pen-s10-legitima": {
+    "sourceId": "PENAL_MD",
+    "hash": "fb6b96a3ec9ed0b76f99e79087a8d61c807e3c9da1d35b3e26abe6a49d11f1d9"
+  },
+  "pen-s10-necesidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "3e00f45e8d6df4181349e6ac235d82fcc32daa75613bd577c5090ac116f62853"
+  },
+  "pen-s11-inimputabilidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "22ab364836097a1e936f38ac2524e10ee1719c63002e85c912f006dd980fe5a0"
+  },
+  "pen-s11-noconfundir": {
+    "sourceId": "PENAL_MD",
+    "hash": "0b2a2286b2ae095c40e11ccf8bb446fc97dccbf6e28989dbca3e430a5e9a2848"
+  },
+  "pen-s12-formula": {
+    "sourceId": "PENAL_MD",
+    "hash": "1af6e9c3c2952cc3142f009fd93b691ea83f01aca60a5ccefd68fe7e7d58a2ea"
+  },
+  "pen-s12-investigacion": {
+    "sourceId": "PENAL_MD",
+    "hash": "df0daa8c0adcb3f20d92559f7f9facc7e6c68002ad2695b0bba57f060261cad8"
+  },
+  "pen-s12-juicio": {
+    "sourceId": "PENAL_MD",
+    "hash": "a97a9907d99ea4f3e74bdaafb99a27be5004003ec23103174473980004641e3e"
+  },
+  "pen-s13-noticia": {
+    "sourceId": "PENAL_MD",
+    "hash": "e9ee6203d52c17161fdb15e0d92f32d73b00d91c8e9931e8ce7a9f8fad06614a"
+  },
+  "pen-s13-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "a2819241669cbc6f5385e9c3006f62d9c80c5bdf9f76d7883b6a2efc4e9af166"
+  },
+  "pen-s14-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "fd4dc2b263bd4ace2b22807ca3f97d8b79274e571f159cc48a9a3539e0cb2296"
+  },
+  "pen-s14-sujetos": {
+    "sourceId": "PENAL_MD",
+    "hash": "9d0aee8d75af9f775f87612365873a7fac1aaa58c3c84b3e4c9b672a03d809c1"
+  },
+  "pen-s15-conocimiento": {
+    "sourceId": "PENAL_MD",
+    "hash": "7da7336da169c54ff057635a3553b27ee9da6019aac9ea9805aae45eb2923c74"
+  },
+  "pen-s15-corta": {
+    "sourceId": "PENAL_MD",
+    "hash": "9baa58e7de2b7ee870120cc79302e3ceec80cdbb2c50f43d1e8fa1da6b6076ec"
+  },
+  "pen-s15-garantias": {
+    "sourceId": "PENAL_MD",
+    "hash": "c31e325622e0fef268de6b8fb460361edf29267267a7e1f00a2583a21f6e3eb2"
+  },
+  "pen-s15-garantias-limite": {
+    "sourceId": "PENAL_MD",
+    "hash": "7f8ed83c910246800f1314802c0d03074ee4263b5dd78b6bcc6a80ea0e7cb1b5"
+  },
+  "pen-s16-captura": {
+    "sourceId": "PENAL_MD",
+    "hash": "285da09dcdc218b85c2000fde1af6fd4a72d2301a7a7e732338aeba82f96e0d4"
+  },
+  "pen-s16-plazo": {
+    "sourceId": "PENAL_MD",
+    "hash": "d1b91f1eab1dc2c00554a9f7b8465351c2392c68a897de0ff8bdb1939578d9c3"
+  },
+  "pen-s17-cualquiera": {
+    "sourceId": "PENAL_MD",
+    "hash": "966b343df8c27bd15aa98ad6256901b2f849455071dd1f72412459b411902d50"
+  },
+  "pen-s17-flagrancia": {
+    "sourceId": "PENAL_MD",
+    "hash": "23f1af3e25280187ed53c00c21acec10f5aac637578b5d12b0afc00c655df4de"
+  },
+  "pen-s18-imputacion": {
+    "sourceId": "PENAL_MD",
+    "hash": "71687de49893c001ec7600786f1e92ac5bb0e4354c0122f41be954c8ace73c66"
+  },
+  "pen-s18-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "32bee9d55754c187d1f7ef48bec25d7bb882f6c2f248e42edebe6a398181b616"
+  },
+  "pen-s19-acusacion": {
+    "sourceId": "PENAL_MD",
+    "hash": "ebe9d86562068615c03f01cb814fe01134a5d51a990d67896ec132b2520246ba"
+  },
+  "pen-s19-imputacion": {
+    "sourceId": "PENAL_MD",
+    "hash": "bb257243eb883151cbb9f1b259a7aefba1cc4da4dd30bc14f10e97970dccef08"
+  },
+  "pen-s19-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "00518990be17ad9cfdf5652890c8d56b3482e9c418d33f492600b6cf648e5f73"
+  },
+  "pen-s2-penitenciario": {
+    "sourceId": "PENAL_MD",
+    "hash": "9e80dc86dbf0ff25294dbb5bc3ffe90d812e02e1aff3bf84011314253427fb2c"
+  },
+  "pen-s2-procesal": {
+    "sourceId": "PENAL_MD",
+    "hash": "105be218dc905e620ff479665889e77cddd35778d186e02d7bd4c708dda6e372"
+  },
+  "pen-s2-sustancial": {
+    "sourceId": "PENAL_MD",
+    "hash": "fd5fcba38573178f9ec9f1c8ca7156ec2b36745772ca56c0d2d9cf1b9673a9da"
+  },
+  "pen-s20-buena": {
+    "sourceId": "PENAL_MD",
+    "hash": "83d7109dc2800412154125ce87c8f020eeaf427895e99fe5aeba75c48965d1b5"
+  },
+  "pen-s20-hjr": {
+    "sourceId": "PENAL_MD",
+    "hash": "2943c55598e0f5e702691d0adfd1d90f4d113b370daca45ae7a1e9aedae25d16"
+  },
+  "pen-s21-medida": {
+    "sourceId": "PENAL_MD",
+    "hash": "ce077d081ed5fb4b4991680e0da47cac5121746b31e56e6a8d77596c88558b83"
+  },
+  "pen-s21-requisitos": {
+    "sourceId": "PENAL_MD",
+    "hash": "b7bb04728143bca9efd8fa9b12971f2cd2e44ab631798926f071d0cf586be872"
+  },
+  "pen-s21-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "7cc15719f4c57f81b157573d4d50fb9011f1ed231ed9c783f775a2b4b1a48df5"
+  },
+  "pen-s22-acusacion": {
+    "sourceId": "PENAL_MD",
+    "hash": "78b598c770ef718d534c8951ba973765248ad353ad68559e16992f5f92e3d284"
+  },
+  "pen-s22-recuerda": {
+    "sourceId": "PENAL_MD",
+    "hash": "f73703e2ea781ed88f8a2e0d7932c3c9a919d1d72ee2059bdb7cd4af1f3074e4"
+  },
+  "pen-s23-descubrimiento": {
+    "sourceId": "PENAL_MD",
+    "hash": "82a3c6e6a1e21e8a6ff8e6c73934213b06af134bb20124691708356ba326647a"
+  },
+  "pen-s23-importancia": {
+    "sourceId": "PENAL_MD",
+    "hash": "05855e201d4fd2b91d06fe516a7f067d937c575ad2e246100254c8660da6c532"
+  },
+  "pen-s24-corta": {
+    "sourceId": "PENAL_MD",
+    "hash": "01bd9205d1e75706409d5ccd2e57b44e900e42abdec0b5b4e92c4e8bcbde5eda"
+  },
+  "pen-s24-preparatoria": {
+    "sourceId": "PENAL_MD",
+    "hash": "1856d197aa8464e23c82df91da1d0f524d84c50746e2cc0c402bde349ffe8c01"
+  },
+  "pen-s25-defensa": {
+    "sourceId": "PENAL_MD",
+    "hash": "8eb740daf6eb6995c98749efa94b1afa17f23a08a7c888615c0a657ee9ad4baa"
+  },
+  "pen-s25-teoria": {
+    "sourceId": "PENAL_MD",
+    "hash": "355e021581e69c4faa65e8dfc80fc4a60db0ad27e050a3b07fe2364e90b778c0"
+  },
+  "pen-s26-emp": {
+    "sourceId": "PENAL_MD",
+    "hash": "235ac62441d9a03623ad375b721e407b1714ca9b4a6c3ca2ad9c18670cf35aef"
+  },
+  "pen-s26-frase": {
+    "sourceId": "PENAL_MD",
+    "hash": "8d02da44dff2875812d3f6752e80b8755dea5f55b42772e423d6d304f317afd6"
+  },
+  "pen-s26-prueba": {
+    "sourceId": "PENAL_MD",
+    "hash": "b52ea11aeda28e1b6d6fd8c9e762ef81bc6c587f2f929cb439e1aff17589ef55"
+  },
+  "pen-s27-cadena": {
+    "sourceId": "PENAL_MD",
+    "hash": "3db085cb5c1f2ea07e549f31f00571898f2045ceca1546e053b8099a8fd852c4"
+  },
+  "pen-s27-falla": {
+    "sourceId": "PENAL_MD",
+    "hash": "6f6ec9e70eb7a0e7eb4482bd6d18973d9376de00c7369fc30ee41ce4ef51bc8d"
+  },
+  "pen-s28-exclusion": {
+    "sourceId": "PENAL_MD",
+    "hash": "7e23705dafad9027465abc711989800e194182cfd1fef38f9ed81777605074a5"
+  },
+  "pen-s28-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "1178f5485607f4e58e3bfc06d28ff4800c0a27dc9929706b35e34163a991635c"
+  },
+  "pen-s29-inmediacion": {
+    "sourceId": "PENAL_MD",
+    "hash": "d35bdfa391c8e28e88ebbe05d21b167023eba3e9114703aa6cd17eab8732f5d2"
+  },
+  "pen-s29-principios": {
+    "sourceId": "PENAL_MD",
+    "hash": "41c452daf9697fd84c815bb29314b84835e9fda21257e62b3308177e8a16c14c"
+  },
+  "pen-s3-antijuridicidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "6fbb7fea4a6efe307a2bd7a6b36ed6c9e7e90c0479dc34d564a787c48f6fc424"
+  },
+  "pen-s3-antijuridicidad-ejemplo": {
+    "sourceId": "PENAL_MD",
+    "hash": "b19ee0b9accd2f636ef7123d719bfa0c0787c35bb3c735112a5ff90f0a14b1e5"
+  },
+  "pen-s3-corta": {
+    "sourceId": "PENAL_MD",
+    "hash": "21218f84732f28ab15af262a237a672e0fa87aff38eff5a0688dff74629bfec8"
+  },
+  "pen-s3-culpabilidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "7bf18760402d64690818a9e01530e9cbf7d128f062ab35975f78709e1a26c89c"
+  },
+  "pen-s3-estructura": {
+    "sourceId": "PENAL_MD",
+    "hash": "544f04895aeeabf1fb910b7e43bf7f6f6f34c3ea8e956c672bda77ea4c36a79d"
+  },
+  "pen-s3-tipicidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "f5df64401b52dc06f163556ed28f56251c3c9bd51b7849dcd5429180f2aa2335"
+  },
+  "pen-s30-admisibilidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "7dad54128d8ae44c6417683daa8889c821e52c2d532bd0bda3057abcd8f2b307"
+  },
+  "pen-s30-pertinencia": {
+    "sourceId": "PENAL_MD",
+    "hash": "4ba8b8e07e913159e90881cd087873ecfd22761b0b666352b99d3a9303a762d8"
+  },
+  "pen-s31-estandar": {
+    "sourceId": "PENAL_MD",
+    "hash": "6fcdd3b1454d6f3a02a82f711d182b34cc5a6e64c278b234f14cd50ff24b0182"
+  },
+  "pen-s31-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "94597d7a69907f7efb926cc0cfa65a26ffc25cde277651a0418ba7b181a27543"
+  },
+  "pen-s32-concepto": {
+    "sourceId": "PENAL_MD",
+    "hash": "edf2085bab463848039afb23e3875b3463e1dba3a73ab871f360bb1b0c7fef9b"
+  },
+  "pen-s32-preclusion": {
+    "sourceId": "PENAL_MD",
+    "hash": "baa9fad2fae30bf798d361908d9762e685697350a2024c3764e16c6b0d604a41"
+  },
+  "pen-s33-limites": {
+    "sourceId": "PENAL_MD",
+    "hash": "a2be244edff3045a5779f3e84a3a101a91d126ef2a08c6eff58dd62872863a7f"
+  },
+  "pen-s33-oportunidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "e616f1291c30ecbe77a6805827ab435306332a2f0cf0ea940f02f9d564f67e06"
+  },
+  "pen-s34-preacuerdos": {
+    "sourceId": "PENAL_MD",
+    "hash": "bfeb0780bfe84e62b4c8bfa472bcb8b05b755a3eda93ad9e56149e6bf4c9f9f6"
+  },
+  "pen-s35-abogado": {
+    "sourceId": "PENAL_MD",
+    "hash": "4d9eadd5e0aac4143347fea56002cd6c6ad3fd553fe627b3488709fdafee27d6"
+  },
+  "pen-s35-victima": {
+    "sourceId": "PENAL_MD",
+    "hash": "1d661b7ed394ce59ba3310c8090b22106976b7164c33fe2c90758d81ef4a5ad3"
+  },
+  "pen-s36-defensa": {
+    "sourceId": "PENAL_MD",
+    "hash": "9ddee6b856ee2433055ae7dbe74186b40e8b4520baf0bb29b30ade7fd13a2476"
+  },
+  "pen-s37-habeas": {
+    "sourceId": "PENAL_MD",
+    "hash": "5bab54ff1e2d3741bf2c001886d12deeefd2afceba1b47364d380041dfc29fd4"
+  },
+  "pen-s37-plazo": {
+    "sourceId": "PENAL_MD",
+    "hash": "cc09c2f4b3082d98acacaef7a7380540335314300703f727b505526860d2f9be"
+  },
+  "pen-s37-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "20d4d78e59e46bf08c508d738598c60bfa28b3727341856040dfef5464dcf480"
+  },
+  "pen-s37-tutela": {
+    "sourceId": "PENAL_MD",
+    "hash": "25e81cc925a382e4e7892b3c1a1d45aa482da8d692211c1d822698d800d50702"
+  },
+  "pen-s38-medida": {
+    "sourceId": "PENAL_MD",
+    "hash": "9ea050b97df422c06372d9936df74e556e746ab9e57ac979f397a19d3b999c56"
+  },
+  "pen-s38-pena": {
+    "sourceId": "PENAL_MD",
+    "hash": "468ed0830c1635eef9df5bd3ae79e024a4ee5387e3a7d2ee61cbf29b178949b6"
+  },
+  "pen-s38-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "4d75ebd2a0c6cf34c0872067b62a838fc6cbe91bdf3fb7f78aa23263bde85608"
+  },
+  "pen-s39-funciones": {
+    "sourceId": "PENAL_MD",
+    "hash": "95cd94a28eb0ec400c18aa7288271930ce704eb0da54312a40f78e83bb9a5e8a"
+  },
+  "pen-s39-juez": {
+    "sourceId": "PENAL_MD",
+    "hash": "54a53ea358890d9906cc3c9f2c34d4a1e573d07306af4d5d0f4500e834719953"
+  },
+  "pen-s39-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "447d14fde8cfe788b37fda13c7d3212ea901393d63c14c83c86b4143f0685d9d"
+  },
+  "pen-s4-dignidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "e4df36675b3edf8b945ff9648c65b15aedf540e803ea388e0e44b6659257fdd6"
+  },
+  "pen-s4-favorabilidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "f1c360039a2846239ad1395ca2f5b621b47387e388dd6cc668254cb9a184cd08"
+  },
+  "pen-s4-indubio": {
+    "sourceId": "PENAL_MD",
+    "hash": "0c37e8c0469ff1239877ff737417062a8066a8275477882df8b7a7fc86e857aa"
+  },
+  "pen-s4-legalidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "83e98bcb3c9645ac90d1ee3753751be2fd62898dd787724e84b2c7980debbd97"
+  },
+  "pen-s4-presuncion": {
+    "sourceId": "PENAL_MD",
+    "hash": "c7a608ec6baa62553841a260a221f62ef89a6e54b0ceca6c8177c48b07faa20d"
+  },
+  "pen-s40-domiciliaria": {
+    "sourceId": "PENAL_MD",
+    "hash": "226985bff130dbffda890455608d36f8b943ade7d131aa8ce55f01949311d9d8"
+  },
+  "pen-s40-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "eca305edb17fcc19fb7c72ad6905f4e2a138894775609aa4ac091246212da3a8"
+  },
+  "pen-s41-suspension": {
+    "sourceId": "PENAL_MD",
+    "hash": "e54e9555520965dfe1d127c966c50823bd5da41b2b95a949fac99053060e0f2a"
+  },
+  "pen-s42-condicional": {
+    "sourceId": "PENAL_MD",
+    "hash": "1f7b48b247689641a0dd0d52caa1e8f3d3185fa8c0e2969960048af0ec04a9d6"
+  },
+  "pen-s42-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "454f5264fac372bc0b40d5a15c75142cbd23d7626a39373885df927b699c2f60"
+  },
+  "pen-s43-redencion": {
+    "sourceId": "PENAL_MD",
+    "hash": "04e5393c9a887efa841ebd20d1bcb9d84d7ac4c7fcafa39c40bd590356abb013"
+  },
+  "pen-s44-evita": {
+    "sourceId": "PENAL_MD",
+    "hash": "4f265159f434aca89493bc33312f790e42919de6c3d400eba44c4b3dab58a9de"
+  },
+  "pen-s44-extincion": {
+    "sourceId": "PENAL_MD",
+    "hash": "7f8dd2c187e6a31db32163d2d9b69335969ac5865e58ea8a63e5d64d4fec2779"
+  },
+  "pen-s44-forma": {
+    "sourceId": "PENAL_MD",
+    "hash": "ae84b98f397c98263deb53da97149e24307c0a46a2aba87e44f30b06a0e7dd08"
+  },
+  "pen-s45-calculo": {
+    "sourceId": "PENAL_MD",
+    "hash": "7efc5c9d3feb066837fdd03dca27c7b9a679b93a87f5ea977e1e8f9d76dfcf78"
+  },
+  "pen-s45-prescripcion": {
+    "sourceId": "PENAL_MD",
+    "hash": "9f6121a952be63a284f7c7b16712660876efa377d108101e4941371b0df177d7"
+  },
+  "pen-s46-nulidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "d891c7a6a591f4395787cbaf026e2326cd8b8778a413df88b4e4aa79d41a6f80"
+  },
+  "pen-s47-apelacion": {
+    "sourceId": "PENAL_MD",
+    "hash": "6c0fe8379d445cf5ff548f7523c380238652b43a0d2f1f3b2fda445138455d6c"
+  },
+  "pen-s47-recursos": {
+    "sourceId": "PENAL_MD",
+    "hash": "9963b5ae814b2c4646e820727401fb2d5f27220a1af92d2718ccf4e3b2fba459"
+  },
+  "pen-s48-cierre": {
+    "sourceId": "PENAL_MD",
+    "hash": "0b4e33fc882a7940b77be360e3357a434ec4563fd9562041eb9561fd6666d132"
+  },
+  "pen-s48-metodo": {
+    "sourceId": "PENAL_MD",
+    "hash": "c1cc43b4fb9731e6c8195599d090a3ec9027058eada3b48fa8a006cc3361b863"
+  },
+  "pen-s48-pasos": {
+    "sourceId": "PENAL_MD",
+    "hash": "c9e8e50dc512a3f6ba8a199ee1c4c5218ae8db31f7f88980fa83c2914355c5bc"
+  },
+  "pen-s48-pasos2": {
+    "sourceId": "PENAL_MD",
+    "hash": "b3027eb712ddf7ac881bb98e3838bef93d66538a8b3b1074cc8cc3d19a0c5791"
+  },
+  "pen-s49-analizar": {
+    "sourceId": "PENAL_MD",
+    "hash": "1831c23dcf8639b7f915a5d39ee96e3a99620204142aaa2beacadada6dd435c1"
+  },
+  "pen-s49-hipotesis": {
+    "sourceId": "PENAL_MD",
+    "hash": "d4fb0e5a08d67c8bf41d6fb4129c45393beff7daa5a74293ac6647b921d41c64"
+  },
+  "pen-s49-nunca": {
+    "sourceId": "PENAL_MD",
+    "hash": "9d78b81126a4a7c07685a7d9146bac568fb62a1752db6edd17ee303d7f8b208c"
+  },
+  "pen-s5-culpa": {
+    "sourceId": "PENAL_MD",
+    "hash": "adcc891cbf3f6fb4df1d11315f371fadc740c058a3cb0f9a6cb9de1c12bf4d35"
+  },
+  "pen-s5-dolo": {
+    "sourceId": "PENAL_MD",
+    "hash": "76fcd9e66d8819c16561440fd60d261e28d88d557dee78324656131ea62006cb"
+  },
+  "pen-s5-modalidades": {
+    "sourceId": "PENAL_MD",
+    "hash": "3b6cd14162277369c633f29e5f2fbba4eb866e3289c109a39b16973550ebbf4e"
+  },
+  "pen-s5-preterintencion": {
+    "sourceId": "PENAL_MD",
+    "hash": "cfce62a7c2a440c01ff0dca6ef23c76c02fc805ec3b3a39bb25a1c54bf3179b2"
+  },
+  "pen-s5-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "49a2af1d082c9c63b5cbfab31f16e34c28942ccf9d4c3eb2175e2fda8441a8a8"
+  },
+  "pen-s50-analizar": {
+    "sourceId": "PENAL_MD",
+    "hash": "13f202595146924c7619db91361019c9e2c68337a0bdc0a1569571c51a2a95e1"
+  },
+  "pen-s50-hipotesis": {
+    "sourceId": "PENAL_MD",
+    "hash": "83f07ab8441a8674d1fd7f1f477436af828bbd1cb95ebc8a2c8e4d370e1d3a9a"
+  },
+  "pen-s50-idea": {
+    "sourceId": "PENAL_MD",
+    "hash": "e84cfa37e23c1a96cdda8e965f9574cca8aefb5e9310723946a83edbe94a6ee6"
+  },
+  "pen-s51-cierre": {
+    "sourceId": "PENAL_MD",
+    "hash": "621e86ae7373ef600191f5c0592355ac146bbc41d85f6f4733740cd6fceb2798"
+  },
+  "pen-s51-hipotesis": {
+    "sourceId": "PENAL_MD",
+    "hash": "34bd0dfcaa8dbd8cf14f144000ec1107fef24c649a816dd2cb20ac84b2be1bac"
+  },
+  "pen-s51-preguntar": {
+    "sourceId": "PENAL_MD",
+    "hash": "1eb46d95ccdf62dcb48bb68ed485b09fb3e9efa8f76c405291a24629b2335101"
+  },
+  "pen-s52-hipotesis": {
+    "sourceId": "PENAL_MD",
+    "hash": "70d915db453f61f92b4991186fbf3bae1faa488040f7efa73e7de8a4c076ab8e"
+  },
+  "pen-s52-preguntar": {
+    "sourceId": "PENAL_MD",
+    "hash": "692fbfa5a86d63206e2a3ad5739ac8bf969b17910d2af4773a624861a3a32fd0"
+  },
+  "pen-s53-hipotesis": {
+    "sourceId": "PENAL_MD",
+    "hash": "1ed646fdb46e9873ca857472383ae2243baa7319bab1fa76b85e7e615a5ad283"
+  },
+  "pen-s53-revisar": {
+    "sourceId": "PENAL_MD",
+    "hash": "2c1f3e6e7a6b3860c6a0ea4c3b2d4b60188285ee50367b51f96a973e0b5b58d6"
+  },
+  "pen-s54-acusacion": {
+    "sourceId": "PENAL_MD",
+    "hash": "ff73d83ebbddcee52f2c32e1a3c3a8fb46428385011c8f0f256a3cbe024e2b6d"
+  },
+  "pen-s54-antijuridicidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "c68f1cb9eac7600d9519cfd2bcc9a9327f2d79dfaa6a84f7384faf68af8a02d8"
+  },
+  "pen-s54-cadena": {
+    "sourceId": "PENAL_MD",
+    "hash": "186d49211113585f1a668186d12be22514f29051db2271736a89b9012c3fd1d8"
+  },
+  "pen-s54-coautoria": {
+    "sourceId": "PENAL_MD",
+    "hash": "ecef0bafa85836e5c31c8a4cb23a4aa7f077714d1cdcc759555fe33e333c4fb0"
+  },
+  "pen-s54-culpa": {
+    "sourceId": "PENAL_MD",
+    "hash": "b95511668fc647a0ebf0bb3d4b82d7f24e5aa35b5c062ef45d1db7a3cb4c9204"
+  },
+  "pen-s54-culpabilidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "947a070bd81e90213dd0c5d47a6bdf735829396d5ed52e6bb9044c29b1b0c430"
+  },
+  "pen-s54-dolo": {
+    "sourceId": "PENAL_MD",
+    "hash": "2e6f1073dfaf68128f1317cdaeb385bf7acbf6843defb526f631a4055ffd7680"
+  },
+  "pen-s54-ejecucion": {
+    "sourceId": "PENAL_MD",
+    "hash": "95699cd2544482344caf002946321e477102df3d42dfef14a0b5428feb4facb8"
+  },
+  "pen-s54-estandar": {
+    "sourceId": "PENAL_MD",
+    "hash": "58c43ad9b8423cdcd181108c0a638898c3cb2a903c2b2742d21d9389531c72fb"
+  },
+  "pen-s54-flagrancia": {
+    "sourceId": "PENAL_MD",
+    "hash": "9e973e5a98dc060fdfa4a24e2cfda50b1f287ebd0e0bb46f31385b8d462da72f"
+  },
+  "pen-s54-habeas": {
+    "sourceId": "PENAL_MD",
+    "hash": "0149af0a7a8f20f286223253b6b857991ddccac1201cdb2db591fb23f6a9262c"
+  },
+  "pen-s54-imputacion": {
+    "sourceId": "PENAL_MD",
+    "hash": "80755da102890eee510de01c60cd3664d9f5f6946ebb651761f8e53a26875ee7"
+  },
+  "pen-s54-medida": {
+    "sourceId": "PENAL_MD",
+    "hash": "6f345626c7d826b8b0ddee676697e8f7e58f22146a25329b2df593ca789bd6cf"
+  },
+  "pen-s54-tentativa": {
+    "sourceId": "PENAL_MD",
+    "hash": "6ab4aeae9d6a85c77302feb70fbabfba4f7dfa6a19dfc4a7ce877233f9e28fff"
+  },
+  "pen-s54-teoria": {
+    "sourceId": "PENAL_MD",
+    "hash": "cc7fb1129f0f9e2c347a8578a9ecbb5350d0fa2315fe3553d2e4bbbc19a2af6c"
+  },
+  "pen-s54-tipicidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "678c5466bc2c6502468b2f279ee0dfaa14aa321d8733aac7dc1c2b52cffd3ac3"
+  },
+  "pen-s55-carcel": {
+    "sourceId": "PENAL_MD",
+    "hash": "996c271b316091f64d4c4f1821eccc9088878c2abe07c01d951d097bcd0fb8be"
+  },
+  "pen-s55-juzgar-ejecutar": {
+    "sourceId": "PENAL_MD",
+    "hash": "d6221e21601ffb46341cd0a4bd45f520176d61bf44fb79df8500949720435600"
+  },
+  "pen-s55-pazysalvo": {
+    "sourceId": "PENAL_MD",
+    "hash": "7e23539bb9b35be3e50d0ea051a8f65e4dcfcde513dec90e02b8d1e9fa49257e"
+  },
+  "pen-s55-que-hacias": {
+    "sourceId": "PENAL_MD",
+    "hash": "8f94cffa9f7a98b5f818a18e64c5cca31f84d1da705976a7f34793275b6379f6"
+  },
+  "pen-s56-brecha": {
+    "sourceId": "PENAL_MD",
+    "hash": "a15af136075b9d9970ef982d482f92e36894fc5205054bce2c1f6e8e239e631e"
+  },
+  "pen-s56-cierre": {
+    "sourceId": "PENAL_MD",
+    "hash": "e022df8c92b9ce2c7115f5f572f389a253666d369eb48bb1066eee0f7dcc95d0"
+  },
+  "pen-s57-cierre": {
+    "sourceId": "PENAL_MD",
+    "hash": "ba3bda9ac907a6d621cb2150a84781258168c8378f3d188758e26dd49c09d462"
+  },
+  "pen-s57-ejemplo": {
+    "sourceId": "PENAL_MD",
+    "hash": "68bc00bbd0cd47954da224153450049d733e6b6ffcd468be764d5e78de73ad73"
+  },
+  "pen-s57-patron": {
+    "sourceId": "PENAL_MD",
+    "hash": "4803637b543548be9db7030c62a5c6428020d1a8fb930624aa6edecf3f9810fb"
+  },
+  "pen-s58-aviso": {
+    "sourceId": "PENAL_MD",
+    "hash": "006947def9bc1e4fe48780e30501317959c8d12ea100747372179229c0a8498c"
+  },
+  "pen-s58-otras": {
+    "sourceId": "PENAL_MD",
+    "hash": "4bfdc8d4d749f96093cd95e1b921b42bc925080c30c9bb540c02f92f411c0dd6"
+  },
+  "pen-s58-penal": {
+    "sourceId": "PENAL_MD",
+    "hash": "602af4e42510a6c082d3dd0bbdddda7db6e23577671fea163c4cd83db4d7d48d"
+  },
+  "pen-s58-procedimiento": {
+    "sourceId": "PENAL_MD",
+    "hash": "69fa442c2f6bfb94288caf2e95a24111d68cc57c9c5a68ddaed65563c36139ce"
+  },
+  "pen-s59-captura-medida": {
+    "sourceId": "PENAL_MD",
+    "hash": "b100114cfc63a63b37482842d70a9ad6e8a4472e2ec82e6e120d08f71b1c5c2e"
+  },
+  "pen-s59-coautor-complice": {
+    "sourceId": "PENAL_MD",
+    "hash": "f8c99f47fcda388408e421813e0aa476b66d1bb77887dd5391085366a138de39"
+  },
+  "pen-s59-detencion-pena": {
+    "sourceId": "PENAL_MD",
+    "hash": "7eea4c5c7d8092aeadac17e363b0e631691cc2e1acf064c1e635835890dbc76c"
+  },
+  "pen-s59-domiciliaria-condicional": {
+    "sourceId": "PENAL_MD",
+    "hash": "f48f63189fbdb634ed2accb306d3d5d81bc8f8021b8792d1d6d058f5e43347a9"
+  },
+  "pen-s59-emp-prueba": {
+    "sourceId": "PENAL_MD",
+    "hash": "6d9815bbed991c902e658234f82cc4e798e30b0c47330f9195ace0544e1eecdc"
+  },
+  "pen-s59-habeas-tutela": {
+    "sourceId": "PENAL_MD",
+    "hash": "fdfff46a49d7f616cae3316b068f05a8cb2d80a4af4e9e403393f40925238bf8"
+  },
+  "pen-s59-imputacion-acusacion": {
+    "sourceId": "PENAL_MD",
+    "hash": "ccf4377b72b15d5cfa0b3aacff0d7a304e1c32b30cc602f793be01d8dfcf9bb2"
+  },
+  "pen-s59-preclusion-absolucion": {
+    "sourceId": "PENAL_MD",
+    "hash": "cba50f2a11b82b2845a4bed09356d234c55d49a7f83436c4e737d2a3571471ab"
+  },
+  "pen-s59-tipicidad-antijuridicidad": {
+    "sourceId": "PENAL_MD",
+    "hash": "04f71fc4844b081db0e9e58a69d27881367e96a88f21da15e85fbf6cb8e6f1ae"
+  },
+  "pen-s6-garante": {
+    "sourceId": "PENAL_MD",
+    "hash": "859698635c36c476836045408d058ebadb3282c3c4ae150d79882f737964290e"
+  },
+  "pen-s6-omision": {
+    "sourceId": "PENAL_MD",
+    "hash": "255566fbce5e1760cae03e1a9145fb98b43236bcbc5e134db4de7d305ee6bee2"
+  },
+  "pen-s6-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "09d9d6647656171ef49b4cb81800405b1c03e1b2035378bf0f1668b9ef686fd6"
+  },
+  "pen-s60-bloque1": {
+    "sourceId": "PENAL_MD",
+    "hash": "79a6f585ba57651370545944c79ee894424426f7a19a53372aa60ff29907a545"
+  },
+  "pen-s60-bloque4": {
+    "sourceId": "PENAL_MD",
+    "hash": "674c9fe5c06408a4c725482a4069735b4d065719c03c976a4a73d2cba6f711a4"
+  },
+  "pen-s62-pasos": {
+    "sourceId": "PENAL_MD",
+    "hash": "2cf582ec1bd54f5cd5456011b46a9d51058871825e604af5a2fc4800be6f3c06"
+  },
+  "pen-s62-perfil": {
+    "sourceId": "PENAL_MD",
+    "hash": "008877177aea280a31681e8fac79d4e7fa62b91d9860c25e098c67893eb32658"
+  },
+  "pen-s7-diferencia": {
+    "sourceId": "PENAL_MD",
+    "hash": "29ecc6c1ac4d5f43f36555f8c40be2436dca35770ed3bb4b78ec0f1062d63605"
+  },
+  "pen-s7-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "fb84991d9169e9b8da1451698d32b6166285d430494c5b841e8eb347c0539d62"
+  },
+  "pen-s7-tentativa": {
+    "sourceId": "PENAL_MD",
+    "hash": "3a00ba9163c15eaabb733109d6a11612018231b00aa49d99dc3c9c35eeb88257"
+  },
+  "pen-s8-autor": {
+    "sourceId": "PENAL_MD",
+    "hash": "0c7dc67e02bd3f4af4da792e1bcd1128abc699c0d6938dca7cb7148ff312c9ea"
+  },
+  "pen-s8-coautor": {
+    "sourceId": "PENAL_MD",
+    "hash": "e2a754de73125ce281c9bf69a4aeebac04636935bb7fbbb731f9c46079071b0a"
+  },
+  "pen-s8-complice": {
+    "sourceId": "PENAL_MD",
+    "hash": "728467ca310671a93b4d45087b7ce94ae0f5600afd7898388156d05ace8beffe"
+  },
+  "pen-s8-determinador": {
+    "sourceId": "PENAL_MD",
+    "hash": "38225fdad34ee6f9a923dc4d24f8062a4f9d0122dfc47b6ef3d24b931e0d4231"
+  },
+  "pen-s8-respuesta": {
+    "sourceId": "PENAL_MD",
+    "hash": "de759f3f1233d78508cb945584483894a54fad8c44b751c7b0769530987fc393"
+  },
+  "pen-s9-clave": {
+    "sourceId": "PENAL_MD",
+    "hash": "47dc064b40c3a092df360537f739df12244dd79ac10ed12e58c6aee8332d4931"
+  },
+  "pen-s9-concurso": {
+    "sourceId": "PENAL_MD",
+    "hash": "27131ee936691279dcd87f8c026016806d27c071050d009259d0e4678350dce8"
+  }
+}

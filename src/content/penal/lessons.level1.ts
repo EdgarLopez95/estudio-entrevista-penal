@@ -1,0 +1,611 @@
+import type { Lesson } from '@/domain/types';
+import { base } from '../helpers';
+
+/**
+ * Lecciones Nivel 1 de Penal. Nunca se renderiza un Markdown largo: cada lección tiene idea
+ * esencial, explicación corta, qué recordar, diferencia cuando aplica, ejemplo fuente y una
+ * comprobación inmediata de 1-3 preguntas del MISMO objetivo (contrato §7, §7.2).
+ */
+export const PENAL_LESSONS_LEVEL_1: Lesson[] = [
+  {
+    ...base(
+      {
+        id: 'L-PEN-002',
+        title: 'Conducta punible',
+        topic: 'Teoría del delito',
+        subtopic: 'Estructura',
+        track: 'penal',
+        level: 1,
+        priority: 'critical',
+        estimatedMinutes: 2,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-002',
+        difficulty: 'intro',
+        anchor: 'pen-s3-estructura',
+        tags: ['penal-esencial', 'teoría del delito'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea: 'Para que una conducta sea punible debe ser típica, antijurídica y culpable.',
+    explanation: [
+      'El artículo 9 del Código Penal establece la estructura básica de la conducta punible.',
+      'En entrevista se responde en tres pasos: primero si los hechos encajan en el tipo penal; después si lesionan o ponen en peligro el bien jurídico sin una causa de justificación; y finalmente si el hecho puede reprocharse personalmente al autor.',
+    ],
+    whatToRemember: [
+      'Tres elementos, en ese orden: tipicidad, antijuridicidad, culpabilidad',
+      'Faltando uno, la conducta no es punible',
+      'No hay responsabilidad objetiva: no basta el resultado',
+    ],
+    checkQuestionIds: ['Q-PEN-002-1', 'Q-PEN-002-2'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-003',
+        title: 'Tipicidad, antijuridicidad y culpabilidad',
+        topic: 'Teoría del delito',
+        subtopic: 'Elementos',
+        track: 'penal',
+        level: 1,
+        priority: 'critical',
+        estimatedMinutes: 5,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-003',
+        difficulty: 'media',
+        anchor: 'pen-s3-corta',
+        tags: ['penal-esencial', 'distinción'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea:
+      'Tipicidad es encaje en el tipo; antijuridicidad es lesión o puesta en peligro sin justa causa; culpabilidad es el reproche personal.',
+    explanation: [
+      'Tipicidad: la conducta encaja en la descripción que la ley penal ha definido previamente. La pregunta mental es si los hechos corresponden a los elementos de un tipo penal. No basta con que algo parezca moralmente incorrecto.',
+      'Antijuridicidad: la conducta típica debe lesionar o poner efectivamente en peligro, sin justa causa, el bien jurídicamente tutelado.',
+      'Culpabilidad: permite formular un reproche personal al autor. No hay responsabilidad objetiva.',
+    ],
+    whatToRemember: [
+      'Tipicidad = adecuación de los hechos a la descripción legal de un delito',
+      'Antijuridicidad = lesión o puesta en peligro efectiva del bien jurídico, sin justa causa',
+      'Culpabilidad = juicio de reproche personal que proscribe la responsabilidad objetiva',
+    ],
+    difference: {
+      a: 'Tipicidad',
+      b: 'Antijuridicidad',
+      distinction: 'Encaje en tipo vs. lesión sin justa causa.',
+    },
+    sourceExample:
+      'Lesionar a otro puede ser típico; pero si la conducta se realiza en una legítima defensa que reúne los requisitos legales, puede excluirse la responsabilidad.',
+    checkQuestionIds: ['Q-PEN-003-1', 'Q-PEN-003-2', 'Q-PEN-003-3'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-004',
+        title: 'Dolo, culpa y preterintención',
+        topic: 'Teoría del delito',
+        subtopic: 'Modalidades de la conducta',
+        track: 'penal',
+        level: 1,
+        priority: 'critical',
+        estimatedMinutes: 5,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-004',
+        difficulty: 'media',
+        anchor: 'pen-s5-respuesta',
+        tags: ['penal-esencial', 'dolo', 'culpa'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea:
+      'En el dolo hay conocimiento y voluntad; en la culpa el resultado viene de infringir el deber objetivo de cuidado; en la preterintención el resultado excede lo querido aunque era previsible.',
+    explanation: [
+      'El Código Penal reconoce tres modalidades de conducta: dolosa, culposa y preterintencional. La culpa y la preterintención solo son punibles cuando la ley expresamente lo establece.',
+      'Dolo: el agente conoce los hechos que constituyen la infracción y quiere su realización. También contempla el supuesto en el que la realización se prevé como probable y el agente deja su no producción librada al azar.',
+      'Culpa: el resultado es producto de la infracción al deber objetivo de cuidado y el agente debía preverlo por ser previsible, o lo previó pero confió en poder evitarlo.',
+    ],
+    whatToRemember: [
+      'Dolo = conocer + querer (incluida la previsión probable dejada al azar)',
+      'Culpa = infracción al deber objetivo de cuidado',
+      'Preterintención = resultado más grave que lo querido, aunque previsible',
+      'Culpa y preterintención solo son punibles cuando la ley lo establece expresamente',
+    ],
+    difference: {
+      a: 'Dolo',
+      b: 'Culpa',
+      distinction:
+        'En el dolo hay conocimiento y voluntad de realizar la conducta; en la culpa el resultado deriva de la infracción al deber objetivo de cuidado.',
+    },
+    sourceExample:
+      'Dolo: una persona dispara deliberadamente contra otra queriendo causarle la muerte. Culpa: un conductor incumple gravemente un deber de cuidado y causa un resultado que era previsible.',
+    checkQuestionIds: ['Q-PEN-004-1', 'Q-PEN-004-2', 'Q-PEN-004-3'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-005',
+        title: 'Tentativa',
+        topic: 'Teoría del delito',
+        subtopic: 'Consumación',
+        track: 'penal',
+        level: 1,
+        priority: 'critical',
+        estimatedMinutes: 5,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-005',
+        difficulty: 'media',
+        anchor: 'pen-s7-tentativa',
+        tags: ['penal-esencial', 'tentativa'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea:
+      'Hay tentativa cuando se inicia la ejecución con actos idóneos e inequívocamente dirigidos a consumar el delito y la consumación no ocurre por circunstancias ajenas a la voluntad del agente.',
+    explanation: [
+      'Los tres elementos son: inicio de ejecución; actos idóneos e inequívocamente dirigidos a consumar; y no consumación por circunstancias ajenas a la voluntad del agente.',
+      'La diferencia clave es que los actos preparatorios no son lo mismo que el inicio de ejecución.',
+    ],
+    whatToRemember: [
+      'Inicio de ejecución, no mera preparación',
+      'Actos idóneos e inequívocos',
+      'La no consumación debe ser por causa ajena a la voluntad del agente',
+    ],
+    difference: {
+      a: 'Actos preparatorios',
+      b: 'Inicio de ejecución',
+      distinction: 'Preparar no es todavía ejecutar: la tentativa exige superar la mera preparación.',
+    },
+    checkQuestionIds: ['Q-PEN-005-1', 'Q-PEN-005-2', 'Q-PEN-005-3'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-006',
+        title: 'Autor, coautor, determinador y cómplice',
+        topic: 'Teoría del delito',
+        subtopic: 'Autoría y participación',
+        track: 'penal',
+        level: 1,
+        priority: 'critical',
+        estimatedMinutes: 5,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-006',
+        difficulty: 'media',
+        anchor: 'pen-s8-respuesta',
+        tags: ['penal-esencial', 'autoría', 'participación'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea:
+      'El coautor interviene en la ejecución dentro de un acuerdo común con aporte relevante; el cómplice contribuye a una conducta ajena.',
+    explanation: [
+      'Autor: realiza la conducta punible por sí mismo o utilizando a otro como instrumento, según la modalidad correspondiente.',
+      'Coautor: existe acuerdo común y división del trabajo criminal con un aporte relevante a la realización.',
+      'Determinador: induce o determina a otro a realizar la conducta antijurídica.',
+      'Cómplice: contribuye a la realización de la conducta o presta una ayuda posterior cuando existe concierto previo o concomitante.',
+    ],
+    whatToRemember: [
+      'Coautoría = realización conjunta con acuerdo común y división del trabajo relevante',
+      'El cómplice contribuye a la conducta ajena sin ocupar la posición de coautor',
+      'La calificación depende del papel concreto que tuvo en el hecho',
+    ],
+    difference: {
+      a: 'Coautor',
+      b: 'Cómplice',
+      distinction: 'El primero integra la ejecución conjunta; el segundo contribuye a una conducta ajena.',
+    },
+    checkQuestionIds: ['Q-PEN-006-1', 'Q-PEN-006-2', 'Q-PEN-006-3'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-007',
+        title: 'Mapa del proceso penal acusatorio',
+        topic: 'Proceso penal',
+        subtopic: 'Etapas',
+        track: 'penal',
+        level: 1,
+        priority: 'critical',
+        estimatedMinutes: 5,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-007',
+        difficulty: 'intro',
+        anchor: 'pen-s12-formula',
+        tags: ['penal-esencial', 'proceso'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea:
+      'Noticia criminal → indagación → imputación → investigación → acusación → preparatoria → juicio oral → sentencia → ejecución.',
+    explanation: [
+      'Investigación: la indagación comienza con la noticia criminal; la imputación marca el paso a la investigación propiamente dicha; después la Fiscalía decide si acusa o gestiona una salida procesal.',
+      'Juicio: comienza con la acusación y comprende escrito y audiencia de formulación de acusación, descubrimiento probatorio, audiencia preparatoria, juicio oral, sentido del fallo y sentencia, recursos, ejecutoria y ejecución de la pena cuando hay condena.',
+    ],
+    whatToRemember: [
+      'La indagación comienza con la noticia criminal',
+      'La imputación marca el paso a la investigación propiamente dicha',
+      'El juicio comienza con la acusación',
+      'La ejecución de la pena solo existe cuando hay condena',
+    ],
+    checkQuestionIds: ['Q-PEN-007-1', 'Q-PEN-007-2'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-008',
+        title: 'Juez de control de garantías y juez de conocimiento',
+        topic: 'Proceso penal',
+        subtopic: 'Jueces',
+        track: 'penal',
+        level: 1,
+        priority: 'critical',
+        estimatedMinutes: 5,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-008',
+        difficulty: 'media',
+        anchor: 'pen-s15-corta',
+        tags: ['penal-esencial', 'jueces', 'distinción'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea:
+      'El juez de garantías controla la afectación de derechos fundamentales en etapas preliminares; el de conocimiento conduce el juzgamiento y decide sobre responsabilidad.',
+    explanation: [
+      'El juez de control de garantías interviene para proteger derechos fundamentales durante indagación e investigación: control de legalidad de captura, medidas de aseguramiento, controles sobre actuaciones de investigación, audiencias preliminares y formulación de imputación. No decide la responsabilidad final del acusado en ese mismo caso.',
+      'El juez de conocimiento dirige la etapa de juzgamiento: acusación, preparatoria, juicio oral, valoración de la prueba y sentencia.',
+    ],
+    whatToRemember: [
+      'Garantías: derechos fundamentales en etapas preliminares',
+      'Garantías no decide la responsabilidad final en ese mismo caso',
+      'Conocimiento: juzgamiento y sentencia a partir de la prueba practicada en juicio',
+    ],
+    difference: {
+      a: 'Juez de control de garantías',
+      b: 'Juez de conocimiento',
+      distinction:
+        'Controlar la afectación de derechos en etapas preliminares vs. conducir el juzgamiento y decidir responsabilidad.',
+    },
+    checkQuestionIds: ['Q-PEN-008-1', 'Q-PEN-008-2'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-009',
+        title: 'Captura y flagrancia',
+        topic: 'Proceso penal',
+        subtopic: 'Libertad y captura',
+        track: 'penal',
+        level: 1,
+        priority: 'critical',
+        estimatedMinutes: 5,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-009',
+        difficulty: 'media',
+        anchor: 'pen-s17-flagrancia',
+        tags: ['penal-esencial', 'captura', 'flagrancia'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea:
+      'Como regla general la captura exige orden escrita de juez de control de garantías, salvo excepciones legales como la flagrancia.',
+    explanation: [
+      'La persona capturada debe ser puesta a disposición de un juez de control de garantías dentro del plazo constitucional y legal correspondiente, que en el Código aparece como máximo de 36 horas, para control de legalidad y decisiones posteriores.',
+      'Hay flagrancia, en términos generales, cuando la persona es sorprendida durante la comisión; es individualizada durante la comisión y aprehendida inmediatamente después; o es encontrada inmediatamente después con objetos, instrumentos o huellas que permiten inferir fundadamente su participación, además de otros supuestos del artículo 301 de la Ley 906.',
+    ],
+    whatToRemember: [
+      'Regla general: orden escrita de juez de control de garantías',
+      'Excepción legal: flagrancia',
+      'Máximo de 36 horas para poner a disposición del juez',
+      'Cualquier persona puede aprehender en flagrancia, pero debe entregar inmediatamente a la autoridad',
+    ],
+    difference: {
+      a: 'Captura',
+      b: 'Medida de aseguramiento',
+      distinction:
+        'La captura es aprehensión; la medida es una decisión cautelar posterior con requisitos propios.',
+    },
+    checkQuestionIds: ['Q-PEN-009-1', 'Q-PEN-009-2', 'Q-PEN-009-3'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-010',
+        title: 'Imputación y acusación',
+        topic: 'Proceso penal',
+        subtopic: 'Actos de la Fiscalía',
+        track: 'penal',
+        level: 1,
+        priority: 'critical',
+        estimatedMinutes: 5,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-010',
+        difficulty: 'media',
+        anchor: 'pen-s19-respuesta',
+        tags: ['penal-esencial', 'imputación', 'acusación', 'distinción'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea:
+      'La imputación es un acto de comunicación que vincula formalmente al imputado a la investigación; la acusación es la decisión de llevar el caso a juicio.',
+    explanation: [
+      'La imputación ocurre ante juez de control de garantías, comunica los hechos jurídicamente relevantes atribuidos, marca una fase de investigación y no es todavía el juicio. No equivale a una condena: mantiene la presunción de inocencia.',
+      'La acusación se presenta ante el juez competente para el juzgamiento y exige un nivel superior de soporte: la Fiscalía debe poder afirmar con probabilidad de verdad que la conducta existió y que el imputado es autor o partícipe.',
+    ],
+    whatToRemember: [
+      'Imputación = comunicación formal de hechos jurídicamente relevantes y de la calidad de imputado',
+      'Acusación = llevar el caso a juicio con probabilidad de verdad',
+      'La imputación no demuestra culpabilidad',
+    ],
+    difference: {
+      a: 'Imputación',
+      b: 'Acusación',
+      distinction: 'La primera comunica vinculación; la segunda lleva el asunto a juicio.',
+    },
+    checkQuestionIds: ['Q-PEN-010-1', 'Q-PEN-010-2', 'Q-PEN-010-3'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-011',
+        title: 'Medida de aseguramiento',
+        topic: 'Proceso penal',
+        subtopic: 'Medidas cautelares',
+        track: 'penal',
+        level: 1,
+        priority: 'critical',
+        estimatedMinutes: 5,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-011',
+        difficulty: 'media',
+        anchor: 'pen-s21-requisitos',
+        tags: ['penal-esencial', 'medida de aseguramiento'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea: 'La medida de aseguramiento no es una pena anticipada: es cautelar y tiene requisitos propios.',
+    explanation: [
+      'El artículo 308 de la Ley 906 exige inferencia razonable de autoría o participación con base en elementos obtenidos legalmente, y además una finalidad constitucional o procesal: evitar obstrucción de la justicia, proteger a la sociedad o a la víctima, o asegurar comparecencia o cumplimiento.',
+      'La detención preventiva intramural tiene requisitos específicos de procedencia.',
+      'Imputación y medida de aseguramiento son decisiones distintas: la restricción de la libertad exige solicitud, fundamento y cumplimiento de requisitos ante el juez de control de garantías.',
+    ],
+    whatToRemember: [
+      'Inferencia razonable de autoría o participación con elementos obtenidos legalmente',
+      'Una finalidad cautelar concreta: obstrucción, protección o comparecencia',
+      'No supone culpabilidad; debe cumplir necesidad y proporcionalidad',
+      'Imputar no es automáticamente privar de la libertad',
+    ],
+    difference: {
+      a: 'Detención preventiva',
+      b: 'Pena',
+      distinction: 'La primera es cautelar; la segunda surge de condena.',
+    },
+    checkQuestionIds: ['Q-PEN-011-1', 'Q-PEN-011-2', 'Q-PEN-011-3'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-012',
+        title: 'Teoría del caso',
+        topic: 'Juicio',
+        subtopic: 'Estrategia',
+        track: 'penal',
+        level: 1,
+        priority: 'high',
+        estimatedMinutes: 2,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-012',
+        difficulty: 'intro',
+        anchor: 'pen-s25-teoria',
+        tags: ['penal-esencial', 'teoría del caso'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea:
+      'Es la explicación coherente del caso que integra hechos, derecho y prueba.',
+    explanation: [
+      'Debe responder tres preguntas: qué ocurrió; por qué jurídicamente significa lo que se sostiene; y con qué prueba se puede demostrar.',
+      'La Fiscalía busca demostrar delito y responsabilidad. La defensa puede controvertir la ocurrencia, discutir autoría o participación, cuestionar tipicidad o culpabilidad, cuestionar legalidad o suficiencia probatoria y generar duda razonable.',
+    ],
+    whatToRemember: [
+      'Integra hechos + derecho + prueba',
+      'Responde qué ocurrió, qué significa jurídicamente y con qué se prueba',
+      'En juicio la Fiscalía debe presentar teoría del caso; la defensa puede presentar la suya',
+    ],
+    checkQuestionIds: ['Q-PEN-012-1', 'Q-PEN-012-2'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-013',
+        title: 'Estándar para condenar',
+        topic: 'Juicio',
+        subtopic: 'Estándar probatorio',
+        track: 'penal',
+        level: 1,
+        priority: 'critical',
+        estimatedMinutes: 2,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-013',
+        difficulty: 'media',
+        anchor: 'pen-s31-estandar',
+        tags: ['penal-esencial', 'estándar'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea:
+      'Para condenar se requiere conocimiento más allá de toda duda razonable, fundado en las pruebas debatidas en juicio.',
+    explanation: [
+      'El artículo 381 de la Ley 906 exige ese conocimiento sobre la existencia del delito y la responsabilidad penal del acusado.',
+      'La probabilidad de verdad es el estándar para presentar acusación, no para condenar.',
+    ],
+    whatToRemember: [
+      'Condena: más allá de toda duda razonable',
+      'Acusación: probabilidad de verdad',
+      'Debe fundarse en prueba debatida en juicio',
+    ],
+    difference: {
+      a: 'Probabilidad de verdad',
+      b: 'Más allá de toda duda razonable',
+      distinction: 'La primera permite acusar; la segunda es la única que permite condenar.',
+    },
+    checkQuestionIds: ['Q-PEN-013-1', 'Q-PEN-013-2'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-014',
+        title: 'Hábeas corpus',
+        topic: 'Garantías',
+        subtopic: 'Libertad personal',
+        track: 'penal',
+        level: 1,
+        priority: 'critical',
+        estimatedMinutes: 5,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-014',
+        difficulty: 'media',
+        anchor: 'pen-s37-habeas',
+        tags: ['penal-esencial', 'hábeas corpus', 'fortaleza'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea:
+      'Derecho fundamental y acción constitucional que protege la libertad personal frente a privación ilegal o prolongación ilegal.',
+    explanation: [
+      'La Ley 1095 de 2006 lo define como derecho fundamental y acción constitucional que protege la libertad personal cuando alguien es privado de ella con violación de garantías constitucionales o legales, o cuando la privación se prolonga ilegalmente.',
+      'La Constitución exige decisión dentro de 36 horas.',
+      'La tutela es un mecanismo general de protección de derechos fundamentales; el hábeas corpus es el mecanismo específico y preferente para la libertad.',
+    ],
+    whatToRemember: [
+      'Dos supuestos: privación con violación de garantías o prolongación ilegal',
+      'Decisión dentro de 36 horas',
+      'Es específico y preferente frente a la tutela para proteger la libertad',
+    ],
+    difference: {
+      a: 'Hábeas corpus',
+      b: 'Tutela',
+      distinction:
+        'El primero protege específicamente la libertad frente a privación ilegal o prolongada.',
+    },
+    checkQuestionIds: ['Q-PEN-014-1', 'Q-PEN-014-2', 'Q-PEN-014-3'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-015',
+        title: 'Juez de Ejecución de Penas y Medidas de Seguridad',
+        topic: 'Ejecución de penas',
+        subtopic: 'Competencia',
+        track: 'penal',
+        level: 1,
+        priority: 'critical',
+        estimatedMinutes: 5,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-015',
+        difficulty: 'media',
+        anchor: 'pen-s39-funciones',
+        tags: ['penal-esencial', 'ejecución', 'fortaleza'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea:
+      'Controla la legalidad de la ejecución de una sentencia en firme; no vuelve a juzgar el delito.',
+    explanation: [
+      'La Ley 65 de 1993 señala que estos jueces garantizan la legalidad de la ejecución de la sanción penal.',
+      'Entre sus funciones hay asuntos relacionados con condiciones de ejecución, libertad posterior a sentencia, redención, beneficios y mecanismos sustitutivos cuando correspondan, acumulación jurídica de penas, aplicación de favorabilidad, extinción de la condena y peticiones de internos relacionadas con derechos que afecten la ejecución de la pena.',
+    ],
+    whatToRemember: [
+      'Parte de una sentencia ya ejecutoriada',
+      'Controla legalidad del cumplimiento, no la responsabilidad',
+      'Reconoce redención y resuelve mecanismos sustitutivos cuando proceden',
+    ],
+    difference: {
+      a: 'Juzgar',
+      b: 'Ejecutar la pena',
+      distinction:
+        'El juez de conocimiento determina responsabilidad e impone sanción; el de ejecución controla la legalidad del cumplimiento.',
+    },
+    checkQuestionIds: ['Q-PEN-015-1', 'Q-PEN-015-2'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-016',
+        title: 'Libertad condicional y redención',
+        topic: 'Ejecución de penas',
+        subtopic: 'Mecanismos',
+        track: 'penal',
+        level: 1,
+        priority: 'critical',
+        estimatedMinutes: 5,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-016',
+        difficulty: 'media',
+        anchor: 'pen-s42-condicional',
+        tags: ['penal-esencial', 'libertad condicional', 'redención'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea:
+      'Cumplir las 3/5 partes de la pena es un requisito importante de la libertad condicional, pero no el único.',
+    explanation: [
+      'El artículo 64 del Código Penal exige, entre otros elementos, haber cumplido 3/5 partes de la pena; adecuado desempeño y comportamiento durante el tratamiento penitenciario; arraigo familiar y social; además de los requisitos relacionados con reparación o garantía, salvo los supuestos legales. El juez realiza valoración de la conducta punible y demás elementos exigidos.',
+      'La redención permite redimir parte de la pena mediante actividades reconocidas legalmente, como trabajo, estudio o enseñanza, sujetas a certificación y evaluación. El juez de ejecución reconoce la redención al verificar los requisitos.',
+    ],
+    whatToRemember: [
+      'Las 3/5 partes no dan libertad automática',
+      'También se valoran comportamiento, arraigo y reparación o garantía',
+      'La redención exige actividades reconocidas, certificación y evaluación',
+    ],
+    checkQuestionIds: ['Q-PEN-016-1', 'Q-PEN-016-2', 'Q-PEN-016-3'],
+  },
+  {
+    ...base(
+      {
+        id: 'L-PEN-017',
+        title: 'Método para razonar una respuesta que no recuerdas',
+        topic: 'Método',
+        subtopic: 'Criterio jurídico',
+        track: 'penal',
+        level: 1,
+        priority: 'high',
+        estimatedMinutes: 5,
+        stage: 'technical',
+        objectiveId: 'LO-PEN-017',
+        difficulty: 'intro',
+        anchor: 'pen-s57-patron',
+        tags: ['penal-esencial', 'método'],
+      },
+      'lesson',
+    ),
+    type: 'lesson',
+    essentialIdea: 'Concepto → requisito → finalidad → aplicación al caso.',
+    explanation: [
+      'Ese patrón demuestra criterio jurídico aunque no se recuerde el artículo.',
+      'Para un caso hipotético el método es más amplio: hechos; tipo penal posible; intervención; modalidad subjetiva; consumación; exclusiones; prueba; estado procesal; y petición concreta.',
+      'Este método vale más que memorizar cincuenta artículos.',
+    ],
+    whatToRemember: [
+      'Empezar por el concepto que sí se domina',
+      'Nombrar requisitos y finalidad antes de aplicar',
+      'Cerrar diciendo cómo se verificaría la norma vigente',
+      'No improvisar números de artículo',
+    ],
+    checkQuestionIds: [],
+  },
+];

@@ -1,0 +1,764 @@
+import { useMemo, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import {
+  Badge,
+  Button,
+  Card,
+  EmptyState,
+  LinkButton,
+  Minutes,
+  Notice,
+  SectionHeading,
+  SegmentedMeter,
+} from '@/components/primitives';
+import { CaseView, ChecklistView } from '@/components/practice';
+import { useProgress, useStore } from '@/state/StoreProvider';
+import { CASES, CHECKLIST_RESOURCES, getResource } from '@/content';
+import { CASE_PRIORITY_ORDER, LEGAL_NOTICE } from '@/content/penal/cases';
+import { getObjective } from '@/content/objectives';
+import { GAP_LABEL, activeErrors, orderErrors } from '@/domain/errors';
+import { buildSession } from '@/domain/sessionBuilder';
+import {
+  coreReadinessCrossTrack,
+  coreReadinessInterview,
+  coreReadinessPenal,
+  depthReadiness,
+  extendedReadiness,
+  penalEssentialReadiness,
+  preparationIndex,
+  top10Readiness,
+} from '@/domain/readiness';
+import { MOCK_BLUEPRINTS } from '@/domain/blueprints';
+import { SOURCE_MANIFEST } from '@/content/sources/traceability';
+import { STORAGE_KEY } from '@/storage/repository';
+import { TIME_BUDGET_OPTIONS, interviewPhase, phaseLabel } from '@/domain/time';
+import type { MockProfile } from '@/domain/types';
+
+/* --------------------------------------------------------------- Mis errores */
+
+export function ErrorsScreen() {
+  const progress = useProgress();
+  const store = useStore();
+  const navigate = useNavigate();
+  const [includeDeepening, setIncludeDeepening] = useState(false);
+
+  const ordered = useMemo(
+    () => orderErrors(activeErrors(progress), { includeDeepening }),
+    [progress, includeDeepening],
+  );
+
+  function practiceErrors() {
+    const built = buildSession({
+      state: progress,
+      mode: 'errors',
+      timeBudget: progress.preferences.lastTimeBudget,
+    });
+    if (built.items.length === 0) return;
+    store.startSession(built);
+    navigate('/sesion');
+  }
+
+  return (
+    <div className="stack-6">
+      <header className="stack-3">
+        <p className="eyebrow">Corrección sostenida</p>
+        <h1>Mis errores</h1>
+        <p className="reading">
+          Acertar una vez no borra un error: hace falta volver a acertarlo en otro intento. Primero
+          aparece lo crítico de Nivel 1.
+        </p>
+        <div className="row">
+          <Button variant="primary" onClick={practiceErrors} disabled={ordered.length === 0}>
+            Repasar errores · <Minutes value={10} />
+          </Button>
+          <Button onClick={() => setIncludeDeepening((value) => !value)}>
+            {includeDeepening ? 'Ocultar Nivel 3' : 'Incluir Nivel 3 (profundizar)'}
+          </Button>
+        </div>
+      </header>
+
+      {ordered.length === 0 ? (
+        <EmptyState
+          title="No hay errores activos"
+          description="Cuando falles una pregunta, dudes en una flashcard o una respuesta quede parcial, aparecerá aquí."
+        />
+      ) : (
+        <ul className="item-list">
+          {ordered.map((error) => {
+            const resource = getResource(error.resourceId);
+            const objective = getObjective(error.objectiveId);
+            const href =
+              resource?.type === 'interview-prompt'
+                ? `/entrevista/prompt/${resource.id}`
+                : resource?.type === 'lesson'
+                  ? `/penal/leccion/${resource.id}`
+                  : resource?.type === 'case'
+                    ? `/casos/${resource.id}`
+                    : null;
+            const body = (
+              <>
+                <span>
+                  <span className="item-row__title">{error.title}</span>
+                  <span className="item-row__meta">
+                    {GAP_LABEL[error.kind]} · {objective?.title ?? error.topic} · intentos{' '}
+                    {error.attempts} · aciertos posteriores {error.laterCorrect}
+                  </span>
+                  {error.lastResponse ? (
+                    <span className="item-row__meta">Tu respuesta: {error.lastResponse}</span>
+                  ) : null}
+                </span>
+                <Badge tone={error.status === 'active' ? 'error' : 'warning'}>
+                  {error.status === 'active' ? 'Activo' : 'Mejorando'}
+                </Badge>
+              </>
+            );
+            return (
+              <li key={error.id}>
+                {href ? (
+                  <Link className="item-row" to={href}>
+                    {body}
+                  </Link>
+                ) : (
+                  <div className="item-row">{body}</div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ Progreso */
+
+export function ProgressScreen() {
+  const progress = useProgress();
+  const interview = useMemo(() => coreReadinessInterview(progress), [progress]);
+  const penal = useMemo(() => coreReadinessPenal(progress), [progress]);
+  const cross = useMemo(() => coreReadinessCrossTrack(progress), [progress]);
+  const extended = useMemo(() => extendedReadiness(progress), [progress]);
+  const depth = useMemo(() => depthReadiness(progress), [progress]);
+  const index = useMemo(() => preparationIndex(progress), [progress]);
+  const top10 = useMemo(() => top10Readiness(progress), [progress]);
+  const penalEssential = useMemo(() => penalEssentialReadiness(progress), [progress]);
+
+  return (
+    <div className="stack-8">
+      <header className="stack-3">
+        <p className="eyebrow">Evidencia, no visitas</p>
+        <h1>Progreso</h1>
+        <p className="reading">
+          Los indicadores principales son Core Readiness de Entrevista y de Penal, calculados solo
+          con Nivel 1. Nivel 3 y Referencia nunca los reducen.
+        </p>
+      </header>
+
+      <Card className="stack-6">
+        <SegmentedMeter
+          name="Core Readiness — Entrevista"
+          track="interview"
+          statuses={interview.statuses}
+          counterLabel={`${interview.percent}% · ${interview.mastered} dominados de ${interview.total}`}
+        />
+        <SegmentedMeter
+          name="Core Readiness — Penal"
+          track="penal"
+          statuses={penal.statuses}
+          counterLabel={`${penal.percent}% · ${penal.mastered} dominados de ${penal.total}`}
+        />
+        <SegmentedMeter
+          name="Cross-track"
+          track="cross-track"
+          statuses={cross.statuses}
+          counterLabel={`${cross.percent}% · ${cross.mastered} dominados de ${cross.total}`}
+        />
+      </Card>
+
+      <section className="stack-3">
+        <SectionHeading eyebrow="Question Readiness" title="Cobertura por objetivo" />
+        <div className="result-grid">
+          <Card className="stack-2">
+            <p className="eyebrow">Top 10 — Primera entrevista</p>
+            <p className="mono">
+              {top10.practiced}/{top10.total} practicadas · {top10.good} bien ·{' '}
+              {top10.toReinforce} por reforzar · {top10.unpracticed} sin practicar
+            </p>
+          </Card>
+          <Card className="stack-2">
+            <p className="eyebrow">Penal esencial</p>
+            <p className="mono">
+              {penalEssential.covered}/{penalEssential.total} cubiertos ·{' '}
+              {penalEssential.mastered} dominados · {penalEssential.needsReview} por repasar ·{' '}
+              {penalEssential.notEvaluated} no evaluados
+            </p>
+          </Card>
+        </div>
+      </section>
+
+      <section className="stack-3">
+        <SectionHeading eyebrow="Secundario" title="Índice de preparación" />
+        <Card variant="quiet" className="stack-3">
+          <p className="stat__value">{index.percent}%</p>
+          <p className="caption">
+            Indicador de entrenamiento, no una nota profesional ni una predicción. Se compone de{' '}
+            {Math.round(index.weights.interview * 100)}% entrevista ({index.interviewPercent}%) y{' '}
+            {Math.round(index.weights.penal * 100)}% Penal técnico ({index.penalPercent}%).
+          </p>
+          <p className="caption">
+            Extended Readiness (Nivel 1+2): {extended.percent}% · Depth (Nivel 3): {depth.percent}%
+          </p>
+        </Card>
+      </section>
+
+      <section className="stack-3">
+        <SectionHeading eyebrow="Historial" title="Sesiones recientes" />
+        {progress.sessions.length === 0 ? (
+          <EmptyState title="Todavía no has cerrado ninguna sesión" />
+        ) : (
+          <ul className="item-list">
+            {[...progress.sessions]
+              .reverse()
+              .slice(0, 10)
+              .map((session) => (
+                <li key={session.sessionId} className="item-row">
+                  <span>
+                    <span className="item-row__title">{session.label}</span>
+                    <span className="item-row__meta">
+                      {new Date(session.completedAt).toLocaleString('es-CO')} ·{' '}
+                      {session.answeredCount}/{session.itemCount} actividades ·{' '}
+                      {session.objectiveIds.length} objetivos
+                    </span>
+                  </span>
+                  <Badge tone="quiet">
+                    {session.timeBudget === 'full' ? 'completa' : `${session.timeBudget} min`}
+                  </Badge>
+                </li>
+              ))}
+          </ul>
+        )}
+      </section>
+
+      <Notice>
+        Este progreso vive solo en este navegador. Si estudias también en el móvil, ese avance será
+        independiente: no hay sincronización entre dispositivos.
+      </Notice>
+    </div>
+  );
+}
+
+/* --------------------------------------------------------------------- Casos */
+
+export function CasesScreen() {
+  const progress = useProgress();
+  const ordered = useMemo(() => {
+    const byId = new Map(CASES.map((c) => [c.id, c]));
+    const priority = CASE_PRIORITY_ORDER.map((id) => byId.get(id)).filter(Boolean);
+    const rest = CASES.filter((c) => !CASE_PRIORITY_ORDER.includes(c.id));
+    return [...priority, ...rest] as typeof CASES;
+  }, []);
+
+  const visible = ordered.filter(
+    (c) => c.level === 1 || progress.preferences.includeLevel2 || c.level === 2,
+  );
+
+  return (
+    <div className="stack-6">
+      <header className="stack-3">
+        <p className="eyebrow">Análisis por elementos</p>
+        <h1>Casos</h1>
+        <p className="reading">
+          Los casos son abiertos: se analizan por elementos y no se marcan correctos ni incorrectos.
+          Nunca se finge una sentencia.
+        </p>
+      </header>
+
+      <Notice>
+        En modo Primera entrevista los casos van después de los fundamentos y del frente de
+        entrevista: no desplazan Nivel 1.
+      </Notice>
+
+      <ul className="item-list">
+        {visible.map((caseResource) => (
+          <li key={caseResource.id}>
+            <Link className="item-row" to={`/casos/${caseResource.id}`}>
+              <span>
+                <span className="item-row__title">{caseResource.title}</span>
+                <span className="item-row__meta">
+                  {caseResource.subtopic} · {caseResource.steps.length} pasos ·{' '}
+                  {caseResource.estimatedMinutes} min
+                </span>
+              </span>
+              <Badge tone={caseResource.level === 1 ? 'critical' : 'quiet'}>
+                {caseResource.level === 1 ? 'Nivel 1' : `Nivel ${caseResource.level}`}
+              </Badge>
+            </Link>
+          </li>
+        ))}
+      </ul>
+
+      <Card variant="quiet" className="stack-2">
+        <Badge tone="quiet">Aviso</Badge>
+        <p className="caption">{LEGAL_NOTICE.sourceExcerpt}</p>
+      </Card>
+    </div>
+  );
+}
+
+export function CaseDetailScreen() {
+  const { caseId } = useParams();
+  const store = useStore();
+  const [checked, setChecked] = useState<Record<string, string[]>>({});
+  const resource = caseId ? getResource(caseId) : undefined;
+
+  if (!resource || resource.type !== 'case') {
+    return (
+      <EmptyState
+        title="Ese caso no está disponible"
+        action={<LinkButton to="/casos" variant="primary">Volver a Casos</LinkButton>}
+      />
+    );
+  }
+
+  const expectedTotal = resource.steps.reduce(
+    (total, step) => total + (step.elementsToConsider?.length ?? 0),
+    0,
+  );
+
+  return (
+    <div className="stack-6">
+      <Link className="btn btn--tertiary" to="/casos">
+        ← Casos
+      </Link>
+      <CaseView
+        caseResource={resource}
+        checked={checked}
+        onToggle={(stepId, elementId) =>
+          setChecked((current) => {
+            const list = current[stepId] ?? [];
+            return {
+              ...current,
+              [stepId]: list.includes(elementId)
+                ? list.filter((id) => id !== elementId)
+                : [...list, elementId],
+            };
+          })
+        }
+        onComplete={() =>
+          store.recordCaseStep(resource.id, checked, { expectedTotal, completed: true })
+        }
+      />
+    </div>
+  );
+}
+
+/* ----------------------------------------------------------------- Simulacro */
+
+export function MockScreen() {
+  const progress = useProgress();
+  const store = useStore();
+  const navigate = useNavigate();
+
+  function start(profile: MockProfile) {
+    if (profile === 'full') return;
+    const built = buildSession({
+      state: progress,
+      mode: profile === 'quick' ? 'mock-quick' : 'mock-standard',
+      timeBudget: profile === 'quick' ? 10 : 30,
+    });
+    store.startSession(built, { mockProfile: profile });
+    navigate('/sesion');
+  }
+
+  return (
+    <div className="stack-6">
+      <header className="stack-3">
+        <p className="eyebrow">Entrenamiento</p>
+        <h1>Simulacro</h1>
+        <p className="reading">
+          Son perfiles de entrenamiento, no una predicción de lo que preguntará el entrevistador. El
+          resultado se muestra separado: conocimiento Penal, casos, preparación de entrevista y
+          errores prioritarios.
+        </p>
+      </header>
+
+      <div className="grid-2">
+        {(['quick', 'standard'] as MockProfile[]).map((profile) => {
+          const blueprint = MOCK_BLUEPRINTS[profile];
+          return (
+            <Card key={profile} className="stack-3">
+              <div className="stack-2">
+                <p className="eyebrow">~{blueprint.approximateMinutes} min</p>
+                <h2>{blueprint.label}</h2>
+                <p className="caption">{blueprint.description}</p>
+              </div>
+              <Button variant="primary" onClick={() => start(profile)}>
+                Empezar {blueprint.label}
+              </Button>
+            </Card>
+          );
+        })}
+      </div>
+
+      <Card variant="quiet" className="stack-2">
+        <h2>{MOCK_BLUEPRINTS.full.label}</h2>
+        <p className="caption">{MOCK_BLUEPRINTS.full.description}</p>
+        <Badge tone="quiet">Requiere solicitud explícita · no está en P0</Badge>
+      </Card>
+
+      {progress.mocks.length > 0 ? (
+        <section className="stack-3">
+          <SectionHeading eyebrow="Historial" title="Simulacros anteriores" />
+          <ul className="item-list">
+            {[...progress.mocks].reverse().map((mock) => (
+              <li key={mock.id} className="item-row">
+                <span>
+                  <span className="item-row__title">{MOCK_BLUEPRINTS[mock.profile].label}</span>
+                  <span className="item-row__meta">
+                    {new Date(mock.at).toLocaleString('es-CO')} · Penal {mock.penal.correct}/
+                    {mock.penal.answered} · Entrevista {mock.interview.covered}/
+                    {mock.interview.possible}
+                  </span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------ Repaso antes de salir */
+
+export function ExitReviewScreen() {
+  const progress = useProgress();
+  const store = useStore();
+  const navigate = useNavigate();
+
+  const built = useMemo(
+    () => buildSession({ state: progress, mode: 'exit-review', timeBudget: 20 }),
+    [progress],
+  );
+
+  function start() {
+    store.startSession(built);
+    navigate('/sesion');
+  }
+
+  return (
+    <div className="stack-6">
+      <header className="stack-3">
+        <p className="eyebrow">Antes de salir</p>
+        <h1>Repaso antes de salir</h1>
+        <p className="reading">
+          Preguntas personales difíciles, dos STAR, Penal esencial, tus errores críticos recientes,
+          salario, disponibilidad y las preguntas que harás al despacho. Sin temas nuevos, sin Nivel
+          3 y sin casos extensos.
+        </p>
+        <Button variant="primary" onClick={start}>
+          Empezar repaso · {built.items.length} actividades
+        </Button>
+      </header>
+
+      <ol className="plan">
+        {built.items
+          .filter((item) => getResource(item.resourceId)?.type !== 'checklist')
+          .map((item, index) => {
+            const resource = getResource(item.resourceId);
+            if (!resource) return null;
+            return (
+              <li key={item.resourceId} className="plan__item">
+                <span className="plan__index" aria-hidden="true">
+                  {index + 1}
+                </span>
+                <span className="plan__label">
+                  <strong>
+                    {resource.type === 'interview-prompt' ? resource.prompt : resource.title}
+                  </strong>
+                  <span className="item-row__meta">{resource.topic}</span>
+                </span>
+                <span className="plan__minutes">{resource.estimatedMinutes} min</span>
+              </li>
+            );
+          })}
+      </ol>
+      <p className="caption">
+        Al final del repaso aparecen las listas rápidas: lo que no conviene decir, frases para ganar
+        un segundo y tus preguntas al despacho.
+      </p>
+
+      <section className="stack-3">
+        <SectionHeading eyebrow="Recordatorios" title="Listas rápidas" />
+        {CHECKLIST_RESOURCES.filter((c) => c.level !== 'reference').map((checklist) => (
+          <Card key={checklist.id} variant="quiet">
+            <ChecklistView
+              checklist={checklist}
+              checkedItemIds={progress.checklists[checklist.id] ?? []}
+              onToggle={(itemId) => store.toggleChecklistItem(checklist.id, itemId)}
+            />
+          </Card>
+        ))}
+      </section>
+    </div>
+  );
+}
+
+/* --------------------------------------------------------------- Referencia */
+
+export function ReferenceScreen() {
+  const progress = useProgress();
+  const store = useStore();
+  const reference = CHECKLIST_RESOURCES.filter((c) => c.level === 'reference');
+
+  return (
+    <div className="stack-6">
+      <header className="stack-3">
+        <p className="eyebrow">Consulta</p>
+        <h1>Referencia</h1>
+        <p className="reading">
+          Artículos exactos y normas centrales. No integra el plan activo ni los indicadores
+          principales: está aquí para consultar cuando lo necesites.
+        </p>
+      </header>
+
+      {reference.map((checklist) => (
+        <Card key={checklist.id}>
+          <ChecklistView
+            checklist={checklist}
+            checkedItemIds={progress.checklists[checklist.id] ?? []}
+            onToggle={(itemId) => store.toggleChecklistItem(checklist.id, itemId)}
+          />
+        </Card>
+      ))}
+
+      <section className="stack-3">
+        <SectionHeading eyebrow="Trazabilidad" title="Fuentes del corpus" />
+        <ul className="item-list">
+          {Object.values(SOURCE_MANIFEST).map((source) => (
+            <li key={source.id} className="item-row">
+              <span>
+                <span className="item-row__title">{source.title}</span>
+                <span className="item-row__meta">
+                  {source.id} · {source.relativePath} · gobierna: {source.governs}
+                </span>
+                <span className="item-row__meta mono">SHA-256 {source.sha256.slice(0, 16)}…</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <Card variant="quiet" className="stack-2">
+        <Badge tone="quiet">Aviso</Badge>
+        <p className="caption">{LEGAL_NOTICE.sourceExcerpt}</p>
+      </Card>
+    </div>
+  );
+}
+
+/* -------------------------------------------------------------- Preferencias */
+
+export function PreferencesScreen() {
+  const progress = useProgress();
+  const store = useStore();
+  const [confirmReset, setConfirmReset] = useState(false);
+  const phase = interviewPhase(progress.targetInterview);
+
+  return (
+    <div className="stack-8">
+      <header className="stack-3">
+        <p className="eyebrow">Control</p>
+        <h1>Preferencias</h1>
+      </header>
+
+      <section className="stack-4">
+        <SectionHeading eyebrow="Apariencia" title="Tema" />
+        <div className="segmented" role="group" aria-label="Tema de la interfaz">
+          {(['system', 'light', 'dark'] as const).map((value) => (
+            <button
+              key={value}
+              type="button"
+              className="segmented__option"
+              aria-pressed={progress.preferences.theme === value}
+              onClick={() => store.setTheme(value)}
+            >
+              {value === 'system' ? 'Del sistema' : value === 'light' ? 'Claro' : 'Oscuro'}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <section className="stack-4">
+        <SectionHeading eyebrow="Entrevista" title="Fecha objetivo" />
+        <Card className="stack-4">
+          <div className="switch-row">
+            <input
+              id="target-enabled"
+              type="checkbox"
+              checked={progress.targetInterview.enabled}
+              onChange={(event) => store.setTargetInterview({ enabled: event.target.checked })}
+            />
+            <label htmlFor="target-enabled">
+              <strong>Tengo una fecha de entrevista</strong>
+              <span className="caption" style={{ display: 'block' }}>
+                Solo con la fecha configurada la aplicación puede decir «Mañana es tu entrevista».
+                Después de la fecha sigue siendo usable en modo estudio.
+              </span>
+            </label>
+          </div>
+          <div className="field">
+            <label htmlFor="target-date" className="label">
+              Fecha
+            </label>
+            <input
+              id="target-date"
+              type="date"
+              value={progress.targetInterview.date ?? ''}
+              onChange={(event) => store.setTargetInterview({ date: event.target.value || null })}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="target-title" className="label">
+              Título
+            </label>
+            <input
+              id="target-title"
+              type="text"
+              value={progress.targetInterview.title}
+              onChange={(event) => store.setTargetInterview({ title: event.target.value })}
+            />
+          </div>
+          <p className="caption">Estado actual: {phaseLabel(phase, progress.targetInterview)}</p>
+        </Card>
+      </section>
+
+      <section className="stack-4">
+        <SectionHeading eyebrow="Ruta" title="Profundidad y tiempo" />
+        <Card className="stack-4">
+          <div className="switch-row">
+            <input
+              id="include-level2"
+              type="checkbox"
+              checked={progress.preferences.includeLevel2}
+              onChange={(event) => store.setIncludeLevel2(event.target.checked)}
+            />
+            <label htmlFor="include-level2">
+              <strong>Incluir Nivel 2 en las sesiones</strong>
+              <span className="caption" style={{ display: 'block' }}>
+                Profundizar requiere elección explícita. Nivel 1 nunca recibe preguntas ni feedback
+                de Nivel 2 o 3.
+              </span>
+            </label>
+          </div>
+          <div className="field">
+            <span className="label">Tiempo por defecto</span>
+            <div className="time-select" role="group" aria-label="Tiempo por defecto">
+              {TIME_BUDGET_OPTIONS.map((option) => (
+                <button
+                  key={String(option.value)}
+                  type="button"
+                  className="time-select__option"
+                  aria-pressed={progress.preferences.lastTimeBudget === option.value}
+                  onClick={() => store.setTimeBudget(option.value)}
+                >
+                  {option.short}
+                </button>
+              ))}
+            </div>
+          </div>
+        </Card>
+      </section>
+
+      <section className="stack-4">
+        <SectionHeading eyebrow="Datos" title="Privacidad y almacenamiento" />
+        <Card className="stack-3">
+          <p className="caption">
+            Todo se guarda en el almacenamiento local de este navegador, bajo la clave{' '}
+            <span className="mono">{STORAGE_KEY}</span>. No hay cuenta, servidor, analítica, IA ni
+            recursos remotos en ejecución. El progreso del PC y el del móvil son independientes y no
+            se sincronizan.
+          </p>
+          {store.notes.length > 0 ? (
+            <ul className="stack-2">
+              {store.notes.map((note) => (
+                <li key={note} className="caption">
+                  · {note}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          {confirmReset ? (
+            <div className="stack-3">
+              <p>
+                Esto borra tu progreso de este navegador. Se conserva una copia recuperable con
+                marca de tiempo por si fue un error.
+              </p>
+              <div className="row">
+                <Button
+                  variant="danger"
+                  onClick={() => {
+                    store.resetAll();
+                    setConfirmReset(false);
+                  }}
+                >
+                  Borrar mi progreso
+                </Button>
+                <Button onClick={() => setConfirmReset(false)}>Cancelar</Button>
+              </div>
+            </div>
+          ) : (
+            <Button variant="danger" onClick={() => setConfirmReset(true)}>
+              Restablecer progreso
+            </Button>
+          )}
+        </Card>
+      </section>
+    </div>
+  );
+}
+
+/* --------------------------------------------------------------------- Más */
+
+export function MoreScreen() {
+  return (
+    <div className="stack-6">
+      <header className="stack-2">
+        <h1>Más</h1>
+        <p className="caption">Todo lo que no cabe en la barra inferior.</p>
+      </header>
+      <ul className="item-list">
+        {[
+          { to: '/ruta', label: 'Ruta de estudio', meta: 'Corpus completo por nivel y frente' },
+          { to: '/casos', label: 'Casos', meta: 'Análisis por elementos' },
+          { to: '/simulacro', label: 'Simulacro', meta: 'Quick y Standard' },
+          { to: '/errores', label: 'Mis errores', meta: 'Corrección sostenida' },
+          { to: '/progreso', label: 'Progreso', meta: 'Core Readiness y cobertura' },
+          { to: '/repaso-final', label: 'Repaso antes de salir', meta: 'Lo último antes de la entrevista' },
+          { to: '/referencia', label: 'Referencia', meta: 'Artículos y fuentes' },
+          { to: '/preferencias', label: 'Preferencias', meta: 'Tema, fecha, nivel y datos' },
+        ].map((item) => (
+          <li key={item.to}>
+            <Link className="item-row" to={item.to}>
+              <span>
+                <span className="item-row__title">{item.label}</span>
+                <span className="item-row__meta">{item.meta}</span>
+              </span>
+              <span aria-hidden="true">→</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export function NotFoundScreen() {
+  return (
+    <EmptyState
+      title="Esa página no existe"
+      description="Vuelve a Inicio para continuar con lo que necesitas estudiar ahora."
+      action={<LinkButton to="/" variant="primary">Volver a Inicio</LinkButton>}
+    />
+  );
+}
