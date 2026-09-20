@@ -146,7 +146,6 @@ export function SessionScreen() {
         <InterviewPromptView
           prompt={resource}
           presentationMode={presentationMode}
-          onStudy={() => { store.markInterviewStudied(resource.id, session.currentIndex); advance(); }}
           onSave={(input) => {
             store.recordInterviewAttempt(resource.id, input, session.currentIndex);
             advance();

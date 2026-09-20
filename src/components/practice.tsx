@@ -269,7 +269,6 @@ export function InterviewPromptView({
   onSave,
   saveLabel = 'Guardar y continuar',
   presentationMode,
-  onStudy,
 }: {
   prompt: InterviewPrompt;
   onSave: (input: {
@@ -279,7 +278,6 @@ export function InterviewPromptView({
   }) => void;
   saveLabel?: string;
   presentationMode?: 'study' | 'practice';
-  onStudy?: () => void;
 }) {
   const [step, setStep] = useState<'choose' | 'prepare' | 'ask' | 'rate'>('choose');
   const [rating, setRating] = useState<SelfRating | null>(null);
@@ -349,13 +347,12 @@ export function InterviewPromptView({
             stories={stories}
             onUseModel={() => setUsedModel(true)}
           />
-          <div className="row">
-            {presentationMode === 'study' && onStudy ? (
-              <Button variant="primary" onClick={onStudy}>Siguiente →</Button>
-            ) : (
-              <><Button variant="primary" onClick={() => setStep('ask')}>Practicar ahora</Button><Button onClick={() => setStep('choose')}>Volver a elegir</Button></>
-            )}
-          </div>
+          {presentationMode !== 'study' ? (
+            <div className="row">
+              <Button variant="primary" onClick={() => setStep('ask')}>Practicar ahora</Button>
+              <Button onClick={() => setStep('choose')}>Volver a elegir</Button>
+            </div>
+          ) : null}
         </div>
       ) : null}
 

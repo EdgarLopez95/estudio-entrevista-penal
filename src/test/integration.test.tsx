@@ -60,6 +60,7 @@ describe('P0-A: Home → Háblame de ti → práctica oral → guardar progreso'
     window.scrollTo = ((...args: unknown[]) => { calls.push(args); }) as typeof window.scrollTo;
     const { store } = renderApp(['/entrevista']);
     await user.click(screen.getByRole('button', { name: 'Estudiar / Prepararme' }));
+    expect(screen.getAllByRole('button', { name: 'Siguiente →' })).toHaveLength(2);
     calls.length = 0;
     await user.click(screen.getAllByRole('button', { name: 'Siguiente →' })[0]);
 
