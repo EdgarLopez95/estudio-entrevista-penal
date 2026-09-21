@@ -130,7 +130,14 @@ export function AppShell({ children }: { children: ReactNode }) {
               </IconButton>
             </div>
           </header>
-          {progress.activeSession && progress.activeSession.status === 'active' ? (
+          {progress.activeSession &&
+          progress.activeSession.status === 'active' &&
+          location.pathname !== '/' &&
+          !location.pathname.startsWith('/entrevista/star/') &&
+          !location.pathname.startsWith('/entrevista/prompt/') &&
+          !location.pathname.startsWith('/penal/leccion/') &&
+          !location.pathname.startsWith('/casos/') &&
+          !location.pathname.startsWith('/ruta/') ? (
             <div className="active-session-banner" role="status">
               <div className="active-session-banner__text">
                 <IconBolt size={18} color="var(--primary)" />

@@ -223,20 +223,9 @@ export function PromptDetailScreen() {
     <div className="stack-6 practice">
       <div className="row row--between" style={{ alignItems: 'center', gap: 'var(--space-2)' }}>
         <button type="button" className="btn btn--tertiary" onClick={handleBack}>
-          ← Volver
+          ← {hasActiveSession ? 'Volver a la sesión' : 'Volver'}
         </button>
-        <div className="row" style={{ gap: 'var(--space-2)', alignItems: 'center' }}>
-          {hasActiveSession ? (
-            <Link
-              to="/sesion"
-              className="btn btn--secondary"
-              style={{ fontSize: 'var(--text-caption)', padding: '6px 12px' }}
-            >
-              Volver a la sesión →
-            </Link>
-          ) : null}
-          <Badge tone="quiet">{PROMPT_STATE_LABEL[state]}</Badge>
-        </div>
+        <Badge tone="quiet">{PROMPT_STATE_LABEL[state]}</Badge>
       </div>
       <InterviewPromptView
         prompt={resource}
@@ -246,15 +235,15 @@ export function PromptDetailScreen() {
           handleBack();
         }}
       />
-      <div className="row row--between" style={{ marginTop: 'var(--space-4)', gap: 'var(--space-2)' }}>
-        <button type="button" className="btn btn--secondary" onClick={handleBack}>
-          ← Volver
+      <div style={{ marginTop: 'var(--space-4)' }}>
+        <button
+          type="button"
+          className="btn btn--secondary"
+          onClick={handleBack}
+          style={{ width: '100%', justifyContent: 'center' }}
+        >
+          {hasActiveSession ? 'Volver a la sesión' : 'Volver'}
         </button>
-        {hasActiveSession ? (
-          <Link to="/sesion" className="btn btn--primary">
-            Volver a la sesión →
-          </Link>
-        ) : null}
       </div>
     </div>
   );
@@ -291,19 +280,10 @@ export function StarDetailScreen() {
 
   return (
     <div className="stack-6">
-      <div className="row row--between" style={{ alignItems: 'center', gap: 'var(--space-2)' }}>
+      <div>
         <button type="button" className="btn btn--tertiary" onClick={handleBack}>
-          ← Volver
+          ← {hasActiveSession ? 'Volver a la sesión' : 'Volver'}
         </button>
-        {hasActiveSession ? (
-          <Link
-            to="/sesion"
-            className="btn btn--secondary"
-            style={{ fontSize: 'var(--text-caption)', padding: '6px 12px' }}
-          >
-            Volver a la sesión en curso →
-          </Link>
-        ) : null}
       </div>
 
       <StarCard story={story} />
@@ -313,15 +293,15 @@ export function StarDetailScreen() {
         cuéntala con tus palabras.
       </Notice>
 
-      <div className="row row--between" style={{ marginTop: 'var(--space-4)', gap: 'var(--space-2)' }}>
-        <button type="button" className="btn btn--secondary" onClick={handleBack}>
-          ← Volver
+      <div style={{ marginTop: 'var(--space-4)' }}>
+        <button
+          type="button"
+          className="btn btn--primary"
+          onClick={handleBack}
+          style={{ width: '100%', justifyContent: 'center' }}
+        >
+          {hasActiveSession ? 'Volver a la sesión' : 'Volver'}
         </button>
-        {hasActiveSession ? (
-          <Link to="/sesion" className="btn btn--primary">
-            Volver a la sesión →
-          </Link>
-        ) : null}
       </div>
     </div>
   );

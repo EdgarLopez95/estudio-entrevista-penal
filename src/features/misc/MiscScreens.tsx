@@ -329,19 +329,10 @@ export function CaseDetailScreen() {
 
   return (
     <div className="stack-6">
-      <div className="row row--between" style={{ alignItems: 'center', gap: 'var(--space-2)' }}>
+      <div>
         <button type="button" className="btn btn--tertiary" onClick={handleBack}>
-          ← Volver
+          ← {hasActiveSession ? 'Volver a la sesión' : 'Volver'}
         </button>
-        {hasActiveSession ? (
-          <Link
-            to="/sesion"
-            className="btn btn--secondary"
-            style={{ fontSize: 'var(--text-caption)', padding: '6px 12px' }}
-          >
-            Volver a la sesión →
-          </Link>
-        ) : null}
       </div>
       <CaseView
         caseResource={resource}
@@ -361,15 +352,15 @@ export function CaseDetailScreen() {
           store.recordCaseStep(resource.id, checked, { expectedTotal, completed: true })
         }
       />
-      <div className="row row--between" style={{ marginTop: 'var(--space-4)', gap: 'var(--space-2)' }}>
-        <button type="button" className="btn btn--secondary" onClick={handleBack}>
-          ← Volver
+      <div style={{ marginTop: 'var(--space-4)' }}>
+        <button
+          type="button"
+          className="btn btn--secondary"
+          onClick={handleBack}
+          style={{ width: '100%', justifyContent: 'center' }}
+        >
+          {hasActiveSession ? 'Volver a la sesión' : 'Volver'}
         </button>
-        {hasActiveSession ? (
-          <Link to="/sesion" className="btn btn--primary">
-            Volver a la sesión →
-          </Link>
-        ) : null}
       </div>
     </div>
   );
