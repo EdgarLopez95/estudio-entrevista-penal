@@ -44,20 +44,32 @@ export function interviewPhase(target: TargetInterview, now: Date = new Date()):
   return 'far';
 }
 
+export function formatInterviewTime(timeStr?: string | null): string {
+  if (!timeStr) return '';
+  const match = /^(\d{1,2}):(\d{2})$/.exec(timeStr);
+  if (!match) return timeStr;
+  const hour24 = Number(match[1]);
+  const min = match[2];
+  const ampm = hour24 >= 12 ? 'p. m.' : 'a. m.';
+  const hour12 = hour24 % 12 || 12;
+  return `${hour12}:${min} ${ampm}`;
+}
+
 export function phaseLabel(phase: InterviewPhase, target: TargetInterview, now = new Date()): string {
+  const timeSuffix = target.time ? ` · ${formatInterviewTime(target.time)}` : '';
   switch (phase) {
     case 'today':
-      return 'Hoy es tu entrevista';
+      return `Hoy es tu entrevista${timeSuffix}`;
     case 'tomorrow':
-      return 'Mañana es tu entrevista';
+      return `Mañana es tu entrevista${timeSuffix}`;
     case 'week': {
       const days = daysUntil(target.date, now);
-      return `Tu entrevista es en ${days} días`;
+      return `Tu entrevista es en ${days} días${timeSuffix}`;
     }
     case 'far': {
       const date = target.date ? parseDateKey(target.date) : null;
       return date
-        ? `Entrevista: ${date.toLocaleDateString('es-CO', { day: 'numeric', month: 'long' })}`
+        ? `Entrevista: ${date.toLocaleDateString('es-CO', { day: 'numeric', month: 'long' })}${timeSuffix}`
         : 'Entrevista programada';
     }
     case 'past':

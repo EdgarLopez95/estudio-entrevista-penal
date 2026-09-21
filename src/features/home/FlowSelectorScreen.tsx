@@ -2,6 +2,14 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useStore } from '@/state/StoreProvider';
 import { buildLinearSession } from '@/domain/sessionBuilder';
+import {
+  IconInterview,
+  IconScales,
+  IconStar,
+  IconLayers,
+  IconSparkles,
+  IconArrowRight,
+} from '@/components/icons';
 
 export function FlowSelectorScreen({ mode }: { mode: 'study' | 'practice' }) {
   const store = useStore();
@@ -41,12 +49,22 @@ export function FlowSelectorScreen({ mode }: { mode: 'study' | 'practice' }) {
             className="choice-card choice-card--primary"
             onClick={() => setTrack('interview')}
           >
-            <div className="choice-card__header">
-              <span className="choice-card__title">ENTREVISTA</span>
+            <div className="choice-card__row">
+              <div className="choice-card__icon-box">
+                <IconInterview size={24} />
+              </div>
+              <div className="choice-card__body">
+                <div className="choice-card__header">
+                  <span className="choice-card__title">ENTREVISTA</span>
+                </div>
+                <span className="choice-card__desc">
+                  Preguntas sobre tu experiencia, motivación y situaciones difíciles.
+                </span>
+              </div>
+              <div className="choice-card__arrow" aria-hidden="true">
+                <IconArrowRight size={20} />
+              </div>
             </div>
-            <span className="choice-card__desc">
-              Preguntas sobre tu experiencia, motivación y situaciones difíciles.
-            </span>
           </button>
 
           <button
@@ -54,12 +72,22 @@ export function FlowSelectorScreen({ mode }: { mode: 'study' | 'practice' }) {
             className="choice-card"
             onClick={() => setTrack('penal')}
           >
-            <div className="choice-card__header">
-              <span className="choice-card__title">DERECHO PENAL</span>
+            <div className="choice-card__row">
+              <div className="choice-card__icon-box">
+                <IconScales size={24} />
+              </div>
+              <div className="choice-card__body">
+                <div className="choice-card__header">
+                  <span className="choice-card__title">DERECHO PENAL</span>
+                </div>
+                <span className="choice-card__desc">
+                  Conceptos y preguntas técnicas del Código Penal y Código de Procedimiento Penal.
+                </span>
+              </div>
+              <div className="choice-card__arrow" aria-hidden="true">
+                <IconArrowRight size={20} />
+              </div>
             </div>
-            <span className="choice-card__desc">
-              Conceptos y preguntas técnicas.
-            </span>
           </button>
         </div>
 
@@ -95,13 +123,23 @@ export function FlowSelectorScreen({ mode }: { mode: 'study' | 'practice' }) {
           className="choice-card choice-card--primary"
           onClick={() => chooseLevel(1)}
         >
-          <div className="choice-card__header">
-            <span className="choice-card__title">NIVEL 1 · ESENCIAL</span>
-            <span className="choice-card__badge">Recomendado</span>
+          <div className="choice-card__row">
+            <div className="choice-card__icon-box">
+              <IconStar size={24} />
+            </div>
+            <div className="choice-card__body">
+              <div className="choice-card__header">
+                <span className="choice-card__title">NIVEL 1 · ESENCIAL</span>
+                <span className="choice-card__badge">Recomendado</span>
+              </div>
+              <span className="choice-card__desc">
+                Lo que deberías dominar primero para esta entrevista.
+              </span>
+            </div>
+            <div className="choice-card__arrow" aria-hidden="true">
+              <IconArrowRight size={20} />
+            </div>
           </div>
-          <span className="choice-card__desc">
-            Lo que deberías dominar primero para esta entrevista.
-          </span>
         </button>
 
         <button
@@ -109,12 +147,22 @@ export function FlowSelectorScreen({ mode }: { mode: 'study' | 'practice' }) {
           className="choice-card"
           onClick={() => chooseLevel(2)}
         >
-          <div className="choice-card__header">
-            <span className="choice-card__title">NIVEL 2 · AMPLIACIÓN</span>
+          <div className="choice-card__row">
+            <div className="choice-card__icon-box">
+              <IconLayers size={24} />
+            </div>
+            <div className="choice-card__body">
+              <div className="choice-card__header">
+                <span className="choice-card__title">NIVEL 2 · AMPLIACIÓN</span>
+              </div>
+              <span className="choice-card__desc">
+                Temas importantes para profundizar si ya manejas lo esencial.
+              </span>
+            </div>
+            <div className="choice-card__arrow" aria-hidden="true">
+              <IconArrowRight size={20} />
+            </div>
           </div>
-          <span className="choice-card__desc">
-            Temas importantes para profundizar si ya manejas lo esencial.
-          </span>
         </button>
 
         <button
@@ -122,12 +170,22 @@ export function FlowSelectorScreen({ mode }: { mode: 'study' | 'practice' }) {
           className="choice-card"
           onClick={() => chooseLevel(3)}
         >
-          <div className="choice-card__header">
-            <span className="choice-card__title">NIVEL 3 · PROFUNDIZACIÓN</span>
+          <div className="choice-card__row">
+            <div className="choice-card__icon-box">
+              <IconSparkles size={24} />
+            </div>
+            <div className="choice-card__body">
+              <div className="choice-card__header">
+                <span className="choice-card__title">NIVEL 3 · PROFUNDIZACIÓN</span>
+              </div>
+              <span className="choice-card__desc">
+                Contenido adicional para una entrevista más técnica o si tienes más tiempo.
+              </span>
+            </div>
+            <div className="choice-card__arrow" aria-hidden="true">
+              <IconArrowRight size={20} />
+            </div>
           </div>
-          <span className="choice-card__desc">
-            Contenido adicional para una entrevista más técnica o si tienes más tiempo.
-          </span>
         </button>
       </div>
 

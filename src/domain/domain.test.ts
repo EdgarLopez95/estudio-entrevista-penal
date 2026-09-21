@@ -484,7 +484,12 @@ describe('búsqueda (contrato §21)', () => {
 
 describe('tiempo y fase de entrevista (contrato §14)', () => {
   it('sin fecha configurada no hay fase', () => {
-    expect(interviewPhase(emptyState().targetInterview)).toBe('none');
+    expect(interviewPhase({ ...emptyState().targetInterview, enabled: false, date: null })).toBe('none');
+  });
+
+  it('fase por defecto con la fecha de la entrevista', () => {
+    const now = new Date('2026-09-20T12:00:00');
+    expect(interviewPhase(emptyState().targetInterview, now)).toBe('tomorrow');
   });
 
   it('detecta hoy, mañana y pasado', () => {

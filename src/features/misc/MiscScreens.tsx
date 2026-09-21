@@ -22,6 +22,7 @@ import { MOCK_BLUEPRINTS } from '@/domain/blueprints';
 import { SOURCE_MANIFEST } from '@/content/sources/traceability';
 import { STORAGE_KEY } from '@/storage/repository';
 import { TIME_BUDGET_OPTIONS, interviewPhase, phaseLabel } from '@/domain/time';
+import { IconTrash, IconCheck, IconAlert, IconClock } from '@/components/icons';
 import type { MockProfile } from '@/domain/types';
 
 /* --------------------------------------------------------------- Mis errores */
@@ -548,6 +549,7 @@ export function PreferencesScreen() {
   const progress = useProgress();
   const store = useStore();
   const [confirmReset, setConfirmReset] = useState(false);
+  const [resetDone, setResetDone] = useState(false);
   const phase = interviewPhase(progress.targetInterview);
 
   return (
@@ -604,6 +606,17 @@ export function PreferencesScreen() {
             />
           </div>
           <div className="field">
+            <label htmlFor="target-time" className="label">
+              Hora
+            </label>
+            <input
+              id="target-time"
+              type="time"
+              value={progress.targetInterview.time ?? '14:00'}
+              onChange={(event) => store.setTargetInterview({ time: event.target.value || null })}
+            />
+          </div>
+          <div className="field">
             <label htmlFor="target-title" className="label">
               Título
             </label>
@@ -614,7 +627,12 @@ export function PreferencesScreen() {
               onChange={(event) => store.setTargetInterview({ title: event.target.value })}
             />
           </div>
-          <p className="caption">Estado actual: {phaseLabel(phase, progress.targetInterview)}</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+            <IconClock size={16} color="var(--primary)" />
+            <p className="caption" style={{ margin: 0, fontWeight: 'var(--weight-medium)' }}>
+              Estado actual: {phaseLabel(phase, progress.targetInterview)}
+            </p>
+          </div>
         </Card>
       </section>
 
@@ -657,15 +675,104 @@ export function PreferencesScreen() {
 
       <section className="stack-4">
         <SectionHeading eyebrow="Datos" title="Privacidad y almacenamiento" />
-        <Card className="stack-3">
+        <Card className="stack-4">
           <p className="caption">
             Todo se guarda en el almacenamiento local de este navegador, bajo la clave{' '}
             <span className="mono">{STORAGE_KEY}</span>. No hay cuenta, servidor, analítica, IA ni
             recursos remotos en ejecución. El progreso del PC y el del móvil son independientes y no
             se sincronizan.
           </p>
+
+          {resetDone ? (
+            <div
+              className="stack-2"
+              style={{
+                padding: 'var(--space-3) var(--space-4)',
+                borderRadius: 'var(--radius-control)',
+                background: 'var(--success-soft, #e6f7ed)',
+                border: '1px solid var(--success, #1b873f)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--space-3)',
+              }}
+            >
+              <IconCheck size={20} color="var(--success, #1b873f)" />
+              <span style={{ fontSize: 'var(--text-body-sm)', color: 'var(--text-primary)', fontWeight: 'var(--weight-medium)' }}>
+                Progreso borrado correctamente. Tu app ha vuelto al estado inicial.
+              </span>
+            </div>
+          ) : confirmReset ? (
+            <div
+              className="stack-3"
+              style={{
+                padding: 'var(--space-4)',
+                borderRadius: 'var(--radius-control)',
+                background: 'var(--surface-2)',
+                border: '1px solid var(--outline-strong)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+                <IconAlert size={20} color="var(--accent-strong, #b42318)" />
+                <strong style={{ fontSize: 'var(--text-body-sm)' }}>¿Confirmas borrar todo tu progreso?</strong>
+              </div>
+              <p className="caption">
+                Esto restablece tus respuestas, estadísticas y sesiones de este navegador. Se conserva una copia automática de seguridad en el navegador por si fue un error.
+              </p>
+              <div className="row" style={{ gap: 'var(--space-3)' }}>
+                <button
+                  type="button"
+                  className="btn"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 'var(--space-2)',
+                    background: 'var(--accent-strong, #b42318)',
+                    color: '#fff',
+                    borderColor: 'var(--accent-strong, #b42318)',
+                  }}
+                  onClick={() => {
+                    store.resetAll();
+                    setConfirmReset(false);
+                    setResetDone(true);
+                  }}
+                >
+                  <IconTrash size={18} />
+                  <span>Confirmar: Borrar progreso</span>
+                </button>
+                <button
+                  type="button"
+                  className="btn btn--secondary"
+                  onClick={() => setConfirmReset(false)}
+                >
+                  Cancelar
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <button
+                type="button"
+                className="btn btn--secondary"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 'var(--space-2)',
+                  color: 'var(--accent-strong, #b42318)',
+                  borderColor: 'var(--outline-strong)',
+                }}
+                onClick={() => {
+                  setConfirmReset(true);
+                  setResetDone(false);
+                }}
+              >
+                <IconTrash size={18} />
+                <span>Borrar progreso</span>
+              </button>
+            </div>
+          )}
+
           {store.notes.length > 0 ? (
-            <ul className="stack-2">
+            <ul className="stack-2" style={{ marginTop: 'var(--space-2)' }}>
               {store.notes.map((note) => (
                 <li key={note} className="caption">
                   · {note}
@@ -673,30 +780,6 @@ export function PreferencesScreen() {
               ))}
             </ul>
           ) : null}
-          {confirmReset ? (
-            <div className="stack-3">
-              <p>
-                Esto borra tu progreso de este navegador. Se conserva una copia recuperable con
-                marca de tiempo por si fue un error.
-              </p>
-              <div className="row">
-                <Button
-                  variant="danger"
-                  onClick={() => {
-                    store.resetAll();
-                    setConfirmReset(false);
-                  }}
-                >
-                  Borrar mi progreso
-                </Button>
-                <Button onClick={() => setConfirmReset(false)}>Cancelar</Button>
-              </div>
-            </div>
-          ) : (
-            <Button variant="danger" onClick={() => setConfirmReset(true)}>
-              Restablecer progreso
-            </Button>
-          )}
         </Card>
       </section>
     </div>

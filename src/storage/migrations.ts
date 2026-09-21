@@ -52,7 +52,13 @@ const MIGRATIONS: Record<number, (raw: AnyRecord, notes: string[]) => AnyRecord>
 function reconcile(raw: AnyRecord, now: string): ProgressState {
   const empty = createEmptyProgress(now, CONTENT_VERSION);
   const preferences = isRecord(raw.preferences) ? raw.preferences : {};
-  const target = isRecord(raw.targetInterview) ? raw.targetInterview : {};
+  const rawTarget = isRecord(raw.targetInterview) ? raw.targetInterview : {};
+  const mergedTarget = { ...empty.targetInterview, ...(rawTarget as object) };
+  if (!mergedTarget.date) {
+    mergedTarget.enabled = true;
+    mergedTarget.date = '2026-09-21';
+    mergedTarget.time = '14:00';
+  }
   return {
     ...empty,
     ...(raw as Partial<ProgressState>),
@@ -62,7 +68,7 @@ function reconcile(raw: AnyRecord, now: string): ProgressState {
     createdAt: typeof raw.createdAt === 'string' ? raw.createdAt : now,
     updatedAt: now,
     preferences: { ...empty.preferences, ...(preferences as object) },
-    targetInterview: { ...empty.targetInterview, ...(target as object) },
+    targetInterview: mergedTarget,
     objectives: isRecord(raw.objectives) ? (raw.objectives as ProgressState['objectives']) : {},
     questions: isRecord(raw.questions) ? (raw.questions as ProgressState['questions']) : {},
     flashcards: isRecord(raw.flashcards) ? (raw.flashcards as ProgressState['flashcards']) : {},

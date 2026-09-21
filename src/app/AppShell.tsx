@@ -1,31 +1,41 @@
 import { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import { IconButton } from '@/components/primitives';
 import { useProgress, useStore } from '@/state/StoreProvider';
 import { interviewPhase, phaseLabel } from '@/domain/time';
 import { LogoMark } from '@/components/Logo';
+import {
+  IconHome,
+  IconBook,
+  IconBolt,
+  IconChart,
+  IconBriefcase,
+  IconClock,
+  IconAlert,
+  IconSettings,
+} from '@/components/icons';
 import { SearchDialog } from './SearchDialog';
 
 const PRIMARY_NAV = [
-  { to: '/', label: 'Inicio' },
-  { to: '/estudiar', label: 'Estudiar' },
-  { to: '/practicar', label: 'Practicar' },
-  { to: '/progreso', label: 'Progreso' },
+  { to: '/', label: 'Inicio', icon: IconHome },
+  { to: '/estudiar', label: 'Estudiar', icon: IconBook },
+  { to: '/practicar', label: 'Practicar', icon: IconBolt },
+  { to: '/progreso', label: 'Progreso', icon: IconChart },
 ];
 
 const SECONDARY_NAV = [
-  { to: '/repaso-final', label: 'Repaso antes de salir' },
-  { to: '/simulacro', label: 'Simulacro' },
-  { to: '/errores', label: 'Mis errores' },
-  { to: '/preferencias', label: 'Preferencias' },
+  { to: '/repaso-final', label: 'Repaso antes de salir', icon: IconClock },
+  { to: '/simulacro', label: 'Simulacro', icon: IconBriefcase },
+  { to: '/errores', label: 'Mis errores', icon: IconAlert },
+  { to: '/preferencias', label: 'Preferencias', icon: IconSettings },
 ];
 
 const MOBILE_NAV = [
-  { to: '/', label: 'Inicio' },
-  { to: '/estudiar', label: 'Estudiar' },
-  { to: '/practicar', label: 'Practicar' },
-  { to: '/progreso', label: 'Progreso' },
+  { to: '/', label: 'Inicio', icon: IconHome },
+  { to: '/estudiar', label: 'Estudiar', icon: IconBook },
+  { to: '/practicar', label: 'Practicar', icon: IconBolt },
+  { to: '/progreso', label: 'Progreso', icon: IconChart },
 ];
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -81,8 +91,8 @@ export function AppShell({ children }: { children: ReactNode }) {
           {PRIMARY_NAV.map((item) => (
             <li key={item.to}>
               <NavLink to={item.to} end={item.to === '/'} className="nav-link">
-                <span className="nav-link__dot" aria-hidden="true" />
-                {item.label}
+                <item.icon size={18} className="nav-link__icon" />
+                <span>{item.label}</span>
               </NavLink>
             </li>
           ))}
@@ -92,8 +102,8 @@ export function AppShell({ children }: { children: ReactNode }) {
           {SECONDARY_NAV.map((item) => (
             <li key={item.to}>
               <NavLink to={item.to} className="nav-link">
-                <span className="nav-link__dot" aria-hidden="true" />
-                {item.label}
+                <item.icon size={18} className="nav-link__icon" />
+                <span>{item.label}</span>
               </NavLink>
             </li>
           ))}
@@ -106,13 +116,10 @@ export function AppShell({ children }: { children: ReactNode }) {
           <header className="topbar">
             <div className="topbar__context">
               <p className="eyebrow">Modo Primera entrevista · Entrevista 65 / Penal 35</p>
-              {phase === 'none' ? (
-                <Link to="/preferencias" className="topbar__title">
-                  Añadir la fecha de tu entrevista
-                </Link>
-              ) : (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', minWidth: 0 }}>
+                <IconClock size={16} color="var(--primary)" className="topbar__clock-icon" />
                 <span className="topbar__title">{context}</span>
-              )}
+              </div>
             </div>
             <div className="topbar__actions">
               <IconButton label="Buscar (Ctrl+K)" onClick={() => setSearchOpen(true)}>
@@ -130,8 +137,8 @@ export function AppShell({ children }: { children: ReactNode }) {
       <nav className="mobile-nav" aria-label="Navegación inferior">
         {MOBILE_NAV.map((item) => (
           <NavLink key={item.to} to={item.to} end={item.to === '/'} className="mobile-nav__item">
-            <span className="mobile-nav__marker" aria-hidden="true" />
-            {item.label}
+            <item.icon size={20} className="mobile-nav__icon" />
+            <span>{item.label}</span>
           </NavLink>
         ))}
       </nav>

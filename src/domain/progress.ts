@@ -195,9 +195,9 @@ export function createEmptyProgress(now: string, contentVersion: string): Progre
       lastTimeBudget: 20,
     },
     targetInterview: {
-      enabled: false,
-      date: null,
-      time: null,
+      enabled: true,
+      date: '2026-09-21',
+      time: '14:00',
       title: 'Entrevista Abogada Junior en Derecho Penal',
       location: null,
       focus: 'Primera entrevista',

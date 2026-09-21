@@ -56,8 +56,8 @@ describe('migraciones (contrato §15)', () => {
     const partial = { schemaVersion: SCHEMA_VERSION, errors: [{ id: 'x' }] };
     const result = migrate(partial, NOW);
     expect(result.state.errors).toHaveLength(1);
-    expect(result.state.flashcards).toEqual({});
-    expect(result.state.targetInterview.enabled).toBe(false);
+    expect(result.state.targetInterview.enabled).toBe(true);
+    expect(result.state.targetInterview.date).toBe('2026-09-21');
   });
 
   it('datos de una versión más nueva no rompen la aplicación', () => {
