@@ -5,7 +5,6 @@ import {
   Button,
   Card,
   EmptyState,
-  LinkButton,
   Minutes,
   Notice,
   SectionHeading,
@@ -109,7 +108,7 @@ export function PenalHubScreen() {
                   className="item-row"
                   to={lesson ? `/penal/leccion/${lesson.id}` : `/ruta/${status.objective.id}`}
                 >
-                  <span>
+                  <span className="item-row__content">
                     <span className="item-row__title">{status.objective.title}</span>
                     <span className="item-row__meta">
                       {status.objective.sourceSummary} · {status.objective.estimatedMinutes} min
@@ -136,7 +135,7 @@ export function PenalHubScreen() {
                     className="item-row"
                     to={lesson ? `/penal/leccion/${lesson.id}` : `/ruta/${status.objective.id}`}
                   >
-                    <span>
+                    <span className="item-row__content">
                       <span className="item-row__title">{status.objective.title}</span>
                       <span className="item-row__meta">{status.objective.sourceSummary}</span>
                     </span>
@@ -169,11 +168,25 @@ export function LessonDetailScreen() {
   const navigate = useNavigate();
   const resource = lessonId ? getResource(lessonId) : undefined;
 
+  const hasActiveSession = Boolean(
+    progress.activeSession && progress.activeSession.status === 'active'
+  );
+
+  function handleBack() {
+    if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else if (hasActiveSession) {
+      navigate('/sesion');
+    } else {
+      navigate('/penal');
+    }
+  }
+
   if (!resource || resource.type !== 'lesson') {
     return (
       <EmptyState
         title="Esa lección no está disponible"
-        action={<LinkButton to="/penal" variant="primary">Volver a Penal</LinkButton>}
+        action={<Button variant="primary" onClick={handleBack}>Volver</Button>}
       />
     );
   }
@@ -201,15 +214,36 @@ export function LessonDetailScreen() {
 
   return (
     <div className="stack-6 practice">
-      <div className="row row--between">
-        <Link className="btn btn--tertiary" to="/penal">
-          ← Penal esencial
-        </Link>
-        <span className="caption mono">
-          {index >= 0 ? `${index + 1} de ${sibling.length}` : ''}
-        </span>
+      <div className="row row--between" style={{ alignItems: 'center', gap: 'var(--space-2)' }}>
+        <button type="button" className="btn btn--tertiary" onClick={handleBack}>
+          ← Volver
+        </button>
+        <div className="row" style={{ gap: 'var(--space-2)', alignItems: 'center' }}>
+          {hasActiveSession ? (
+            <Link
+              to="/sesion"
+              className="btn btn--secondary"
+              style={{ fontSize: 'var(--text-caption)', padding: '6px 12px' }}
+            >
+              Volver a la sesión →
+            </Link>
+          ) : null}
+          <span className="caption mono">
+            {index >= 0 ? `${index + 1} de ${sibling.length}` : ''}
+          </span>
+        </div>
       </div>
       <LessonView lesson={lesson} onStudied={studyAndPractice} />
+      <div className="row row--between" style={{ marginTop: 'var(--space-4)', gap: 'var(--space-2)' }}>
+        <button type="button" className="btn btn--secondary" onClick={handleBack}>
+          ← Volver
+        </button>
+        {hasActiveSession ? (
+          <Link to="/sesion" className="btn btn--primary">
+            Volver a la sesión →
+          </Link>
+        ) : null}
+      </div>
     </div>
   );
 }

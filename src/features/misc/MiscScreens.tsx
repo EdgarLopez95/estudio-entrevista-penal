@@ -88,7 +88,7 @@ export function ErrorsScreen() {
                     : null;
             const body = (
               <>
-                <span>
+                <span className="item-row__content">
                   <span className="item-row__title">{error.title}</span>
                   <span className="item-row__meta">
                     {GAP_LABEL[error.kind]} · {objective?.title ?? error.topic} · intentos{' '}
@@ -171,7 +171,7 @@ export function ProgressScreen() {
       </div>
 
       <div className="stack-4">
-        <Card className="stack-3" style={{ padding: 'var(--space-5)' }}>
+        <Card className="stack-3" style={{ padding: '24px' }}>
           <h2 style={{ fontSize: 'var(--text-h3)', letterSpacing: '-0.01em' }}>
             ENTREVISTA ESENCIAL
           </h2>
@@ -190,7 +190,7 @@ export function ProgressScreen() {
           </div>
         </Card>
 
-        <Card className="stack-3" style={{ padding: 'var(--space-5)' }}>
+        <Card className="stack-3" style={{ padding: '24px' }}>
           <h2 style={{ fontSize: 'var(--text-h3)', letterSpacing: '-0.01em' }}>
             PENAL ESENCIAL
           </h2>
@@ -294,14 +294,30 @@ export function CasesScreen() {
 export function CaseDetailScreen() {
   const { caseId } = useParams();
   const store = useStore();
+  const progress = useProgress();
+  const navigate = useNavigate();
   const [checked, setChecked] = useState<Record<string, string[]>>({});
   const resource = caseId ? getResource(caseId) : undefined;
+
+  const hasActiveSession = Boolean(
+    progress.activeSession && progress.activeSession.status === 'active'
+  );
+
+  function handleBack() {
+    if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else if (hasActiveSession) {
+      navigate('/sesion');
+    } else {
+      navigate('/casos');
+    }
+  }
 
   if (!resource || resource.type !== 'case') {
     return (
       <EmptyState
         title="Ese caso no está disponible"
-        action={<LinkButton to="/casos" variant="primary">Volver a Casos</LinkButton>}
+        action={<Button variant="primary" onClick={handleBack}>Volver</Button>}
       />
     );
   }
@@ -313,9 +329,20 @@ export function CaseDetailScreen() {
 
   return (
     <div className="stack-6">
-      <Link className="btn btn--tertiary" to="/casos">
-        ← Casos
-      </Link>
+      <div className="row row--between" style={{ alignItems: 'center', gap: 'var(--space-2)' }}>
+        <button type="button" className="btn btn--tertiary" onClick={handleBack}>
+          ← Volver
+        </button>
+        {hasActiveSession ? (
+          <Link
+            to="/sesion"
+            className="btn btn--secondary"
+            style={{ fontSize: 'var(--text-caption)', padding: '6px 12px' }}
+          >
+            Volver a la sesión →
+          </Link>
+        ) : null}
+      </div>
       <CaseView
         caseResource={resource}
         checked={checked}
@@ -334,6 +361,16 @@ export function CaseDetailScreen() {
           store.recordCaseStep(resource.id, checked, { expectedTotal, completed: true })
         }
       />
+      <div className="row row--between" style={{ marginTop: 'var(--space-4)', gap: 'var(--space-2)' }}>
+        <button type="button" className="btn btn--secondary" onClick={handleBack}>
+          ← Volver
+        </button>
+        {hasActiveSession ? (
+          <Link to="/sesion" className="btn btn--primary">
+            Volver a la sesión →
+          </Link>
+        ) : null}
+      </div>
     </div>
   );
 }

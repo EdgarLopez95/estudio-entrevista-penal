@@ -107,8 +107,8 @@ export function SearchDialog({ onClose }: { onClose: () => void }) {
                             onMouseEnter={() => setActiveIndex(index)}
                             onClick={() => go(index)}
                           >
-                            <span className="item-row__title">{hit.title}</span>
-                            <span className="item-row__meta"> · {hit.subtitle}</span>
+                            <span className="search-hit__title">{hit.title}</span>
+                            <span className="search-hit__meta"> · {hit.subtitle}</span>
                           </button>
                         </li>
                       );

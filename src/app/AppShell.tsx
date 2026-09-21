@@ -130,6 +130,20 @@ export function AppShell({ children }: { children: ReactNode }) {
               </IconButton>
             </div>
           </header>
+          {progress.activeSession && progress.activeSession.status === 'active' ? (
+            <div className="active-session-banner" role="status">
+              <div className="active-session-banner__text">
+                <IconBolt size={18} color="var(--primary)" />
+                <span>
+                  Sesión en curso: <strong>{progress.activeSession.label}</strong> (ítem{' '}
+                  {progress.activeSession.currentIndex + 1} de {progress.activeSession.items.length})
+                </span>
+              </div>
+              <NavLink to="/sesion" className="btn btn--primary active-session-banner__btn">
+                Reanudar sesión →
+              </NavLink>
+            </div>
+          ) : null}
           {children}
         </div>
       </main>

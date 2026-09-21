@@ -106,7 +106,7 @@ export function HomeScreen() {
           style={{
             background: 'var(--surface-2)',
             borderColor: 'var(--outline)',
-            padding: 'var(--space-4)',
+            padding: '20px 24px',
             borderRadius: 'var(--radius-card)',
           }}
         >

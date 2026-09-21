@@ -1,10 +1,10 @@
 import { useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
   Badge,
+  Button,
   Card,
   EmptyState,
-  LinkButton,
   Notice,
   SectionHeading,
   SourceNote,
@@ -165,11 +165,26 @@ export function ObjectiveDetailScreen() {
     [objectiveId],
   );
 
+  const navigate = useNavigate();
+  const hasActiveSession = Boolean(
+    progress.activeSession && progress.activeSession.status === 'active'
+  );
+
+  function handleBack() {
+    if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else if (hasActiveSession) {
+      navigate('/sesion');
+    } else {
+      navigate('/ruta');
+    }
+  }
+
   if (!objective || !coverage) {
     return (
       <EmptyState
         title="Ese objetivo no existe"
-        action={<LinkButton to="/ruta" variant="primary">Volver a la ruta</LinkButton>}
+        action={<Button variant="primary" onClick={handleBack}>Volver</Button>}
       />
     );
   }
@@ -179,9 +194,20 @@ export function ObjectiveDetailScreen() {
 
   return (
     <div className="stack-6">
-      <Link className="btn btn--tertiary" to="/ruta">
-        ← Ruta de estudio
-      </Link>
+      <div className="row row--between" style={{ alignItems: 'center', gap: 'var(--space-2)' }}>
+        <button type="button" className="btn btn--tertiary" onClick={handleBack}>
+          ← Volver
+        </button>
+        {hasActiveSession ? (
+          <Link
+            to="/sesion"
+            className="btn btn--secondary"
+            style={{ fontSize: 'var(--text-caption)', padding: '6px 12px' }}
+          >
+            Volver a la sesión →
+          </Link>
+        ) : null}
+      </div>
 
       <header className="stack-3">
         <div className="row">
@@ -227,7 +253,7 @@ export function ObjectiveDetailScreen() {
                       : null;
             const body = (
               <>
-                <span>
+                <span className="item-row__content">
                   <span className="item-row__title">
                     {resource.type === 'interview-prompt' ? resource.prompt : resource.title}
                   </span>
@@ -254,6 +280,17 @@ export function ObjectiveDetailScreen() {
       </section>
 
       <SourceNote source={objective.source} />
+
+      <div className="row row--between" style={{ marginTop: 'var(--space-4)', gap: 'var(--space-2)' }}>
+        <button type="button" className="btn btn--secondary" onClick={handleBack}>
+          ← Volver
+        </button>
+        {hasActiveSession ? (
+          <Link to="/sesion" className="btn btn--primary">
+            Volver a la sesión →
+          </Link>
+        ) : null}
+      </div>
     </div>
   );
 }

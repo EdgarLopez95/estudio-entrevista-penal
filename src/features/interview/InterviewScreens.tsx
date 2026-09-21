@@ -41,7 +41,7 @@ function PromptList({ prompts, title }: { prompts: InterviewPrompt[]; title: str
           return (
             <li key={prompt.id}>
               <Link className="item-row" to={`/entrevista/prompt/${prompt.id}`}>
-                <span>
+                <span className="item-row__content">
                   <span className="item-row__title">{prompt.prompt}</span>
                   <span className="item-row__meta">
                     {prompt.topic} · {prompt.estimatedMinutes} min
@@ -122,7 +122,7 @@ export function InterviewHubScreen() {
           {STARS.map((story) => (
             <li key={story.id}>
               <Link className="item-row" to={`/entrevista/star/${story.id}`}>
-                <span>
+                <span className="item-row__content">
                   <span className="item-row__title">{story.title}</span>
                   <span className="item-row__meta">{story.competencies.join(' · ')}</span>
                 </span>
@@ -194,11 +194,25 @@ export function PromptDetailScreen() {
   const navigate = useNavigate();
   const resource = promptId ? getResource(promptId) : undefined;
 
+  const hasActiveSession = Boolean(
+    progress.activeSession && progress.activeSession.status === 'active'
+  );
+
+  function handleBack() {
+    if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else if (hasActiveSession) {
+      navigate('/sesion');
+    } else {
+      navigate('/entrevista');
+    }
+  }
+
   if (!resource || resource.type !== 'interview-prompt') {
     return (
       <EmptyState
         title="Esa pregunta no está disponible"
-        action={<LinkButton to="/entrevista" variant="primary">Volver a Entrevista</LinkButton>}
+        action={<Button variant="primary" onClick={handleBack}>Volver</Button>}
       />
     );
   }
@@ -207,45 +221,108 @@ export function PromptDetailScreen() {
 
   return (
     <div className="stack-6 practice">
-      <div className="row row--between">
-        <Link className="btn btn--tertiary" to="/entrevista">
-          ← Entrevista
-        </Link>
-        <Badge tone="quiet">{PROMPT_STATE_LABEL[state]}</Badge>
+      <div className="row row--between" style={{ alignItems: 'center', gap: 'var(--space-2)' }}>
+        <button type="button" className="btn btn--tertiary" onClick={handleBack}>
+          ← Volver
+        </button>
+        <div className="row" style={{ gap: 'var(--space-2)', alignItems: 'center' }}>
+          {hasActiveSession ? (
+            <Link
+              to="/sesion"
+              className="btn btn--secondary"
+              style={{ fontSize: 'var(--text-caption)', padding: '6px 12px' }}
+            >
+              Volver a la sesión →
+            </Link>
+          ) : null}
+          <Badge tone="quiet">{PROMPT_STATE_LABEL[state]}</Badge>
+        </div>
       </div>
       <InterviewPromptView
         prompt={resource}
         saveLabel="Guardar intento"
         onSave={(input) => {
           store.recordInterviewAttempt(resource.id, input);
-          navigate('/entrevista');
+          handleBack();
         }}
       />
+      <div className="row row--between" style={{ marginTop: 'var(--space-4)', gap: 'var(--space-2)' }}>
+        <button type="button" className="btn btn--secondary" onClick={handleBack}>
+          ← Volver
+        </button>
+        {hasActiveSession ? (
+          <Link to="/sesion" className="btn btn--primary">
+            Volver a la sesión →
+          </Link>
+        ) : null}
+      </div>
     </div>
   );
 }
 
 export function StarDetailScreen() {
   const { starId } = useParams();
+  const navigate = useNavigate();
+  const progress = useProgress();
   const story = STARS.find((s) => s.id === starId);
+
+  const hasActiveSession = Boolean(
+    progress.activeSession && progress.activeSession.status === 'active'
+  );
+
+  function handleBack() {
+    if (window.history.state && window.history.state.idx > 0) {
+      navigate(-1);
+    } else if (hasActiveSession) {
+      navigate('/sesion');
+    } else {
+      navigate('/entrevista');
+    }
+  }
+
   if (!story) {
     return (
       <EmptyState
         title="Esa historia no está disponible"
-        action={<LinkButton to="/entrevista" variant="primary">Volver a Entrevista</LinkButton>}
+        action={<Button variant="primary" onClick={handleBack}>Volver</Button>}
       />
     );
   }
+
   return (
     <div className="stack-6">
-      <Link className="btn btn--tertiary" to="/entrevista">
-        ← Entrevista
-      </Link>
+      <div className="row row--between" style={{ alignItems: 'center', gap: 'var(--space-2)' }}>
+        <button type="button" className="btn btn--tertiary" onClick={handleBack}>
+          ← Volver
+        </button>
+        {hasActiveSession ? (
+          <Link
+            to="/sesion"
+            className="btn btn--secondary"
+            style={{ fontSize: 'var(--text-caption)', padding: '6px 12px' }}
+          >
+            Volver a la sesión en curso →
+          </Link>
+        ) : null}
+      </div>
+
       <StarCard story={story} />
+
       <Notice>
         Las historias STAR no se memorizan palabra por palabra: se reutilizan. Aprende la idea y
         cuéntala con tus palabras.
       </Notice>
+
+      <div className="row row--between" style={{ marginTop: 'var(--space-4)', gap: 'var(--space-2)' }}>
+        <button type="button" className="btn btn--secondary" onClick={handleBack}>
+          ← Volver
+        </button>
+        {hasActiveSession ? (
+          <Link to="/sesion" className="btn btn--primary">
+            Volver a la sesión →
+          </Link>
+        ) : null}
+      </div>
     </div>
   );
 }

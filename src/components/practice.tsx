@@ -274,7 +274,7 @@ export function InterviewPromptView({
               {stories.map((story) => (
                 <li key={story.id}>
                   <Link className="item-row" to={`/entrevista/star/${story.id}`}>
-                    <span>
+                    <span className="item-row__content">
                       <span className="item-row__title">{story.title}</span>
                       <span className="item-row__meta">{story.competencies.join(' · ')}</span>
                     </span>
