@@ -60,7 +60,7 @@ export function HomeScreen() {
         >
           <div className="choice-card__row">
             <div className="choice-card__icon-box">
-              <IconBook size={24} />
+              <IconBook size={32} />
             </div>
             <div className="choice-card__body">
               <div className="choice-card__header">
@@ -83,7 +83,7 @@ export function HomeScreen() {
         >
           <div className="choice-card__row">
             <div className="choice-card__icon-box">
-              <IconBolt size={24} />
+              <IconBolt size={32} />
             </div>
             <div className="choice-card__body">
               <div className="choice-card__header">

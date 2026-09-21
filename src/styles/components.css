@@ -1135,11 +1135,9 @@ details.disclosure > summary::marker {
 
 .choice-card {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
   width: 100%;
-  padding: var(--space-4) var(--space-5);
+  padding: var(--space-5);
   background: var(--surface-1);
   border: 1px solid var(--outline-strong);
   border-radius: var(--radius-card);
@@ -1158,12 +1156,13 @@ details.disclosure > summary::marker {
 .choice-card:hover {
   background: var(--surface-2);
   border-color: var(--primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
 }
 
 .choice-card:active {
   background: var(--surface-3);
-  transform: scale(0.99);
+  transform: translateY(0);
 }
 
 .choice-card--primary {
@@ -1181,20 +1180,15 @@ details.disclosure > summary::marker {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
   flex-shrink: 0;
-  border-radius: var(--radius-control);
-  background: var(--surface-2);
   color: var(--primary);
-  border: 1px solid var(--outline);
-  transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+  background: transparent;
+  border: none;
+  transition: transform var(--duration-fast) var(--ease-out);
 }
 
-.choice-card--primary .choice-card__icon-box {
-  background: var(--primary-soft);
-  color: var(--primary);
-  border-color: rgba(19, 93, 102, 0.25);
+.choice-card:hover .choice-card__icon-box {
+  transform: scale(1.12);
 }
 
 .choice-card__body {
@@ -1229,6 +1223,8 @@ details.disclosure > summary::marker {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
   color: var(--text-muted);
   transition: transform var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);

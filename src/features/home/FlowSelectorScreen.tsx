@@ -51,7 +51,7 @@ export function FlowSelectorScreen({ mode }: { mode: 'study' | 'practice' }) {
           >
             <div className="choice-card__row">
               <div className="choice-card__icon-box">
-                <IconInterview size={24} />
+                <IconInterview size={30} />
               </div>
               <div className="choice-card__body">
                 <div className="choice-card__header">
@@ -74,7 +74,7 @@ export function FlowSelectorScreen({ mode }: { mode: 'study' | 'practice' }) {
           >
             <div className="choice-card__row">
               <div className="choice-card__icon-box">
-                <IconScales size={24} />
+                <IconScales size={30} />
               </div>
               <div className="choice-card__body">
                 <div className="choice-card__header">
@@ -125,7 +125,7 @@ export function FlowSelectorScreen({ mode }: { mode: 'study' | 'practice' }) {
         >
           <div className="choice-card__row">
             <div className="choice-card__icon-box">
-              <IconStar size={24} />
+              <IconStar size={28} />
             </div>
             <div className="choice-card__body">
               <div className="choice-card__header">
@@ -149,7 +149,7 @@ export function FlowSelectorScreen({ mode }: { mode: 'study' | 'practice' }) {
         >
           <div className="choice-card__row">
             <div className="choice-card__icon-box">
-              <IconLayers size={24} />
+              <IconLayers size={28} />
             </div>
             <div className="choice-card__body">
               <div className="choice-card__header">
@@ -172,7 +172,7 @@ export function FlowSelectorScreen({ mode }: { mode: 'study' | 'practice' }) {
         >
           <div className="choice-card__row">
             <div className="choice-card__icon-box">
-              <IconSparkles size={24} />
+              <IconSparkles size={28} />
             </div>
             <div className="choice-card__body">
               <div className="choice-card__header">
